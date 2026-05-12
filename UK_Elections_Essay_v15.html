@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UK Elections 2026 — Fragmentation, No Overall Control, and the Edges of Governability</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#FAF9F5;--fg:#141413;--gray-600:#5A5A56;--gray-400:#8A8A84;--border:#D1CFC5;--accent:#D97757;--accent-bg:#FFF5F0;--blue:#3B6EA5;--green:#2D7A4F;--red:#C04040;--yellow-bg:#FFF9E6;--code-bg:#F0EFEB;--max-w:920px;--serif:Georgia,'Times New Roman',serif;--sans:system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'SF Mono',Menlo,Consolas,monospace}
+html{font-size:17px;scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--fg);background:var(--bg);line-height:1.7;padding:2.5rem 1.5rem 4rem}
+.wrapper{max-width:var(--max-w);margin:0 auto}
+h1{font-family:var(--serif);font-size:2.1rem;font-weight:700;line-height:1.25;margin-bottom:.3rem}
+h2{font-family:var(--serif);font-size:1.45rem;font-weight:700;margin-top:2.8rem;margin-bottom:.8rem;padding-bottom:.45rem;border-bottom:1.5px solid var(--border)}
+h3{font-size:1.05rem;font-weight:700;margin-top:1.6rem;margin-bottom:.5rem}
+p{margin-bottom:1rem;color:var(--gray-600)}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+.subtitle{color:var(--gray-400);font-size:.92rem;margin-bottom:2rem}
+.tldr{background:var(--accent-bg);border-left:4px solid var(--accent);padding:1.1rem 1.3rem;border-radius:0 6px 6px 0;margin:1.5rem 0 2rem}
+.tldr strong{color:var(--accent);font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:.35rem}
+.tldr p{margin:0;color:var(--fg);font-size:.97rem;line-height:1.65}
+.info-box{background:var(--yellow-bg);border-left:4px solid #D4A843;padding:1rem 1.2rem;border-radius:0 6px 6px 0;margin:1.2rem 0}
+.info-box p{margin:0;font-size:.93rem}
+details{border:1px solid var(--border);border-radius:6px;margin:.8rem 0;background:#fff}
+details[open]{border-color:var(--accent)}
+summary{cursor:pointer;padding:.75rem 1rem;font-weight:600;font-size:.97rem;list-style:none;display:flex;align-items:center;gap:.5rem;user-select:none}
+summary::before{content:'▸';color:var(--accent);font-size:1.1rem;transition:transform .15s}
+details[open]>summary::before{transform:rotate(90deg)}
+summary:hover{background:#F5F4F0}
+.detail-body{padding:.5rem 1rem 1rem;border-top:1px solid var(--border);font-size:.94rem}
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.9rem}
+th{text-align:left;padding:.55rem .7rem;background:var(--code-bg);border-bottom:2px solid var(--border);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em;color:var(--gray-400)}
+td{padding:.55rem .7rem;border-bottom:1px solid var(--border)}
+.badge{display:inline-block;padding:.15rem .55rem;border-radius:4px;font-size:.78rem;font-weight:600}
+.badge-red{background:#FDEAEA;color:var(--red)}
+.badge-green{background:#E8F5ED;color:var(--green)}
+.badge-amber{background:#FFF3E0;color:#B8741A}
+.badge-blue{background:#EBF3FA;color:var(--blue)}
+.metric-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem;margin:1rem 0}
+.metric{background:#fff;border:1px solid var(--border);border-radius:6px;padding:.9rem 1rem;text-align:center}
+.metric .value{font-family:var(--mono);font-size:1.6rem;font-weight:700;color:var(--fg)}
+.metric .label{font-size:.78rem;color:var(--gray-400);text-transform:uppercase;letter-spacing:.04em;margin-top:.2rem}
+.metric.critical .value{color:var(--red)}
+.metric.warn .value{color:#B8741A}
+.metric.good .value{color:var(--green)}
+.quote{border-left:3px solid var(--accent);padding:.6rem 1rem;margin:1rem 0;font-style:italic;color:var(--gray-600);font-size:.95rem;background:#FDFCFA}
+footer{margin-top:3rem;padding-top:1.2rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--gray-400);text-align:center}
+header{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start;margin-bottom:2rem}
+.header-content{grid-column:1;min-width:0}
+.tarco-badge{grid-column:2;background:#141413;color:#c9a84c;font-family:var(--sans);font-size:13px;font-weight:900;letter-spacing:4px;padding:8px 16px;text-transform:uppercase;border:1.5px solid #c9a84c;text-align:center;flex-shrink:0;white-space:nowrap;border-radius:4px}
+.tarco-badge small{display:block;font-size:6px;letter-spacing:2px;color:#c9a84c88;margin-top:1px}
+.divider{border:none;border-top:1.5px solid var(--border);margin:2rem 0}
+ul{margin:.5rem 0 1rem 1.4rem;color:var(--gray-600)}
+ul li{margin-bottom:.35rem;font-size:.95rem}
+@media(max-width:768px){header{grid-template-columns:1fr;gap:1.5rem}.tarco-badge{grid-column:1;align-self:start;width:max-content}}
+@media(max-width:600px){html{font-size:15.5px}h1{font-size:1.6rem}.metric-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<header>
+  <div class="header-content">
+    <h1>UK Elections 2026</h1>
+    <p class="subtitle">Fragmentation, No Overall Control, and the Edges of Governability · Essay v15 · May 2026</p>
+  </div>
+  <div class="tarco-badge">
+    TARCO
+    <small>FORENSIC INTELLIGENCE</small>
+  </div>
+</header>
+
+<div class="tldr" style="padding:1.5rem 1.6rem">
+  <strong>Central Assessment</strong>
+  <p style="font-size:1.05rem;font-weight:700;margin-bottom:.8rem">For the 107 English councils up for election, the model's central estimate is that approximately 63.22% could end up with no single party in overall control.</p>
+  <p style="font-size:.95rem">Fragmentation is not a remote tail risk; it is close to the expected outcome. The 99% confidence range stretches from just over half to nearly three-quarters of councils.</p>
+</div>
+
+<div class="metric-grid" style="margin-top:1rem">
+  <div class="metric critical"><div class="value">63.22%</div><div class="label">Mean NOC Council Fraction</div></div>
+  <div class="metric"><div class="value">107</div><div class="label">Councils Simulated</div></div>
+  <div class="metric warn"><div class="value">51.4–74.8%</div><div class="label">99% Confidence Interval</div></div>
+  <div class="metric"><div class="value">2,000</div><div class="label">Iterations Per Council</div></div>
+</div>
+
+<hr class="divider">
+
+<!-- ============================================================ -->
+<h2>Introduction</h2>
+
+<p>Predicting elections has never been easy. Traditional polls and surveys can struggle with low response rates, voters who keep their views private, and last-minute changes of mind. They tend to capture the surface of public opinion rather than the structure beneath it. In 2026, with public trust in politics under strain and new parties reshaping the political map, that surface view looks particularly fragile.</p>
+
+<p>TarCo has built a different kind of model. Instead of asking only "Who wins?", it asks "How governable will England be once the votes are counted?" Using only publicly available data, and drawing on a wide range of expertise including defence research, forensic intelligence, audit, and economics, the framework is focused on one simple but powerful idea: No Overall Control, or NOC.</p>
+
+<p>For the 107 English councils up for election, the model's central estimate is that around 63.22% could end up with no single party in overall control. In other words, fragmentation is not a remote tail risk — it is close to the expected outcome.</p>
+
+<hr class="divider">
+
+<!-- ============================================================ -->
+<h2>What the Numbers Say</h2>
+
+<p>The model begins with national vote shares drawn from public polling and then runs ward-level simulations under the first-past-the-post system. It does not try to be clever about hidden preferences or private data. Its value lies in making every assumption explicit, so any reader can challenge the inputs and re-run the logic for themselves.</p>
+
+<table>
+  <thead><tr><th>Metric</th><th>Value</th><th>Note</th></tr></thead>
+  <tbody>
+    <tr><td>Councils simulated</td><td>107</td><td>English councils in this cycle</td></tr>
+    <tr><td>Mean NOC council fraction</td><td><span class="badge badge-red">63.22%</span></td><td>Central estimate</td></tr>
+    <tr><td>99% confidence interval</td><td>51.40% – 74.77%</td><td>From the simulation distribution</td></tr>
+    <tr><td>Iterations</td><td>2,000</td><td>Per council, for stability</td></tr>
+  </tbody>
+</table>
+
+<details>
+  <summary>National party vote-share inputs</summary>
+  <div class="detail-body">
+    <p>The following national party inputs are used as the model's starting point. These are declared inputs — not forecasts set in stone — that the reader is invited to question.</p>
+    <table>
+      <thead><tr><th>Party</th><th>Mean Vote Share</th><th>P10</th><th>P90</th></tr></thead>
+      <tbody>
+        <tr><td>Reform UK</td><td><span class="badge badge-red">29.0%</span></td><td>24.4%</td><td>33.5%</td></tr>
+        <tr><td>Labour</td><td>27.0%</td><td>22.2%</td><td>31.8%</td></tr>
+        <tr><td>Conservative</td><td>20.0%</td><td>15.9%</td><td>24.1%</td></tr>
+        <tr><td>Liberal Democrat</td><td>15.1%</td><td>11.8%</td><td>18.2%</td></tr>
+        <tr><td>Green</td><td>7.0%</td><td>4.5%</td><td>9.5%</td></tr>
+      </tbody>
+    </table>
+    <p>When these numbers are run through a calibrated ward-level model, they produce a landscape in which NOC becomes a normal outcome rather than an exception.</p>
+  </div>
+</details>
+
+<hr class="divider">
+
+<!-- ============================================================ -->
+<h2>Stress Councils and Local Pressure</h2>
+
+<p>The model identifies a small set of councils as "stress nodes" — places where local conditions appear to amplify the risk of fragmentation. These are simply areas where several pressures meet at the same time, and where small local shifts can have an outsized effect on the final result.</p>
+
+<table>
+  <thead><tr><th>Council</th><th>Labour Adjustment</th><th>NOC Probability</th><th>Main Pressure Indicators</th></tr></thead>
+  <tbody>
+    <tr><td>Birmingham</td><td>−6.4 pts</td><td><span class="badge badge-amber">45.7%</span></td><td>Income inequality; concern over events in Gaza</td></tr>
+    <tr><td>Sunderland</td><td>−2.8 pts</td><td><span class="badge badge-amber">57.7%</span></td><td>Income inequality; scepticism toward established politics</td></tr>
+    <tr><td>Manchester</td><td>−6.5 pts</td><td><span class="badge badge-amber">45.8%</span></td><td>Income inequality; concern over events in Gaza</td></tr>
+    <tr><td>Westminster</td><td>−4.5 pts</td><td><span class="badge badge-amber">52.2%</span></td><td>Public trust pressures; cost-of-living effects</td></tr>
+    <tr><td>Great Yarmouth</td><td>−2.5 pts</td><td><span class="badge badge-amber">58.7%</span></td><td>Local economic strain; scepticism toward established politics</td></tr>
+  </tbody>
+</table>
+
+<div class="info-box">
+  <p><strong>Note:</strong> These councils are not presented as evidence of anything improper. They are areas where several pressures coincide, and where small local shifts can produce outsized effects on the final outcome.</p>
+</div>
+
+<hr class="divider">
+
+<!-- ============================================================ -->
+<h2>Emotion, Empathy, and the Edges</h2>
+
+<p>Part of this dynamic is emotional, not just arithmetic. In several urban areas at the edges of the political map — including communities where distressing international events have stirred deep concern — political behaviour is shaped by more than day-to-day local services.</p>
+
+<details>
+  <summary>How heightened public feeling affects electoral outcomes</summary>
+  <div class="detail-body">
+    <p>When emotional signals are very strong, people of any community tend to process information through a lens of worry, anger, or wounded dignity. Slower, more reflective thinking is still present, but it can be pushed into the background for a time.</p>
+    <p>Translated into elections, a more emotionally charged climate can produce:</p>
+    <ul>
+      <li>A break with longstanding party loyalties, sometimes quite suddenly.</li>
+      <li>Less patience with compromise or with "business as usual".</li>
+      <li>A preference for political voices that signal moral clarity over administrative competence.</li>
+    </ul>
+    <p>In the TarCo model, councils such as Birmingham and Manchester are not described as "manipulated" zones, and no community is singled out for blame. They are treated as councils where heightened public feeling meets long-standing income gaps and demographic patterns — an environment where the chances of Labour losing ground and councils ending in NOC rise without any assumption of bad faith on the part of voters.</p>
+    <p>People who feel deeply about distant suffering, or about hardship at home, are exercising a normal democratic right when they let those feelings shape their vote.</p>
+  </div>
+</details>
+
+<hr class="divider">
+
+<!-- ============================================================ -->
+<h2>Fragmentation and the "Golden Triangle"</h2>
+
+<p>If most councils drift into NOC, fragile local coalitions will not be a curiosity — they will be the everyday operating environment. High levels of NOC, combined with services that are already stretched, can create three risks:</p>
+
+<table>
+  <thead><tr><th>Risk</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Decision-making gridlock</strong></td><td>Councils where no group can sustain a working majority stall on key decisions.</td></tr>
+    <tr><td><strong>Service disruption</strong></td><td>Budget or staffing decisions become hostage to constant negotiation.</td></tr>
+    <tr><td><strong>Trust erosion</strong></td><td>Local government appears stuck in low-level conflict rather than problem-solving.</td></tr>
+  </tbody>
+</table>
+
+<p>A stabilising response by central actors — government, oversight bodies, and key service providers — becomes almost inevitable in such a scenario. This is a practical claim, not a conspiratorial one. Such a response would mean clearer frameworks for cross-party arrangements, basic safeguards for essential services, and more honest public communication about the trade-offs that come with fragmented control.</p>
+
+<div class="quote">It is an attempt to manage a difficult landing, not to prevent pluralism. Pluralism, with all its noise and disagreement, remains the point of the exercise.</div>
+
+<hr class="divider">
+
+<!-- ============================================================ -->
+<h2>A Different Question</h2>
+
+<p>The value of this work does not lie in any single, elegant percentage. It lies in shifting the question being asked. Most public debate will focus on who has gained or lost how many seats. This model invites a different question:</p>
+
+<div class="tldr">
+  <strong>The central question</strong>
+  <p style="font-size:1.05rem;font-weight:600">After the votes are counted, how many of our councils will still be straightforwardly governable?</p>
+</div>
+
+<p>If the answer is close to the model's 63% NOC estimate, then the 2026 local elections will be remembered less for who "won" and more for how far the system itself moved towards permanent negotiation. In that world, the real contest is not only between parties. It is between fragmentation and the shared capacity to keep governing well — for every community, of every faith, in every part of the country.</p>
+
+<footer>
+  TarCo Forensic Intelligence · Essay v15 · May 2026
+</footer>
+
+</div>
+</body>
+</html>

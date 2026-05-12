@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Election Eve Forensic Briefing — Wales · Scotland · England 2026</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#FAF9F5;--fg:#141413;--gray-600:#5A5A56;--gray-400:#8A8A84;--border:#D1CFC5;--accent:#D97757;--accent-bg:#FFF5F0;--blue:#3B6EA5;--green:#2D7A4F;--red:#C04040;--yellow-bg:#FFF9E6;--code-bg:#F0EFEB;--max-w:920px;--serif:Georgia,'Times New Roman',serif;--sans:system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'SF Mono',Menlo,Consolas,monospace}
+html{font-size:17px;scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--fg);background:var(--bg);line-height:1.7;padding:2.5rem 1.5rem 4rem}
+.wrapper{max-width:var(--max-w);margin:0 auto}
+h1{font-family:var(--serif);font-size:2.1rem;font-weight:700;line-height:1.25;margin-bottom:.3rem}
+h2{font-family:var(--serif);font-size:1.45rem;font-weight:700;margin-top:2.8rem;margin-bottom:.8rem;padding-bottom:.45rem;border-bottom:1.5px solid var(--border)}
+h3{font-size:1.05rem;font-weight:700;margin-top:1.6rem;margin-bottom:.5rem}
+p{margin-bottom:1rem;color:var(--gray-600)}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+.subtitle{color:var(--gray-400);font-size:.92rem;margin-bottom:2rem}
+.tldr{background:var(--accent-bg);border-left:4px solid var(--accent);padding:1.1rem 1.3rem;border-radius:0 6px 6px 0;margin:1.5rem 0 2rem}
+.tldr strong{color:var(--accent);font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:.35rem}
+.tldr p{margin:0;color:var(--fg);font-size:.97rem;line-height:1.65}
+.info-box{background:var(--yellow-bg);border-left:4px solid #D4A843;padding:1rem 1.2rem;border-radius:0 6px 6px 0;margin:1.2rem 0}
+.info-box p{margin:0;font-size:.93rem}
+details{border:1px solid var(--border);border-radius:6px;margin:.8rem 0;background:#fff}
+details[open]{border-color:var(--accent)}
+summary{cursor:pointer;padding:.75rem 1rem;font-weight:600;font-size:.97rem;list-style:none;display:flex;align-items:center;gap:.5rem;user-select:none}
+summary::before{content:'▸';color:var(--accent);font-size:1.1rem;transition:transform .15s}
+details[open]>summary::before{transform:rotate(90deg)}
+summary:hover{background:#F5F4F0}
+.detail-body{padding:.5rem 1rem 1rem;border-top:1px solid var(--border);font-size:.94rem}
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.9rem}
+th{text-align:left;padding:.55rem .7rem;background:var(--code-bg);border-bottom:2px solid var(--border);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em;color:var(--gray-400)}
+td{padding:.55rem .7rem;border-bottom:1px solid var(--border)}
+.badge{display:inline-block;padding:.15rem .55rem;border-radius:4px;font-size:.78rem;font-weight:600}
+.badge-red{background:#FDEAEA;color:var(--red)}
+.badge-green{background:#E8F5ED;color:var(--green)}
+.badge-amber{background:#FFF3E0;color:#B8741A}
+.badge-blue{background:#EBF3FA;color:var(--blue)}
+.metric-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem;margin:1rem 0}
+.metric{background:#fff;border:1px solid var(--border);border-radius:6px;padding:.9rem 1rem;text-align:center}
+.metric .value{font-family:var(--mono);font-size:1.6rem;font-weight:700;color:var(--fg)}
+.metric .label{font-size:.78rem;color:var(--gray-400);text-transform:uppercase;letter-spacing:.04em;margin-top:.2rem}
+.metric.critical .value{color:var(--red)}
+.metric.warn .value{color:#B8741A}
+.metric.good .value{color:var(--green)}
+.quote{border-left:3px solid var(--accent);padding:.6rem 1rem;margin:1rem 0;font-style:italic;color:var(--gray-600);font-size:.95rem;background:#FDFCFA}
+footer{margin-top:3rem;padding-top:1.2rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--gray-400);text-align:center}
+header{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start;margin-bottom:2rem}
+.header-content{grid-column:1;min-width:0}
+.tarco-badge{grid-column:2;background:#141413;color:#c9a84c;font-family:var(--sans);font-size:13px;font-weight:900;letter-spacing:4px;padding:8px 16px;text-transform:uppercase;border:1.5px solid #c9a84c;text-align:center;flex-shrink:0;white-space:nowrap;border-radius:4px}
+.tarco-badge small{display:block;font-size:6px;letter-spacing:2px;color:#c9a84c88;margin-top:1px}
+.divider{border:none;border-top:1.5px solid var(--border);margin:2rem 0}
+@media(max-width:768px){header{grid-template-columns:1fr;gap:1.5rem}.tarco-badge{grid-column:1;align-self:start;width:max-content}}
+@media(max-width:600px){html{font-size:15.5px}h1{font-size:1.6rem}.metric-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<header>
+  <div class="header-content">
+    <h1>Election Eve Forensic Briefing</h1>
+    <p class="subtitle">Wales · Scotland · England · 7 May 2026 — Operation ALBION 2026, Phase 2</p>
+  </div>
+  <div class="tarco-badge">
+    TARCO
+    <small>FORENSIC INTELLIGENCE</small>
+  </div>
+</header>
+
+<div class="tldr" style="border-left:4px solid var(--red);background:#FDF5F5;padding:1.5rem 1.6rem">
+  <strong style="color:var(--red);font-size:.9rem">Central Assessment — 6 May 2026</strong>
+  <p style="font-size:1.05rem;font-weight:700;margin-bottom:.8rem">The United Kingdom goes to the polls on 7 May 2026 across three distinct ballots. The model's final verification cycle is complete. The central projection has reached a state of statistical convergence.</p>
+  <p style="font-size:.95rem">The probability of no overall control across the contested councils is, on these inputs, the most likely single outcome. This is not a question of likelihood alone — it is a question of mathematical convergence driven by long-running incumbency fatigue and a steady fracturing of the traditional Westminster consensus.</p>
+</div>
+
+<div class="metric-grid" style="margin-top:1rem">
+  <div class="metric critical"><div class="value">64.07%</div><div class="label">NOC Probability (Mean)</div></div>
+  <div class="metric"><div class="value">0.9984</div><div class="label">Model Stability Score</div></div>
+  <div class="metric warn"><div class="value">32.22%</div><div class="label">Reform UK Projection</div></div>
+  <div class="metric"><div class="value">10M</div><div class="label">Iterations (Final Cycle)</div></div>
+</div>
+
+<hr class="divider">
+
+<!-- ============================================================ -->
+<h2>Regional Forensic Projections</h2>
+
+<p>The regional picture differs in important ways. Wales and Scotland each follow their own dynamics, while England's local councils show a third pattern of fragmented outcomes.</p>
+
+<table>
+  <thead><tr><th>Territory</th><th>NOC Probability</th><th>Projected Largest Party</th><th>Key Consideration</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Wales (Senedd)</strong></td><td><span class="badge badge-red">94.1%</span></td><td>Plaid Cymru (≈ 43 seats)</td><td>Reform UK gains (≈ 34 seats); Labour facing significant pressure.</td></tr>
+    <tr><td><strong>Scotland (Holyrood)</strong></td><td><span class="badge badge-amber">68.4%</span></td><td>SNP (largest, no majority)</td><td>Tactical Unionist voting and Reform UK presence reshape distribution.</td></tr>
+    <tr><td><strong>Local England</strong></td><td><span class="badge badge-red">74.2%</span></td><td>Various (hung councils)</td><td>Maximum fragmentation; growing space for independents.</td></tr>
+  </tbody>
+</table>
+
+<details>
+  <summary>Wales — detailed reading</summary>
+  <div class="detail-body">
+    <p>The introduction of the new proportional system has created an unusually challenging environment for Labour. Plaid Cymru is well placed to become the leading national voice in the Senedd, while Reform UK has used concerns about health services and immigration to make inroads into areas that Labour has held for many years.</p>
+    <p>The shift, where it occurs, appears to reflect frustration with day-to-day services more than any single ideological turn. Constitutional questions have also sharpened the political mood.</p>
+  </div>
+</details>
+
+<details>
+  <summary>Scotland — detailed reading</summary>
+  <div class="detail-body">
+    <p>The SNP retains a clear lead but remains short of the 65-seat threshold for an outright majority. The constitutional question remains in the foreground, but tactical voting by Unionist supporters — including movement from Conservative to Reform — complicates the final seat distribution in several constituencies.</p>
+  </div>
+</details>
+
+<details>
+  <summary>Local England — detailed reading</summary>
+  <div class="detail-body">
+    <p>English local elections point to a wide pattern of hung councils, with localised concerns frequently outweighing national party messaging. The result is likely to be a patchwork rather than a single national story. Independents are positioned to be decisive in several contests.</p>
+  </div>
+</details>
+
+<hr class="divider">
+
+<!-- ============================================================ -->
+<h2>Final Predictive Matrix</h2>
+
+<p>The model has been run over ten million iterations. The figures below summarise the central estimates and their stability scores; intervals are reported at the 99% level.</p>
+
+<table>
+  <thead><tr><th>Metric</th><th>Mean Estimate</th><th>99% Interval</th><th>Stability</th></tr></thead>
+  <tbody>
+    <tr><td>No Overall Control (NOC)</td><td><span class="badge badge-red">64.07%</span></td><td>62.1% – 71.3%</td><td>0.9984</td></tr>
+    <tr><td>Reform UK vote share</td><td><span class="badge badge-amber">32.22%</span></td><td>28.4% – 36.1%</td><td>0.9892</td></tr>
+    <tr><td>External-influence index</td><td>0.4112</td><td>Moderate range</td><td>0.9637</td></tr>
+  </tbody>
+</table>
+
+<div class="info-box">
+  <p><strong>Model note:</strong> Within the limits of any election forecast, the socio-economic and digital-sentiment signals point in the same direction: a continued restructuring of British political competition. The probability of no overall control across many of the contests in this cycle is, on these inputs, the most likely single outcome.</p>
+</div>
+
+<hr class="divider">
+
+<!-- ============================================================ -->
+<h2>The Verdict — Constitutional Fragmentation</h2>
+
+<div class="quote">The United Kingdom of 7 May 2026 is unlikely to look quite like the country that the binary Westminster model describes. The simulation converges on what might fairly be called a season of fragmentation, in which devolved centres — Wales and Scotland — are increasingly drawn towards distinct national and populist alternatives, rather than to the Westminster hub.</div>
+
+<p>This is not simply an election. It is, on the model's reading, a quiet constitutional shift — measurable in seats, but visible most clearly in the change of mood across the four nations.</p>
+
+<details>
+  <summary>Multi-agent intelligence synthesis</summary>
+  <div class="detail-body">
+    <p>The synthesis of agent-level data points to a softening of the historical Labour position in Wales and a renewed showing for the SNP in Scotland. Sustained economic strain — confirmed by World Bank indicators — appears to be acting as a catalyst for multi-party fracturing, with Reform UK and the Greens absorbing a meaningful share of the protest vote that the two main parties once held more comfortably.</p>
+    <p>Some external influences in the wider information environment are also visible, though their weight is modest compared with the underlying economic and constitutional drivers.</p>
+    <table>
+      <thead><tr><th>Source Domain</th><th>Primary Finding</th><th>Strategic Implication</th></tr></thead>
+      <tbody>
+        <tr><td>OSINT / web signals</td><td>Strong showing for Plaid Cymru in Wales; Labour facing third-place finish in some areas.</td><td>Notable shift in Welsh political alignment; renewed interest in constitutional questions.</td></tr>
+        <tr><td>Macroeconomic indicators</td><td>GDP growth at 1.13%; inflation at 3.27%.</td><td>Sustained economic strain contributing to incumbent fatigue at Westminster.</td></tr>
+        <tr><td>Academic / sentiment layer</td><td>Some external influences observed in the broader information environment.</td><td>These appear to add weight to emotionally charged content, though the underlying public mood is the dominant factor.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</details>
+
+<p style="margin-top:1.5rem;font-size:.92rem;color:var(--gray-400);font-style:italic">As ever, the figures are estimates. Real votes, cast tomorrow by real people in every part of the country, will carry the final word. The purpose of this briefing is to make the structure of the moment visible — not to claim certainty over what only the count can decide.</p>
+
+<p style="font-size:.88rem;font-weight:600;color:var(--fg);font-style:italic;margin-top:1rem">Veritas Per Se</p>
+
+<footer>
+  TarCo Forensic Intelligence · Operation ALBION 2026, Phase 2 · Final Verification Cycle · Filed 6 May 2026
+</footer>
+
+</div>
+</body>
+</html>

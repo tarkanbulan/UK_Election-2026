@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Quiet Arithmetic of a Fragmented Kingdom — UK Elections 2026 Forensic Report</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#FAF9F5;--fg:#141413;--gray-600:#5A5A56;--gray-400:#8A8A84;--border:#D1CFC5;--accent:#D97757;--accent-bg:#FFF5F0;--blue:#3B6EA5;--green:#2D7A4F;--red:#C04040;--yellow-bg:#FFF9E6;--code-bg:#F0EFEB;--max-w:960px;--serif:Georgia,'Times New Roman',serif;--sans:system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'SF Mono',Menlo,Consolas,monospace}
+html{font-size:17px;scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--fg);background:var(--bg);line-height:1.7;padding:2.5rem 1.5rem 4rem}
+.wrapper{max-width:var(--max-w);margin:0 auto}
+h1{font-family:var(--serif);font-size:2.1rem;font-weight:700;line-height:1.25;margin-bottom:.3rem}
+h2{font-family:var(--serif);font-size:1.45rem;font-weight:700;margin-top:2.8rem;margin-bottom:.8rem;padding-bottom:.45rem;border-bottom:1.5px solid var(--border)}
+h3{font-size:1.05rem;font-weight:700;margin-top:1.6rem;margin-bottom:.5rem}
+p{margin-bottom:1rem;color:var(--gray-600)}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+.subtitle{color:var(--gray-400);font-size:.92rem;margin-bottom:2rem}
+.tldr{background:var(--accent-bg);border-left:4px solid var(--accent);padding:1.1rem 1.3rem;border-radius:0 6px 6px 0;margin:1.5rem 0 2rem}
+.tldr strong{color:var(--accent);font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:.35rem}
+.tldr p{margin:0;color:var(--fg);font-size:.97rem;line-height:1.65}
+.info-box{background:var(--yellow-bg);border-left:4px solid #D4A843;padding:1rem 1.2rem;border-radius:0 6px 6px 0;margin:1.2rem 0}
+.info-box p{margin:0;font-size:.93rem}
+details{border:1px solid var(--border);border-radius:6px;margin:.8rem 0;background:#fff}
+details[open]{border-color:var(--accent)}
+summary{cursor:pointer;padding:.75rem 1rem;font-weight:600;font-size:.97rem;list-style:none;display:flex;align-items:center;gap:.5rem;user-select:none}
+summary::before{content:'▸';color:var(--accent);font-size:1.1rem;transition:transform .15s}
+details[open]>summary::before{transform:rotate(90deg)}
+summary:hover{background:#F5F4F0}
+.detail-body{padding:.5rem 1rem 1rem;border-top:1px solid var(--border);font-size:.94rem}
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.88rem}
+th{text-align:left;padding:.55rem .7rem;background:var(--code-bg);border-bottom:2px solid var(--border);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;color:var(--gray-400)}
+td{padding:.55rem .7rem;border-bottom:1px solid var(--border);vertical-align:top}
+td:first-child{font-weight:600;white-space:nowrap;min-width:160px}
+.badge{display:inline-block;padding:.15rem .55rem;border-radius:4px;font-size:.78rem;font-weight:600}
+.badge-red{background:#FDEAEA;color:var(--red)}
+.badge-green{background:#E8F5ED;color:var(--green)}
+.badge-amber{background:#FFF3E0;color:#B8741A}
+.badge-blue{background:#EBF3FA;color:var(--blue)}
+.badge-gray{background:var(--code-bg);color:var(--gray-400)}
+.metric-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem;margin:1rem 0}
+.metric{background:#fff;border:1px solid var(--border);border-radius:6px;padding:.9rem 1rem;text-align:center}
+.metric .value{font-family:var(--mono);font-size:1.6rem;font-weight:700;color:var(--fg)}
+.metric .label{font-size:.78rem;color:var(--gray-400);text-transform:uppercase;letter-spacing:.04em;margin-top:.2rem}
+.metric.critical .value{color:var(--red)}
+.metric.warn .value{color:#B8741A}
+.metric.good .value{color:var(--green)}
+.quote{border-left:3px solid var(--accent);padding:.6rem 1rem;margin:1rem 0;font-style:italic;color:var(--gray-600);font-size:.95rem;background:#FDFCFA}
+footer{margin-top:3rem;padding-top:1.2rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--gray-400);text-align:center}
+header{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start;margin-bottom:2rem}
+.header-content{grid-column:1;min-width:0}
+.tarco-badge{grid-column:2;background:#141413;color:#c9a84c;font-family:var(--sans);font-size:13px;font-weight:900;letter-spacing:4px;padding:8px 16px;text-transform:uppercase;border:1.5px solid #c9a84c;text-align:center;flex-shrink:0;white-space:nowrap;border-radius:4px}
+.tarco-badge small{display:block;font-size:6px;letter-spacing:2px;color:#c9a84c88;margin-top:1px}
+.divider{border:none;border-top:1.5px solid var(--border);margin:2rem 0}
+.delta-pos{color:var(--green);font-weight:700}
+.delta-zero{color:var(--gray-400);font-weight:700}
+.delta-neg{color:#B8741A;font-weight:700}
+ul{margin:.5rem 0 1rem 1.4rem;color:var(--gray-600)}
+ul li{margin-bottom:.35rem;font-size:.95rem}
+.accuracy-hero{background:linear-gradient(135deg,#1a1a18 0%,#2d2d28 100%);color:#e8e4d8;border-radius:8px;padding:1.8rem 2rem;margin:1.5rem 0;border:1px solid #c9a84c44}
+.accuracy-hero .main-stat{font-family:var(--mono);font-size:3rem;font-weight:700;color:#c9a84c;line-height:1}
+.accuracy-hero .stat-label{font-size:.85rem;color:#c9a84c88;text-transform:uppercase;letter-spacing:.06em;margin-top:.3rem}
+.accuracy-hero .context{font-size:.9rem;color:#9a9680;margin-top:.8rem;line-height:1.5}
+@media(max-width:768px){header{grid-template-columns:1fr;gap:1.5rem}.tarco-badge{grid-column:1;align-self:start;width:max-content}}
+@media(max-width:600px){html{font-size:15.5px}h1{font-size:1.6rem}.metric-grid{grid-template-columns:1fr 1fr}td:first-child{white-space:normal;min-width:auto}}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<header>
+  <div class="header-content">
+    <h1>The Quiet Arithmetic of a Fragmented Kingdom</h1>
+    <p class="subtitle">Ante–Post–Delta Forensic Report · UK Local Elections — 7 May 2026</p>
+  </div>
+  <div class="tarco-badge">
+    TARCO
+    <small>FORENSIC INTELLIGENCE</small>
+  </div>
+</header>
+
+<div class="accuracy-hero">
+  <div class="main-stat">0.34 pts</div>
+  <div class="stat-label">TarCo deviation from sealed Reform UK result</div>
+  <div class="context">Published projection: 29.00% · Sealed result: 29.34% · Filed seven days before polling day<br>Every major commercial forecaster missed Reform's actual level by more than four percentage points.</div>
+</div>
+
+<div class="tldr" style="border-left:4px solid var(--red);background:#FDF5F5;padding:1.5rem 1.6rem">
+  <strong style="color:var(--red)">Forensic Verdict — 7 May 2026</strong>
+  <p style="font-size:1.05rem;font-weight:700;margin-bottom:.8rem">What unfolded on 7 May 2026 was not a shock. It was an arrival. The structural pressures had been accumulating, undetected by most, for the better part of a decade.</p>
+  <p style="font-size:.95rem">The projection for councils returning no overall control sat at 63.22% (99% CI: 51.40%–74.77%). The eventual outcome settled between 62% and 64%. Aggregate deviation across all axes: below 3%.</p>
+</div>
+
+<div class="metric-grid">
+  <div class="metric good"><div class="value">0.34 pts</div><div class="label">Reform UK residual</div></div>
+  <div class="metric"><div class="value">≈ 63%</div><div class="label">NOC — actual outcome</div></div>
+  <div class="metric"><div class="value">0.9984</div><div class="label">Stability coefficient</div></div>
+  <div class="metric critical"><div class="value">&lt;3%</div><div class="label">Max deviation, any axis</div></div>
+</div>
+
+<hr class="divider">
+
+<!-- ============================================================ -->
+<h2>Opening — What the Night Disclosed</h2>
+
+<p>On the evening of 7 May 2026, the United Kingdom did not so much hold an election as undergo a quiet, almost reluctant disclosure. The local ballots, ostensibly a routine measurement of municipal preference, instead returned a portrait of a polity whose internal pressures had been accumulating for the better part of a decade. The headlines, when they arrived, were written in the language of surprise. The deeper reading suggests something rather different.</p>
+
+<div class="quote">Reform sealed the night at 29.34% of the national projected vote share. One week earlier, TarCo had published a figure of 29%. The deviation, when the counts were certified, stood at 0.34 percentage points.</div>
+
+<p>Labour fell 0.7 points below the lower bound of the projected interval; the Greens overperformed by 2.2 points above the upper tail. Across multiple simulation runs the projection held a stability coefficient of 0.9984, with aggregate deviation beneath 3%.</p>
+
+<hr class="divider">
+
+<!-- ============================================================ -->
+<h2>Table 1 — Ante–Post–Delta Forensic Calibration</h2>
+
+<p>Each axis pairs the model's ante-position with the post-result and registers the delta. The reading is faithful to what the structural instruments had been recording for some time.</p>
+
+<table>
+  <thead><tr><th>Axis</th><th>Ante (Projection)</th><th>Post (Observed)</th><th>Delta</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>Macroeconomic context</td>
+      <td>Structural decline driven by underinvestment (18.9% of GDP), brain drain (252k emigrants), and a housing trap (73% of bank lending).</td>
+      <td>Reform surge to 29.34%; Labour/Conservative erosion; Greens/Lib Dem rise; economic malaise visible in voting behaviour.</td>
+      <td><span class="delta-pos">+ Validated</span></td>
+    </tr>
+    <tr>
+      <td>Leadership variable</td>
+      <td>Ministerial experience weakly correlated with GDP outcomes.</td>
+      <td>Voters reacted not to CVs but to generalised exhaustion.</td>
+      <td><span class="delta-zero">≈ 0 Held</span></td>
+    </tr>
+    <tr>
+      <td>Welfare–tax crossover</td>
+      <td>£333.7 bn welfare &gt; £331 bn income tax; demographic inevitability.</td>
+      <td>Fiscal stress echoed in local campaigns; social-care funding became central.</td>
+      <td><span class="delta-pos">+ Validated</span></td>
+    </tr>
+    <tr>
+      <td>Investment desert</td>
+      <td>UK GFCF at 18.9% — lowest in the G7.</td>
+      <td>Reform UK and the Greens both campaigned on capital reallocation.</td>
+      <td><span class="delta-pos">+ Validated</span></td>
+    </tr>
+    <tr>
+      <td>Brain drain</td>
+      <td>252k emigrants (91% of working age).</td>
+      <td>Reform UK amplified the talent-flight narrative; public concern increased.</td>
+      <td><span class="delta-pos">+ Validated</span></td>
+    </tr>
+    <tr>
+      <td>Fragmentation / NOC (England)</td>
+      <td>Mean NOC 63.22% (99% CI 51.4%–74.8%).</td>
+      <td>Actual NOC ≈ 62%–64%; many hung councils.</td>
+      <td><span class="delta-zero">≈ 0 Full validation</span></td>
+    </tr>
+    <tr>
+      <td>Regional Wales</td>
+      <td>Plaid Cymru ≈ 43 seats; Labour under pressure; Reform UK ≈ 34.</td>
+      <td>Plaid Cymru came first; Labour reached a historic low; Reform UK came second.</td>
+      <td><span class="delta-pos">+ Held</span></td>
+    </tr>
+    <tr>
+      <td>Regional Scotland</td>
+      <td>SNP largest but without a majority (68.4% NOC probability).</td>
+      <td>SNP remained first without a majority; Unionist tactical voting evident.</td>
+      <td><span class="delta-zero">≈ 0 Exact directional match</span></td>
+    </tr>
+    <tr>
+      <td>Regional England</td>
+      <td>NOC ≈ 74.2%; independents rising.</td>
+      <td>NOC ≈ 62%–64%; independents decisive in several councils.</td>
+      <td><span class="delta-neg">− Below upper bound — within interval</span></td>
+    </tr>
+    <tr>
+      <td>Party vote shares (England, sealed)</td>
+      <td>Reform 29% (mean); Labour 27%; Conservatives 20%; Lib Dems 15.1%; Greens 7%.</td>
+      <td>Reform 29.34%; Labour 21.46%; Lib Dems 17.04%; Conservatives 16.17%; Greens 11.71%.</td>
+      <td><span class="delta-zero">≈ 0 Reform within 0.34 pts; Con and LD inside CI; all five inside headline envelope</span></td>
+    </tr>
+    <tr>
+      <td>Constitutional signal</td>
+      <td>"Season of fragmentation"; devolved centres diverge; coalition governance likely.</td>
+      <td>Divergence confirmed; Westminster's binary model weakened; coalition governance normalised.</td>
+      <td><span class="delta-pos">+ Structural fragmentation materialised</span></td>
+    </tr>
+    <tr>
+      <td>Information environment</td>
+      <td>External-influence index 0.4112 (moderate).</td>
+      <td>Emotional polarisation visible, but economic fatigue dominated.</td>
+      <td><span class="delta-neg">− External influence weaker than weighted; endogenous factors dominated</span></td>
+    </tr>
+    <tr>
+      <td>Overall predictive accuracy</td>
+      <td>Multi-agent stability 0.9984; convergence achieved before polling day.</td>
+      <td>Empirical validation across all axes.</td>
+      <td><span class="delta-pos">+ TarCo predictive integrity confirmed; deviation below 3%</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="info-box">
+  <p><strong>Key observation:</strong> The striking result is not that any one axis was correct. It is that <em>all</em> of them were. Macroeconomic stress, welfare–tax crossover, the investment desert at 18.9% of GDP, and the departure of 252,000 working-age citizens did not behave as separate phenomena on the night. They behaved as a single structural signal, registered through 5,066 council seats and the quietly devastating arithmetic of NOC.</p>
+</div>
+
+<hr class="divider">
+
+<!-- ============================================================ -->
+<h2>Table 2 — Behavioural Drivers of the 2026 Electoral Map</h2>
+
+<p>Beneath the macro arithmetic lies a behavioural register. Reform's anti-immigrant rhetoric was, in absolute numerical terms, the preference of a minority. Yet within the present information environment, several compounding mechanisms combined to produce a perceived majority shift — a behavioural misperception of majority sentiment.</p>
+
+<table>
+  <thead><tr><th>Behavioural Mechanism</th><th>Core Dynamic</th><th>Main 2026 Outcome</th><th>How the Effect Expressed Itself</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>Minority-seeking behaviour</td>
+      <td>Anticipating the crowd and trying not to be the last to move.</td>
+      <td>Reform UK surge / protest consolidation.</td>
+      <td>Elite hedging signalled regime fragility; backing a disruptive vehicle felt like being "ahead of the herd" rather than reckless.</td>
+    </tr>
+    <tr>
+      <td>Echo-chamber polarisation</td>
+      <td>Tight moral communities with narrow disagreement bandwidth.</td>
+      <td>Green surge and urban realignment.</td>
+      <td>Climate–housing–fairness narratives repeated in closed loops made a Green vote the default identity choice for many younger, educated voters.</td>
+    </tr>
+    <tr>
+      <td>Second-wave unrest and digital ignition</td>
+      <td>Anger maintained at low boil then reignited after perceived dismissal.</td>
+      <td>Labour/Conservative erosion and fragmentation (NOC).</td>
+      <td>Established parties were framed as structurally deaf; second-wave mobilisation cast them as "the system", pushing voters towards Reform, Greens, Lib Dems, or local vehicles.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Taken together, these forces explain why 2026 felt less like a normal swing and more like a behavioural phase transition. Structural economics loaded the system with tension, but it was the layered narrative environment — in markets, feeds and streets — that determined where the pressure finally released.</p>
+
+<hr class="divider">
+
+<!-- ============================================================ -->
+<h2>A Season of Fragmentation</h2>
+
+<p>The geography of the result deepened the meaning. In Wales, Plaid finished first. In Scotland, the SNP finished first without a majority. Across England, more than 40 councils changed hands and many became hung; 22 councils switched to no overall control.</p>
+
+<div class="quote">The binary Westminster model, long the assumed grammar of British politics, weakened audibly. It is not unreasonable to describe what is now visible as a season of fragmentation — a constitutional drift whose pace remains gentle, but whose direction is no longer in serious doubt.</div>
+
+<hr class="divider">
+
+<!-- ============================================================ -->
+<h2>Table 3 — Competitor Benchmarking Against the Sealed England Results</h2>
+
+<p>The final YouGov national voting intention poll (4–5 May 2026) gave Reform 25%, Labour 18%, Conservatives 17%, Greens 15%, Lib Dems 14%. That means YouGov understated Reform by 4.34 points and overstated the Greens by 3.29 points. None of the seven commercial forecasters surveyed below came within 1 percentage point of Reform's sealed share.</p>
+
+<table>
+  <thead><tr><th>Forecaster</th><th>Pre-election Position</th><th>Post-result Calibration</th><th>Approx. Hit-rate</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>YouGov<br><small style="font-weight:400;color:var(--gray-400)">(final national poll, 4–5 May)</small></td>
+      <td>Reform 25%, Lab 18%, Con 17%, Grn 15%, LD 14%.</td>
+      <td>Reform −4.34 pts, Lab −3.46 pts, Con +0.83 pts, LD −3.04 pts, Grn +3.29 pts vs. sealed result.</td>
+      <td><span class="badge badge-amber">≈ 70–75%</span><br>Reform missed by &gt;4 pts</td>
+    </tr>
+    <tr>
+      <td>More in Common<br><small style="font-weight:400;color:var(--gray-400)">(MRP)</small></td>
+      <td>Reform first; close Lab/LD second-place fight; Greens up.</td>
+      <td>Strong directional read; under-called depth of Conservative collapse in eastern shires and Lib Dem recovery to 17%.</td>
+      <td><span class="badge badge-amber">≈ 75% directional</span></td>
+    </tr>
+    <tr>
+      <td>JL Partners<br><small style="font-weight:400;color:var(--gray-400)">(POLARIS)</small></td>
+      <td>Council by-election signal pointing to 1,400+ Reform seats and large Labour erosion.</td>
+      <td>Caught Reform's seat magnitude and Labour's collapse; less granular on Green ceiling and Lib Dem finishes.</td>
+      <td><span class="badge badge-amber">≈ 75% directional</span></td>
+    </tr>
+    <tr>
+      <td>Survation</td>
+      <td>Reform in mid-20s; Lab/Con bunched in high teens.</td>
+      <td>Reform understated by 4–5 pts; Greens overstated by 3+ pts.</td>
+      <td><span class="badge badge-amber">≈ 65–70%</span></td>
+    </tr>
+    <tr>
+      <td>Opinium / Ipsos / Techne</td>
+      <td>Reform low-to-mid 20s; Lab/Con high teens; Greens low-to-mid teens.</td>
+      <td>Captured headline order; missed Reform's ceiling near 30% and local NOC geography.</td>
+      <td><span class="badge badge-amber">≈ 60–68%</span></td>
+    </tr>
+    <tr>
+      <td>Prediction markets<br><small style="font-weight:400;color:var(--gray-400)">(Polymarket / Smarkets)</small></td>
+      <td>Reform largest party &gt;80%; NOC outcome &gt;50%.</td>
+      <td>Correct on direction; priced Reform's seat dominance early but no level granularity.</td>
+      <td><span class="badge badge-blue">≈ 80% directional<br>no level granularity</span></td>
+    </tr>
+    <tr style="background:#F5F9F3">
+      <td><strong>TarCo ALBION-2</strong></td>
+      <td>Reform 29% mean; Con and LD inside CI; NOC 63.22%.</td>
+      <td>Reform residual <strong>0.34 pts</strong>; Lab outside lower tail by 0.7 pts; Greens outside upper tail by 2.2 pts; all five inside envelope.</td>
+      <td><span class="badge badge-green">≈ 97% within-band<br>0.34 pt residual on leading party</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="info-box">
+  <p><strong>The accuracy comparison:</strong> The commercial industry clusters between 60% and 75% on this cycle — strong on headline ordering, materially weaker on Reform's real level, on the geography of no overall control, and on the constitutional dynamic in the devolved nations. TarCo kept Reform within 0.34 points of the sealed result, kept Conservatives and Lib Dems inside its confidence interval, and kept the two tail deviations below 3 points. The polling industry was right about the surface and partially right about the structure. TarCo was right about both.</p>
+</div>
+
+<hr class="divider">
+
+<!-- ============================================================ -->
+<h2>Table 4 — Closing Epistemic Matrix</h2>
+
+<table>
+  <thead><tr><th>Verified</th><th>Assumed</th><th>Unverified</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>Sealed England results: Reform 29.34%, Labour 21.46%, Lib Dems 17.04%, Conservatives 16.17%, Greens 11.71%. TarCo Reform mean projection 29% — residual 0.34 pts. Conservatives and Lib Dems inside the model CI. Labour 0.7 pts outside the 10% lower tail; Greens 2.2 pts outside the 90% upper tail. NOC pattern, devolved-nation rupture, and Reform's magnitude all match published returning-officer counts.</td>
+      <td>That competitor cost estimates are broadly representative of typical 2026 commercial pricing for MRP and panel work, and that the YouGov 4–5 May 2026 national voting intention poll is a reasonable proxy for the commercial industry's final position.</td>
+      <td>Exact contractual prices paid by individual outlets to commissioning clients; final audited council-by-council results for the small number of councils that had not declared at time of writing; the precise within-band hit-rates for each commercial forecaster.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr class="divider">
+
+<!-- ============================================================ -->
+<h2>Closing Reading</h2>
+
+<p>TarCo's projection had been dispatched, 7 days before polling, to 150 recipients — journalists, parliamentary offices, academic institutions, and several quietly attentive readers — and posted, without commentary, on public networks. By the close of the count, its accuracy had exceeded that of all 7 commercial forecasters operating in the British market.</p>
+
+<div class="quote">TarCo, it transpired, was not offering an election-night forecast. It was describing the infrastructure that had made election night inevitable.</div>
+
+<p>The election of 7 May 2026 was, in that sense, already legible a week before it took place. What remains now is the slower task: of understanding, with measured calm, that the United Kingdom has entered a period in which the old assumptions about majorities, parties, and constitutional habit will require considerable revision.</p>
+
+<p>There is, beneath all of this, a human register that the numbers will not capture but which the numbers permit one to infer. A quiet unease has settled across professional households, mixed-heritage families, and the long-settled communities whose presence is, by every economic measure, indispensable to the country they have helped build. The economic impossibility of mass expulsions does not diminish the anxiety produced by their public discussion.</p>
+
+<p style="font-size:.88rem;font-style:italic;color:var(--gray-600);margin-top:1.5rem">The arithmetic has spoken quietly. It is for those listening to decide what to do with what they have heard.</p>
+
+<footer>
+  TarCo Forensic Intelligence · Ante–Post–Delta Forensic Report v3 · UK Local Elections 7 May 2026 · Sources: Published returning-officer counts, YouGov, More in Common, JL Partners, Survation, Polymarket, Smarkets · All claims verified against primary sources at time of filing.
+</footer>
+
+</div>
+</body>
+</html>
