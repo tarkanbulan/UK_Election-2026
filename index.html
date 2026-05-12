@@ -28,7 +28,11 @@
   .btn { display:inline-block; background:var(--rule); color:var(--gold); font-family:Helvetica,Arial,sans-serif; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:12px 24px; text-decoration:none; border:2px solid var(--gold); }
   .btn:hover { background:var(--ink); }
   footer { margin-top:80px; padding-top:24px; border-top:2px solid var(--rule); font-size:11px; color:var(--muted); font-family:Helvetica,Arial,sans-serif; text-align:center; }
-  @media(max-width:768px){ .brief-row{grid-template-columns:1fr;} .brief-row.center{display:flex;} h1{font-size:28px;} }
+  .hero-image { width:100%; max-height:320px; object-fit:cover; border:2px solid var(--rule); margin:0 0 36px; display:block; }
+  .hero-caption { font-size:12px; color:var(--muted); font-style:italic; text-align:center; margin-top:-28px; margin-bottom:36px; }
+  .video-wrap { width:100%; max-width:640px; margin:0 auto 36px; }
+  .video-wrap video { width:100%; border:2px solid var(--rule); display:block; }
+  @media(max-width:768px){ .brief-row{grid-template-columns:1fr;} .brief-row.center{display:flex;} h1{font-size:28px;} .hero-image{max-height:220px;} }
 </style>
 </head>
 <body>
@@ -39,11 +43,14 @@
   <p class="subtitle">Computational Behavioural Analysis &amp; Forensic Datamining</p>
 </header>
 
+<img src="imigrant.jpg" alt="Immigration Panic — UK 2026" class="hero-image">
+<p class="hero-caption">The human cost of rhetorical impossibility — immigrants facing structural uncertainty, UK 2026</p>
+
 <div class="brief-grid">
   <div class="brief-row">
     <div class="brief-card">
       <div class="stamp stamp-red">Prediction</div>
-      <div class="meta">12 May 2026 · KINGS-SPEECH-2026</div>
+      <div class="meta">11 May 2026 · KINGS-SPEECH-2026</div>
       <h2>The King's Speech 2026</h2>
       <p>State Opening of Parliament — Pre-Event Intelligence Briefing. Crisis Index 0.964.</p>
       <a href="kings_speech_briefing.html" class="btn">Read Briefing</a>
@@ -54,6 +61,22 @@
       <h2>The Foundation Layer Rupture</h2>
       <p>Social Care Exodus, Institutional Decay, and the Asymmetric Warfare Dimension of the UK's 2026 Crisis.</p>
       <a href="foundation_layer_rupture.html" class="btn">Read Briefing</a>
+    </div>
+  </div>
+  <div class="brief-row">
+    <div class="brief-card">
+      <div class="stamp stamp-red">Bridge</div>
+      <div class="meta">11 May 2026 · LEGAL-IMPOSSIBILITY</div>
+      <h2>The Legal Impossibility Axis</h2>
+      <p>Why retrospective revocation of settled status is structurally impossible — and why the rhetoric still costs the UK.</p>
+      <a href="legal_impossibility_bridge.html" class="btn">Read Briefing</a>
+    </div>
+    <div class="brief-card">
+      <div class="stamp stamp-red">Bridge</div>
+      <div class="meta">11 May 2026 · EARNED-SETTLEMENT</div>
+      <h2>The Administrative Possibility Axis</h2>
+      <p>Earned Settlement, the 10-year rule, and the legally feasible damage Reform's rhetoric provides cover for.</p>
+      <a href="earned_settlement_bridge.html" class="btn">Read Briefing</a>
     </div>
   </div>
   <div class="brief-row center">
@@ -81,6 +104,13 @@
       <a href="UK_Elections_Essay_v15.html" class="btn">Read Briefing</a>
     </div>
   </div>
+</div>
+
+<div class="video-wrap">
+<video controls poster="imigrant.jpg">
+<source src="yeni_video.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
 </div>
 
 <footer>

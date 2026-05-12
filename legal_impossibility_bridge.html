@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Legal Impossibility Axis — TarCo Forensic Bridge</title>
+<style>
+  :root {
+    --ink: #0f1a2e;
+    --ink-soft: #2a3855;
+    --paper: #f7f4ec;
+    --paper-warm: #efeadd;
+    --rule: #1a2a4a;
+    --accent: #8b1a1a;
+    --muted: #6b7280;
+    --ok: #2d5a3d;
+    --warn: #8a5a00;
+    --bad: #7a1f1f;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 48px 32px 80px; }
+  header {
+    border-bottom: 2px solid var(--rule);
+    padding-bottom: 24px;
+    margin-bottom: 40px;
+  }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 11px;
+    color: var(--muted);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 600;
+  }
+  h1 {
+    font-size: 38px;
+    margin: 8px 0 4px;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+  }
+  .subtitle {
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 16px;
+    margin-top: 8px;
+  }
+  .meta {
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--muted);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+  .lead {
+    font-size: 17px;
+    line-height: 1.7;
+    margin: 0 0 40px;
+    padding: 24px 28px;
+    background: var(--paper-warm);
+    border-left: 4px solid var(--rule);
+  }
+  h2 {
+    font-size: 24px;
+    margin: 56px 0 16px;
+    color: var(--rule);
+    border-bottom: 1px solid #d9d3c2;
+    padding-bottom: 8px;
+  }
+  h2 .num {
+    display: inline-block;
+    width: 36px;
+    color: var(--accent);
+    font-style: italic;
+  }
+  /* Tabs */
+  .tabs {
+    display: flex;
+    gap: 2px;
+    background: var(--paper-warm);
+    padding: 4px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    flex: 1;
+    min-width: 140px;
+    padding: 12px 16px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+  }
+  .tab-btn:hover { background: rgba(26,42,74,0.08); }
+  .tab-btn.active {
+    background: var(--rule);
+    color: var(--paper);
+  }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; animation: fade 0.3s; }
+  @keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+  /* Cards */
+  .card-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  .card {
+    background: #fff;
+    border: 1px solid #d9d3c2;
+    border-left: 4px solid var(--rule);
+    padding: 20px 22px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    cursor: pointer;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(15,26,46,0.08);
+  }
+  .card h3 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    color: var(--rule);
+  }
+  .card .label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .card p { margin: 6px 0; font-size: 14px; color: var(--ink-soft); }
+  .card .detail {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    font-size: 13.5px;
+  }
+  .card.open .detail { max-height: 400px; padding-top: 8px; }
+  .card .expand {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+  /* Vector severity */
+  .sev-legal { border-left-color: #4a5d8a; }
+  .sev-econ { border-left-color: #8a5a00; }
+  .sev-diplo { border-left-color: #2d5a3d; }
+  .sev-const { border-left-color: #5a2d6e; }
+  .sev-social { border-left-color: #7a1f1f; }
+  /* Asymmetry block */
+  .asymmetry {
+    margin-top: 40px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 36px 40px;
+    border-radius: 2px;
+    position: relative;
+  }
+  .asymmetry::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    font-size: 80px;
+    color: var(--accent);
+    font-family: Georgia;
+    line-height: 1;
+  }
+  .asymmetry h2 {
+    color: var(--paper);
+    border-color: rgba(247,244,236,0.2);
+    margin-top: 0;
+  }
+  .asymmetry p { font-size: 16px; line-height: 1.7; }
+  .pullquote {
+    font-size: 22px;
+    font-style: italic;
+    margin: 24px 0;
+    padding-left: 20px;
+    border-left: 3px solid var(--accent);
+    color: #f7f4ec;
+  }
+  /* Stats */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin: 32px 0;
+  }
+  .stat {
+    background: #fff;
+    border: 1px solid #d9d3c2;
+    padding: 18px 16px;
+    text-align: center;
+  }
+  .stat .n {
+    display: block;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent);
+    font-family: Georgia;
+  }
+  .stat .l {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin-top: 6px;
+    display: block;
+  }
+  footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid #d9d3c2;
+    font-size: 12px;
+    color: var(--muted);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    text-align: center;
+  }
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    background: var(--paper-warm);
+    border: 1px solid #d9d3c2;
+    font-size: 11px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-right: 6px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <div class="eyebrow">TarCo Forensic Bridge · The Bridge Archive</div>
+  <h1>The Legal Impossibility Axis</h1>
+  <div class="subtitle">Why retrospective revocation of settled status is a structural impossibility — and why the rhetoric still costs the United Kingdom in advance</div>
+  <div class="meta">
+    <span class="badge">UK Local Elections 7 May 2026</span>
+    <span class="badge">Companion to v3.1</span>
+    <span class="badge">McCoy / James persona</span>
+  </div>
+</header>
+
+<div class="lead">
+  The election produced a result. The rhetoric that carried that result, however, makes a claim the law cannot honour. Under the law of the United Kingdom, retrospective revocation of lawfully held residency and citizenship is not difficult — it is structurally impossible. The distinction matters because the rhetoric does not require legal feasibility to produce economic, demographic and constitutional damage. The cost of an unenforceable threat is paid in advance, in capital, in talent, and in social trust.
+</div>
+
+<div class="stats">
+  <div class="stat"><span class="n">3</span><span class="l">Legal Locks</span></div>
+  <div class="stat"><span class="n">&lt;70</span><span class="l">Annual Revocations Permitted</span></div>
+  <div class="stat"><span class="n">5</span><span class="l">Consequence Vectors</span></div>
+  <div class="stat"><span class="n">252k</span><span class="l">Working-Age Departures (forward signal)</span></div>
+</div>
+
+<h2><span class="num">I.</span> The Three Locks of British Law</h2>
+<p>Three doctrinal walls stand between political rhetoric and retrospective revocation of status. Each would have to be breached, in sequence, for a mass action to proceed. None has been breached in modern British constitutional practice.</p>
+<div class="card-grid">
+  <div class="card" onclick="this.classList.toggle('open')">
+    <div class="label">Lock 1 · Common Law</div>
+    <h3>Non-Retroactivity</h3>
+    <p>A status lawfully acquired cannot be undone by legislation passed after the fact.</p>
+    <div class="detail">Embedded in English Common Law since the seventeenth century. Courts will read statutes narrowly to avoid retrospective effect on vested rights. Parliament <em>can</em> legislate retrospectively in theory; in practice, the political and judicial cost has prevented it in the field of personal status.</div>
+    <div class="expand">▾ Click for detail</div>
+  </div>
+  <div class="card" onclick="this.classList.toggle('open')">
+    <div class="label">Lock 2 · Public Law</div>
+    <h3>Legitimate Expectation</h3>
+    <p>Individuals who have ordered their lives around a public decision of the state are protected from its sudden reversal.</p>
+    <div class="detail">Established through <em>R v North and East Devon Health Authority, ex parte Coughlan</em> (2001) and subsequent line of authority. The doctrine binds the executive to representations on which reliance has been placed. A grant of ILR or naturalisation is the paradigm case of a public representation on which life is ordered.</div>
+    <div class="expand">▾ Click for detail</div>
+  </div>
+  <div class="card" onclick="this.classList.toggle('open')">
+    <div class="label">Lock 3 · Convention Rights</div>
+    <h3>ECHR Articles 8 & Protocol 1 Art. 1</h3>
+    <p>Private and family life; peaceful enjoyment of possessions — including established residency rights.</p>
+    <div class="detail">Article 8 protects the integrated family and professional life that settled status enables. Protocol 1 Article 1 has been interpreted by Strasbourg to include vested administrative entitlements. A mass revocation programme would face simultaneous challenge under both, with adverse rulings near-certain absent prior withdrawal from the Convention itself.</div>
+    <div class="expand">▾ Click for detail</div>
+  </div>
+</div>
+
+<h2><span class="num">II.</span> The Narrow Exceptions</h2>
+<p>British law does permit revocation, but only on narrow, individual, evidence-based grounds. These mechanisms exist; they do not scale.</p>
+<div class="tabs" role="tablist">
+  <button class="tab-btn active" onclick="showTab(this, 't1')">s.40(3) Fraud</button>
+  <button class="tab-btn" onclick="showTab(this, 't2')">s.40(2) Public Good</button>
+  <button class="tab-btn" onclick="showTab(this, 't3')">ILR Revocation</button>
+  <button class="tab-btn" onclick="showTab(this, 't4')">EUSS Settled Status</button>
+</div>
+<div id="t1" class="tab-panel active">
+  <div class="card">
+    <div class="label">British Nationality Act 1981, s.40(3)</div>
+    <h3>Deprivation for Fraud</h3>
+    <p><strong>Ground:</strong> Citizenship obtained by fraud, false representation, or concealment of material fact.</p>
+    <p><strong>Observed volume:</strong> Approximately 10–20 cases per year.</p>
+    <p><strong>Constraints:</strong> Requires evidence specific to the individual application; subject to appeal at the First-tier Tribunal (Immigration and Asylum Chamber); onward route to the Upper Tribunal and Court of Appeal.</p>
+  </div>
+</div>
+<div id="t2" class="tab-panel">
+  <div class="card">
+    <div class="label">British Nationality Act 1981, s.40(2)</div>
+    <h3>Deprivation as Conducive to the Public Good</h3>
+    <p><strong>Ground:</strong> Conduct seriously prejudicial to the vital interests of the United Kingdom — typically terrorism or serious organised crime.</p>
+    <p><strong>Observed volume:</strong> Fewer than 50 cases per year; subject to judicial review and SIAC oversight.</p>
+    <p><strong>Constraints:</strong> Cannot render a person stateless under international law (Begum line of authority modifies but does not abolish this). Each case is individually reasoned and individually challenged.</p>
+  </div>
+</div>
+<div id="t3" class="tab-panel">
+  <div class="card">
+    <div class="label">Immigration Act 1971; Immigration Rules para. 322 / 339A</div>
+    <h3>Revocation of Indefinite Leave to Remain</h3>
+    <p><strong>Ground:</strong> Serious criminality; deception in original application; prolonged absence from the United Kingdom (typically more than two years).</p>
+    <p><strong>Observed volume:</strong> Marginal; case-by-case.</p>
+    <p><strong>Constraints:</strong> Subject to Article 8 ECHR proportionality assessment; full appeal rights; routinely unsuccessful where family and professional roots are established.</p>
+  </div>
+</div>
+<div id="t4" class="tab-panel">
+  <div class="card">
+    <div class="label">EU Withdrawal Agreement, Part Two</div>
+    <h3>EUSS Settled Status</h3>
+    <p><strong>Ground:</strong> Limited to grounds permitted under the Withdrawal Agreement itself.</p>
+    <p><strong>Observed volume:</strong> Negligible.</p>
+    <p><strong>Constraints:</strong> Protected by international treaty under the Vienna Convention on the Law of Treaties. Unilateral breach would invite proceedings before the Court of Justice of the European Union via the Joint Committee mechanism, and would constitute a discrete international wrongful act.</p>
+  </div>
+</div>
+
+<h2><span class="num">III.</span> The Five Consequence Vectors</h2>
+<p>Were a future government to attempt retrospective revocation, the costs would arrive across five separate registers, each compounding the others.</p>
+<div class="card-grid">
+  <div class="card sev-legal" onclick="this.classList.toggle('open')">
+    <div class="label">Vector 1</div>
+    <h3>Legal</h3>
+    <p>Supreme Court strike-down; ECHR application; Vienna Convention exposure.</p>
+    <div class="detail">Domestic invalidation within 12–18 months. International adverse rulings near-certain. Rule-of-law deterioration formally recorded in the Venice Commission and World Justice Project indices.</div>
+    <div class="expand">▾ Detail</div>
+  </div>
+  <div class="card sev-econ" onclick="this.classList.toggle('open')">
+    <div class="label">Vector 2</div>
+    <h3>Economic</h3>
+    <p>Acceleration of working-age emigration beyond 252,000; capital flight; gilt yield re-pricing.</p>
+    <div class="detail">GFCF, already the lowest in the G7 at 18.9% of GDP, declines further. Sterling weakens. The welfare–tax crossover (£333.7 bn against £331 bn) becomes structurally permanent. Professional service exports re-base downward.</div>
+    <div class="expand">▾ Detail</div>
+  </div>
+  <div class="card sev-diplo" onclick="this.classList.toggle('open')">
+    <div class="label">Vector 3</div>
+    <h3>Diplomatic</h3>
+    <p>Bilateral ruptures with India, Pakistan, Nigeria, EU member states; Commonwealth framework hollowed; Five Eyes trust eroded.</p>
+    <div class="detail">Trade negotiations stall. Security cooperation degraded. The United Kingdom's reputation as a treaty-reliable jurisdiction is materially impaired, with reinsurance and sovereign credit implications.</div>
+    <div class="expand">▾ Detail</div>
+  </div>
+  <div class="card sev-const" onclick="this.classList.toggle('open')">
+    <div class="label">Vector 4</div>
+    <h3>Constitutional</h3>
+    <p>Judicial–executive confrontation; renewed contest over Henry VIII powers; reinforced separatist argument.</p>
+    <div class="detail">Rule-of-law erosion enters formal international indices. Scotland and Wales accelerate divergence. The Union itself comes under additional pressure, with the season of fragmentation deepening into a constitutional event.</div>
+    <div class="expand">▾ Detail</div>
+  </div>
+  <div class="card sev-social" onclick="this.classList.toggle('open')">
+    <div class="label">Vector 5</div>
+    <h3>Social</h3>
+    <p>Second-wave unrest among settled communities; cohesion indices collapse; mixed-heritage households experience internal exile.</p>
+    <div class="detail">Policing capacity exceeded. Civic trust falls below sustainable thresholds. Long-run integration gains, accumulated across half a century, are reversed within a single Parliament.</div>
+    <div class="expand">▾ Detail</div>
+  </div>
+</div>
+
+<div class="asymmetry">
+  <h2><span class="num" style="color:#c89868;">IV.</span> The Asymmetry</h2>
+  <p>The decisive observation, and the one most easily missed, is this: the rhetoric of retrospective revocation operates effectively precisely because it does not need to be enacted. The performative function is sufficient.</p>
+  <div class="pullquote">The cost of the rhetoric is paid in advance — in capital, in talent, in social trust — whether or not the legislation that would give it effect is ever drafted.</div>
+  <p>A perceived majority shift forms in the electorate. Genuine anxiety forms in settled communities, where residency rights concerns become a daily preoccupation. Capital re-prices the United Kingdom's reliability as a destination. Talent recalculates its presence. None of these effects require a single piece of legislation. They require only that the threat be plausible enough to feel, and unenforceable enough to remain unexamined.</p>
+  <p>The brain drain figure of 252,000, already the highest in the United Kingdom's modern history, contains an embedded forward signal. It is not only a record of departures that have occurred. It is also a leading indicator of departures that the rhetoric is presently producing.</p>
+</div>
+
+<h2><span class="num">V.</span> The Forensic Conclusion</h2>
+<p>Retrospective application of immigration restriction to the lawfully settled population of the United Kingdom is not a policy choice awaiting political courage. It is a legal impossibility constrained by Common Law, statute, treaty, and convention. Any attempt to overcome these constraints would trigger consequences across five vectors simultaneously, each of which is individually severe and collectively catastrophic.</p>
+<p>The structural integrity of the United Kingdom as a destination for capital, talent, and treaty-reliable cooperation rests, in no small measure, on the continued credibility of these constraints. The election of 7 May 2026 did not change that arithmetic. It merely raised the cost of pretending otherwise.</p>
+
+<footer>
+  TarCo Forensic Validation Chain · UK Local Elections 7 May 2026 · Companion bridge to T2SAIM Forensic Narrative v3.1<br>
+  Verified · Assumed · Unverified registers held in the master document. Internal calibration ledger available on request to qualifying institutional counterparties.
+</footer>
+
+</div>
+
+<script>
+function showTab(btn, id) {
+  const tabs = btn.parentElement.querySelectorAll('.tab-btn');
+  tabs.forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+</script>
+</body>
+</html>

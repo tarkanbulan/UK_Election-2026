@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Administrative Possibility Axis — Earned Settlement Forensic Bridge</title>
+<style>
+  :root {
+    --ink: #0f1a2e;
+    --ink-soft: #2a3855;
+    --paper: #f7f4ec;
+    --paper-warm: #efeadd;
+    --rule: #1a2a4a;
+    --accent: #8b1a1a;
+    --amber: #8a5a00;
+    --muted: #6b7280;
+    --row-alt: #f2f4f8;
+    --ok: #2d5a3d;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  .container { max-width: 1120px; margin: 0 auto; padding: 56px 36px 80px; }
+  header {
+    border-bottom: 2px solid var(--rule);
+    padding-bottom: 28px;
+    margin-bottom: 36px;
+  }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 11px;
+    color: var(--muted);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 600;
+  }
+  h1 {
+    font-size: 38px;
+    margin: 8px 0 6px;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+  }
+  .subtitle {
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 16px;
+  }
+  .meta {
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--muted);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    background: var(--paper-warm);
+    border: 1px solid #d9d3c2;
+    font-size: 11px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-right: 6px;
+  }
+  .lead {
+    font-size: 17px;
+    line-height: 1.75;
+    margin: 0 0 36px;
+    padding: 24px 28px;
+    background: var(--paper-warm);
+    border-left: 4px solid var(--amber);
+  }
+  h2 {
+    font-size: 24px;
+    margin: 56px 0 14px;
+    color: var(--rule);
+    border-bottom: 1px solid #d9d3c2;
+    padding-bottom: 8px;
+  }
+  h2 .num {
+    display: inline-block;
+    width: 42px;
+    color: var(--accent);
+    font-style: italic;
+  }
+  h3 {
+    font-size: 17px;
+    color: var(--ink-soft);
+    margin: 28px 0 10px;
+  }
+  p { margin: 0 0 14px; text-align: justify; }
+  /* Comparison split */
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin: 28px 0;
+  }
+  .split .col {
+    background: #fff;
+    border: 1px solid #d9d3c2;
+    padding: 24px 26px;
+  }
+  .split .col.left { border-top: 4px solid var(--amber); }
+  .split .col.right { border-top: 4px solid var(--accent); }
+  .col h3 {
+    margin-top: 0;
+    color: var(--rule);
+    font-size: 17px;
+  }
+  .col .verdict {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid #e8e2d2;
+    font-size: 14px;
+  }
+  .verdict.feasible { color: var(--amber); font-weight: 600; }
+  .verdict.impossible { color: var(--accent); font-weight: 600; }
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 26px;
+    font-size: 13px;
+    background: #fff;
+    border: 1px solid #d9d3c2;
+  }
+  th {
+    background: var(--rule);
+    color: var(--paper);
+    text-align: left;
+    padding: 10px 12px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e8e2d2;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  tr:nth-child(even) td { background: var(--row-alt); }
+  td strong { color: var(--rule); }
+  /* Pressure-point cards */
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    margin: 20px 0;
+  }
+  .pp {
+    background: #fff;
+    border: 1px solid #d9d3c2;
+    border-left: 4px solid var(--amber);
+    padding: 18px 20px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .pp:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(15,26,46,0.08); }
+  .pp .tag {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .pp h4 { margin: 0 0 8px; font-size: 15px; color: var(--rule); }
+  .pp p { margin: 0; font-size: 13.5px; color: var(--ink-soft); line-height: 1.55; }
+  .pp .case { margin-top: 8px; font-size: 12px; font-style: italic; color: var(--muted); }
+  /* Stats */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 14px;
+    margin: 24px 0 32px;
+  }
+  .stat {
+    background: #fff;
+    border: 1px solid #d9d3c2;
+    padding: 16px 14px;
+    text-align: center;
+  }
+  .stat .n {
+    display: block;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--accent);
+    font-family: Georgia;
+  }
+  .stat .l {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin-top: 6px;
+    display: block;
+  }
+  /* Asymmetry pullquote */
+  .pull {
+    margin: 36px 0;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 32px 36px;
+    border-left: 4px solid var(--accent);
+  }
+  .pull .label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #c89868;
+    margin-bottom: 8px;
+  }
+  .pull .quote {
+    font-size: 19px;
+    font-style: italic;
+    line-height: 1.55;
+  }
+  /* Timeline */
+  .timeline {
+    margin: 24px 0;
+    padding-left: 30px;
+    border-left: 2px solid var(--rule);
+  }
+  .tl-item {
+    margin-bottom: 22px;
+    position: relative;
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -38px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
+    border: 2px solid var(--paper);
+  }
+  .tl-date {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .tl-text {
+    margin-top: 4px;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  /* Family asymmetry diagram */
+  .family {
+    background: #fff;
+    border: 1px solid #d9d3c2;
+    padding: 24px;
+    margin: 20px 0 30px;
+  }
+  .family h4 {
+    margin: 0 0 16px;
+    color: var(--rule);
+    font-size: 15px;
+    text-align: center;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 11px;
+  }
+  .family-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    text-align: center;
+  }
+  .fam-card {
+    padding: 16px 12px;
+    border: 1px solid #d9d3c2;
+    background: var(--paper-warm);
+  }
+  .fam-card .role {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+  }
+  .fam-card .time {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent);
+    margin: 6px 0 4px;
+    font-family: Georgia;
+  }
+  .fam-card .desc { font-size: 12px; color: var(--ink-soft); line-height: 1.4; }
+  .fam-arrow {
+    text-align: center;
+    margin: 14px 0 0;
+    font-size: 13px;
+    color: var(--accent);
+    font-style: italic;
+  }
+  footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid #d9d3c2;
+    font-size: 12px;
+    color: var(--muted);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    text-align: center;
+  }
+  .bottom-line {
+    margin: 40px 0 30px;
+    padding: 28px 32px;
+    background: var(--rule);
+    color: var(--paper);
+    border-left: 5px solid #c89868;
+  }
+  .bottom-line .label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 11px;
+    color: #c89868;
+    margin-bottom: 10px;
+  }
+  .bottom-line p { font-size: 17px; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <div class="eyebrow">TarCo Forensic Bridge · The Bridge Archive</div>
+  <h1>The Administrative Possibility Axis</h1>
+  <div class="subtitle">Earned Settlement, the 10-year rule, and the legally feasible damage Reform's impossible rhetoric is providing cover for</div>
+  <div class="meta">
+    <span class="badge">Companion to v3.1</span>
+    <span class="badge">UK English</span>
+    <span class="badge">McCoy / James persona</span>
+    <span class="badge">Consultation closed 12 February 2026</span>
+    <span class="badge">Implementation deferred to Sept/Oct 2026</span>
+  </div>
+</header>
+
+<div class="lead">
+  The Legal Impossibility Axis established that mass revocation of existing Indefinite Leave to Remain cannot be lawfully achieved. This second bridge addresses a sharper and more uncomfortable question: what <em>can</em> be lawfully achieved, by Statutory Instrument, without primary legislation, and without a parliamentary vote — and what its consequences would be when applied retrospectively to the approximately 2 million people currently in the United Kingdom on lawful limited leave. The Earned Settlement model, inspired by Denmark and presently consulted upon by the Home Office, is the policy instrument by which this question now becomes operational.
+</div>
+
+<div class="stats">
+  <div class="stat"><span class="n">~2 m</span><span class="l">In-flight cohort</span></div>
+  <div class="stat"><span class="n">5 → 10</span><span class="l">Years to ILR</span></div>
+  <div class="stat"><span class="n">s.3(2)</span><span class="l">Immigration Act 1971 route</span></div>
+  <div class="stat"><span class="n">12 Feb</span><span class="l">Consultation closed</span></div>
+  <div class="stat"><span class="n">Sept/Oct</span><span class="l">Implementation window</span></div>
+</div>
+
+<!-- ============ 1. DISAMBIGUATION ============ -->
+<h2><span class="num">1.</span> Two Legal Categories That Must Not Be Conflated</h2>
+<p>The first disciplinary act of any serious reading is to separate the two propositions the public discussion routinely confuses. They occupy different legal universes, are delivered by different mechanisms, and produce different — though overlapping — damage.</p>
+
+<div class="split">
+  <div class="col left">
+    <h3>Earned Settlement (10-year rule)</h3>
+    <p><strong>Target:</strong> People on limited leave (Skilled Worker, Health & Care, partner route) currently progressing towards ILR under the 5-year framework.</p>
+    <p><strong>Mechanism:</strong> Statement of Changes to the Immigration Rules — an HC paper laid before Parliament.</p>
+    <p><strong>Parliamentary route:</strong> Negative resolution under s.3(2) Immigration Act 1971. No affirmative vote required.</p>
+    <p><strong>Cohort scale:</strong> Approximately 1.9–2.2 million in-flight visa holders and dependants.</p>
+    <p class="verdict feasible">Verdict: Legally feasible. Vulnerable to judicial review on specific grounds.</p>
+  </div>
+  <div class="col right">
+    <h3>Mass ILR Revocation (Reform claim)</h3>
+    <p><strong>Target:</strong> People who already hold ILR or British citizenship — a vested legal status.</p>
+    <p><strong>Mechanism:</strong> Would require primary legislation, ECHR withdrawal, and overhaul of Withdrawal Agreement obligations.</p>
+    <p><strong>Parliamentary route:</strong> Full Bill, both Houses, judicial review survival, and Strasbourg exposure.</p>
+    <p><strong>Cohort scale:</strong> Approximately 5 million plus ILR and naturalised citizens.</p>
+    <p class="verdict impossible">Verdict: Structurally impossible. Covered in the Legal Impossibility Bridge.</p>
+  </div>
+</div>
+
+<div class="pull">
+  <div class="label">The Decisive Insight</div>
+  <div class="quote">The government does not need Reform's legislation to inflict most of the damage Reform's rhetoric implies. Earned Settlement, applied retrospectively, achieves a large fraction of the demographic and economic effect through a Statutory Instrument route that does not even reach the floor of the House of Commons.</div>
+</div>
+
+<!-- ============ 2. DECREE MECHANISM ============ -->
+<h2><span class="num">2.</span> The Decree Mechanism — How It Actually Works</h2>
+<p>Under section 3(2) of the Immigration Act 1971, the Secretary of State lays a Statement of Changes to the Immigration Rules before Parliament as an HC paper. The "negative resolution" procedure means: the Rules take effect on a specified date — typically 21 to 28 days after laying; Parliament may pray against the changes within 40 sitting days; a prayer motion requires opposition time and a vote, which is almost never granted and almost never successful; the Rules become operative law without any affirmative vote.</p>
+<p>This is how every major Immigration Rule change has been made since 1971 — the £18,600 spouse income threshold, the Health & Care visa creation, the Rwanda framework, the BNO route. No primary legislation. No parliamentary vote. No referendum. The constraints on this power are therefore not parliamentary. They are judicial.</p>
+
+<table>
+  <thead><tr><th>Constraint</th><th>Source</th><th>Operational Effect</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Compliance with primary statute</strong></td><td>Immigration Act 1971; NIAA 2002; Borders Citizenship and Immigration Act 2009; Human Rights Act 1998.</td><td>Rules cannot contradict the parent Acts; s.55 BCIA 2009 imposes a children's welfare duty.</td></tr>
+    <tr><td><strong>ECHR compatibility</strong></td><td>Convention Articles 8, 14, and Protocol 1 Article 1; HRA 1998 s.6.</td><td>Public authority must act compatibly with Convention rights; declarations of incompatibility available.</td></tr>
+    <tr><td><strong>Common law public law</strong></td><td>Legitimate expectation; rationality (<em>Wednesbury</em>, <em>Pham</em>); proportionality; Gunning consultation duty.</td><td>Judicial review at the Administrative Court; quashing or declaratory remedies available.</td></tr>
+    <tr><td><strong>Judicial review forum</strong></td><td>Administrative Court / Upper Tribunal (IAC) / Court of Appeal / Supreme Court.</td><td>Typical timetable 12–24 months from policy implementation to first appellate ruling.</td></tr>
+  </tbody>
+</table>
+
+<!-- ============ 3. PRESSURE POINTS ============ -->
+<h2><span class="num">3.</span> Retrospective Effect on Skilled Worker Holders — Four Pressure Points</h2>
+<p>The government will frame Earned Settlement as prospective in form — "We are not stripping anyone's ILR; we are changing future eligibility criteria." This framing has carried weight in past Immigration Rule changes. It is, however, retrospective in substance when applied to current visa holders. The legal pressure points are four.</p>
+
+<div class="grid-4">
+  <div class="pp">
+    <div class="tag">Pressure Point 1</div>
+    <h4>Legitimate Expectation</h4>
+    <p>Skilled Worker holders entered on a published, relied-upon framework. They ordered their lives — mortgages, NHS surcharges paid in advance, school enrolment, pension vesting — around 5-year settlement.</p>
+    <p class="case">R (BAPIO Action Ltd) v SSHD [2007] EWHC 199 (Admin); Pantellerisco line.</p>
+  </div>
+  <div class="pp">
+    <div class="tag">Pressure Point 2</div>
+    <h4>Article 8 Proportionality</h4>
+    <p>Doubling the settlement route is a substantial interference with private and family life. Proportionality assessment required individually and structurally.</p>
+    <p class="case">Hesham Ali v SSHD [2016] UKSC 60; Agyarko [2017] UKSC 11.</p>
+  </div>
+  <div class="pp">
+    <div class="tag">Pressure Point 3</div>
+    <h4>Children's Welfare Duty</h4>
+    <p>Children who entered as dependants under the 5-year framework now face 10 years of conditional status. Schooling, healthcare entitlement, and university fee status all destabilised.</p>
+    <p class="case">Section 55, Borders Citizenship and Immigration Act 2009; ZH (Tanzania) [2011] UKSC 4.</p>
+  </div>
+  <div class="pp">
+    <div class="tag">Pressure Point 4</div>
+    <h4>Consultation Duty (Gunning)</h4>
+    <p>Consultation closed 12 February 2026. Government must "have regard" to responses. Sept/Oct timing tied to electoral signal, not consultation engagement, is a clean judicial review ground.</p>
+    <p class="case">R v Brent LBC, ex p Gunning (1985); R (Moseley) v Haringey [2014] UKSC 56.</p>
+  </div>
+</div>
+
+<p><strong>Forensic judgement:</strong> Earned Settlement applied retrospectively to in-flight Skilled Worker holders is <em>legally vulnerable but not impossible</em>. The government's deferral to September/October — to read the May election signal — itself constitutes evidence of political risk-pricing, and may be deployed in judicial review proceedings to demonstrate that the policy is driven by perceived political mandate rather than careful regard for legitimate expectation.</p>
+
+<!-- ============ 4. FAMILY ASYMMETRY ============ -->
+<h2><span class="num">4.</span> The Family Asymmetry — The Constitutional Weakest Link</h2>
+<p>The 5-versus-15 year spousal asymmetry the consultation contemplates is, in our forensic reading, the most exposed point of the entire proposal. Where one spouse qualifies for British citizenship in 5 years under one route while the other spouse on Skilled Worker faces 10 years to ILR plus 1 year of residency for naturalisation — and where the children's status is undetermined — the policy creates a constitutional configuration that the Supreme Court has previously refused to permit.</p>
+
+<div class="family">
+  <h4>Illustrative Household Under the Proposed Model</h4>
+  <div class="family-grid">
+    <div class="fam-card">
+      <div class="role">Spouse A · Partner route</div>
+      <div class="time">5 yrs</div>
+      <div class="desc">ILR + naturalisation pathway. Citizenship achievable in 6 years total.</div>
+    </div>
+    <div class="fam-card">
+      <div class="role">Spouse B · Skilled Worker</div>
+      <div class="time">10–15 yrs</div>
+      <div class="desc">Doubled qualifying period; conditional employment status throughout; renewal risk every 3–5 years.</div>
+    </div>
+    <div class="fam-card">
+      <div class="role">Children · Dependants</div>
+      <div class="time">?</div>
+      <div class="desc">Status undetermined. Schooling, healthcare entitlement, and home-fee university status all destabilised for the duration.</div>
+    </div>
+  </div>
+  <div class="fam-arrow">Same household. Same lawful arrival. Three different settlement timetables.</div>
+</div>
+
+<table>
+  <thead><tr><th>Constitutional Ground</th><th>Test</th><th>Forensic Reading</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Article 8 ECHR</strong></td><td>Interference with private and family life; proportionality.</td><td>Substantial interference; no individualised assessment; weak proportionality justification.</td></tr>
+    <tr><td><strong>Article 14 read with Article 8</strong></td><td>Discrimination on relevant ground; directly comparable couples treated differently.</td><td>Textbook A14 issue. Same household; differential treatment based on which spouse holds which visa class.</td></tr>
+    <tr><td><strong>Section 55 BCIA 2009</strong></td><td>Welfare of children duty; <em>ZH (Tanzania)</em> primacy.</td><td>Children left with materially inferior status to British-citizen parent. Welfare duty not visibly discharged.</td></tr>
+    <tr><td><strong>Common law irrationality</strong></td><td><em>Wednesbury</em> / <em>Pham</em> proportionality of administrative measure.</td><td>Asymmetry not rationally connected to any legitimate aim disclosed in the consultation.</td></tr>
+  </tbody>
+</table>
+
+<p>The Supreme Court in <em>MM (Lebanon)</em> [2017] UKSC 10 partially struck down the £18,600 income threshold for spouse visas on closely related grounds. The same logic applies, with greater force, to the family asymmetry contemplated here. <strong>The question is not whether this component falls, but how much damage it does in the 18–30 months before the Supreme Court rules.</strong></p>
+
+<!-- ============ 5. THE COHORT ============ -->
+<h2><span class="num">5.</span> The Skilled Worker Cohort — Why the 2 Million Number Matters</h2>
+<p>The in-flight cohort, in approximate terms drawn from UK government statistics for the year ending September 2025, comprises Skilled Worker holders (~370,000 primary, ~280,000 dependants), Health and Care visa holders (~140,000 primary, ~200,000 dependants), partner-route progressing to ILR (~280,000), Graduate route in transition (~135,000), and other progressing routes (~290,000). The total exposed cohort is in the order of <strong>1.9 to 2.2 million people</strong>, of whom approximately 45 to 55 per cent are NHS-relevant.</p>
+
+<table>
+  <thead><tr><th>Channel</th><th>Projected Effect</th></tr></thead>
+  <tbody>
+    <tr><td><strong>IHS revenue uplift</strong> (stated fiscal rationale)</td><td>+£2.0 to 2.5 bn per year (5 extra years × cohort × Immigration Health Surcharge of £1,035/yr)</td></tr>
+    <tr><td><strong>Skilled Worker applications</strong></td><td>Collapse of 25 to 40% within 12 months of implementation; Australia / Canada redirect</td></tr>
+    <tr><td><strong>Brain drain acceleration</strong></td><td>252,000 baseline rises towards 350–400,000 as in-flight cohort recalculates</td></tr>
+    <tr><td><strong>NHS / social care exposure</strong></td><td>12 to 18 month staffing shock; agency-cost inflation; service contraction in non-urban trusts</td></tr>
+    <tr><td><strong>Higher education exposure</strong></td><td>International student pipeline degraded; graduate-route ROI inverted; sector financial stress</td></tr>
+    <tr><td><strong>Net fiscal contribution</strong></td><td>Negative within 36 months; lost contribution exceeds IHS uplift by a wide margin</td></tr>
+  </tbody>
+</table>
+
+<p><strong>The £2.0–2.5 bn IHS uplift is, in our forensic reading, fiscal illusion.</strong> It is gross revenue without netting the lost contribution from accelerated departures, refused arrivals, and the second-order effect on service-dependent sectors. The £333.7 bn against £331 bn welfare–tax crossover is made structurally permanent by exactly the policy purporting to repair the fiscal position.</p>
+
+<!-- ============ 6. REFORM'S DISBELIEF ============ -->
+<h2><span class="num">6.</span> Reform's Deportation Claim — Why Even Reform Does Not Believe It</h2>
+<p>The Captain's observation deserves formal record. Reform's leadership do not believe their own ILR-deportation claim for three observable reasons.</p>
+<div class="grid-4">
+  <div class="pp" style="border-left-color: var(--accent);">
+    <div class="tag">Observable Tell 1</div>
+    <h4>No Legal Mechanism Published</h4>
+    <p>No White Paper. No draft Bill clause. No ECHR-withdrawal sequencing. Genuine policy intent produces drafted instruments. Performative rhetoric does not.</p>
+  </div>
+  <div class="pp" style="border-left-color: var(--accent);">
+    <div class="tag">Observable Tell 2</div>
+    <h4>No Operational Costing</h4>
+    <p>Removing even 100,000 ILR holders requires detention capacity, charter flights, bilateral readmission agreements, and a multi-year legal pipeline. Reform's published costings do not reach this question.</p>
+  </div>
+  <div class="pp" style="border-left-color: var(--accent);">
+    <div class="tag">Observable Tell 3</div>
+    <h4>Coalition Behaviour</h4>
+    <p>In coalition discussions and council formation, Reform behaves as politicians who expect to govern. Politicians who expect to govern do not legislate impossible things — they legislate damaging things that survive judicial review.</p>
+  </div>
+  <div class="pp" style="border-left-color: var(--rule);">
+    <div class="tag">The Reading</div>
+    <h4>The Cover Function</h4>
+    <p>Reform's deportation rhetoric is the political cover under which a Conservative or Reform-influenced government implements Earned Settlement retrospectively. The rhetoric makes the Statutory Instrument feel like a moderate compromise.</p>
+  </div>
+</div>
+
+<!-- ============ 7. TIMELINE ============ -->
+<h2><span class="num">7.</span> The September/October Window — Forensic Timeline</h2>
+<p>The Home Office's deferral of new rules to September or October, expressly to read the May election outcome, is itself a forensic data point of unusual quality. It establishes that the timing is politically calibrated, not consultation-calibrated. This may be argued in judicial review as evidence of failure to properly weigh consultation responses.</p>
+
+<div class="timeline">
+  <div class="tl-item">
+    <div class="tl-date">November 2025</div>
+    <div class="tl-text">Home Office launches Earned Settlement consultation, inspired by the Danish model. Published on gov.uk.</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-date">12 February 2026</div>
+    <div class="tl-text">Consultation closes. Under Gunning principles, government must now have regard to responses.</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-date">February — May 2026</div>
+    <div class="tl-text">Atypically long deferral period; implementation paused to await electoral signal.</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-date">7 May 2026</div>
+    <div class="tl-text">UK local elections. Reform sealed at 29.34%; NOC dominance confirmed; "season of fragmentation" begins.</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-date">September / October 2026</div>
+    <div class="tl-text">Anticipated Statement of Changes to Immigration Rules. Electoral signal read as mandate for intensification rather than moderation.</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-date">Q4 2026 — Q2 2028</div>
+    <div class="tl-text">Judicial review proceedings; appellate sequence to the Supreme Court; embedded forward emigration accelerates in the interim regardless of legal outcome.</div>
+  </div>
+</div>
+
+<!-- ============ 8. TRUTH TABLE ============ -->
+<h2><span class="num">8.</span> Truth Table</h2>
+<table>
+  <thead><tr><th style="width:33%">Verified</th><th style="width:33%">Assumed</th><th>Unverified</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>Immigration Rules are amended under s.3(2) Immigration Act 1971 via HC paper / negative resolution; no primary legislation or affirmative vote required. <em>BAPIO</em> (2007), <em>Hesham Ali</em> (2016), <em>MM Lebanon</em> (2017), and the Gunning principles establish the legal vulnerabilities of retrospective rule changes. The 5-year ILR framework was the published, relied-upon basis on which current Skilled Worker holders entered the UK. The Home Office consultation closed on 12 February 2026; implementation deferred to September/October 2026. The Earned Settlement model is published on gov.uk. ILR is a vested legal status and cannot be revoked en masse via secondary legislation.</td>
+      <td>That the in-flight cohort is approximately 1.9 to 2.2 million; that 45 to 55 per cent are NHS-relevant; that the IHS revenue uplift would be £2.0 to 2.5 bn per year; that the Skilled Worker application collapse would be 25 to 40 per cent within 12 months; that a Reform-led or Reform-influenced government would frame Earned Settlement intensification as moderate-by-comparison to deportation rhetoric.</td>
+      <td>The precise final wording of the September/October Statement of Changes; the family-asymmetry structure as it will be drafted; the children's status proposal; the transitional provisions (if any) for in-flight Skilled Worker holders; the exact judicial review timetable a coalition of affected employers (NHS trusts, universities, the CBI) would mount; the rate at which embedded forward emigration is presently accumulating ahead of the announcement.</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ============ BOTTOM LINE ============ -->
+<div class="bottom-line">
+  <div class="label">The Forensic Bottom Line</div>
+  <p>The legally impossible threat — mass ILR revocation — is providing political cover for a legally feasible but constitutionally vulnerable retrospective change — Earned Settlement — that, applied to roughly 2 million in-flight Skilled Worker holders and their families, will deliver most of the demographic and fiscal damage of the impossible threat, without ever reaching the floor of the House of Commons.</p>
+</div>
+
+<footer>
+  TarCo Forensic Validation Chain · UK Local Elections 7 May 2026 · Companion bridge to T2SAIM Forensic Narrative v3.1 — The Administrative Possibility Axis<br>
+  Sibling artifacts: <em>legal_impossibility_bridge.html</em> · <em>T2SAIM_Forensic_Narrative_UK_2026_v3_1.html</em> · Internal calibration ledger available on request to qualifying institutional counterparties.
+</footer>
+
+</div>
+</body>
+</html>
