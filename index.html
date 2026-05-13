@@ -20,7 +20,33 @@
   .stamp { position:absolute; top:14px; right:14px; font-family:Helvetica,Arial,sans-serif; font-size:10px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:5px 10px; transform:rotate(14deg); opacity:0.95; border:2.5px solid; z-index:2; }
   .stamp-red { border-color:#b91c1c; color:#b91c1c; background:rgba(255,255,255,0.9); }
   .stamp-gold { border-color:#8a5a00; color:#8a5a00; background:rgba(255,249,230,0.95); }
-  .brief-card { position:relative; background:#f2f4f8; border:1.5px solid #d9d3c2; padding:28px; transition:transform .15s, box-shadow .15s; }
+  .seal-extraordinary {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: 80px;
+    height: 80px;
+    border: 3px double var(--gold);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: Helvetica, Arial, sans-serif;
+    color: var(--gold);
+    text-transform: uppercase;
+    transform: rotate(-20deg);
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: 5;
+    background: transparent;
+    box-shadow: inset 0 0 0 2px rgba(201,168,76,0.1);
+  }
+  .seal-extraordinary span.top { font-size: 8px; font-weight: 800; margin-bottom: 2px; }
+  .seal-extraordinary span.mid { font-size: 11px; font-weight: 900; border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold); padding: 2px 0; }
+  .seal-extraordinary span.bot { font-size: 7px; font-weight: 700; margin-top: 2px; }
+  .brief-card { position:relative; background:#f2f4f8; border:1.5px solid #d9d3c2; padding:28px; transition:transform .15s, box-shadow .15s; overflow: hidden; }
   .brief-card:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(15,26,46,0.08); }
   .brief-card h2 { font-size:20px; margin-bottom:10px; color:var(--rule); }
   .brief-card p { font-size:14px; color:var(--muted); margin-bottom:18px; }
@@ -47,7 +73,20 @@
 <p class="hero-caption">The human cost of rhetorical impossibility — immigrants facing structural uncertainty, UK 2026</p>
 
 <div class="brief-grid">
+  <!-- ROW 1: ANALYSIS & PREDICTION -->
   <div class="brief-row">
+    <div class="brief-card">
+      <div class="stamp stamp-red">Forensic</div>
+      <div class="meta">13 May 2026 · EX-ANTE-POST</div>
+      <h2>Ex Ante Ex Post Analysis</h2>
+      <p>Final forensic validation post-King's Speech. H4 Posterior: 0.84. Gilt Yield: 5.10%.</p>
+      <a href="kings_speech_briefing_last_min.html" class="btn">Read Briefing</a>
+      <div class="seal-extraordinary">
+        <span class="top">TarCo Forensic</span>
+        <span class="mid">EXTRAORDINARY</span>
+        <span class="bot">CANONICAL SEAL</span>
+      </div>
+    </div>
     <div class="brief-card">
       <div class="stamp stamp-red">Prediction</div>
       <div class="meta">11 May 2026 · KINGS-SPEECH-2026</div>
@@ -55,14 +94,31 @@
       <p>State Opening of Parliament — Pre-Event Intelligence Briefing. Crisis Index 0.964.</p>
       <a href="kings_speech_briefing.html" class="btn">Read Briefing</a>
     </div>
+  </div>
+
+  <!-- ROW 2: DELTA & RUPTURE -->
+  <div class="brief-row">
+    <div class="brief-card">
+      <div class="stamp stamp-red">Forensic</div>
+      <div class="meta">13 May 2026 · ANTE-POST-DELTA</div>
+      <h2>Ante–Post–Delta Audit</h2>
+      <p>Comparing 13 May predictions vs. reality. Verification of institutional wedge dynamics.</p>
+      <a href="UK_2026_Ante_Post_Delta_Report.html" class="btn">Read Report</a>
+      <div class="seal-extraordinary">
+        <span class="top">TarCo Forensic</span>
+        <span class="mid">EXTRAORDINARY</span>
+        <span class="bot">CANONICAL SEAL</span>
+      </div>
+    </div>
     <div class="brief-card">
       <div class="stamp stamp-red">Prediction</div>
-      <div class="meta">11 May 2026 · SOCIAL-RUPTURE-UK-2026</div>
+      <div class="meta">13 May 2026 · SYSTEMIC-DECAY</div>
       <h2>The Foundation Layer Rupture</h2>
-      <p>Social Care Exodus, Institutional Decay, and the Asymmetric Warfare Dimension of the UK's 2026 Crisis.</p>
-      <a href="foundation_layer_rupture.html" class="btn">Read Briefing</a>
+      <p>Systemic collapse of the social care sector and its multi-billion-pound impact on the NHS.</p>
+      <a href="foundation_layer_rupture_briefing.html" class="btn">Read Briefing</a>
     </div>
   </div>
+
   <div class="brief-row">
     <div class="brief-card">
       <div class="stamp stamp-red">Bridge</div>
@@ -81,11 +137,16 @@
   </div>
   <div class="brief-row center">
     <div class="brief-card">
-      <div class="stamp stamp-gold">Extraordinary</div>
+      <div class="stamp stamp-red">Forensic</div>
       <div class="meta">11 May 2026 · FRAGMENTED-KINGDOM</div>
       <h2>The Quiet Arithmetic of a Fragmented Kingdom</h2>
       <p>Ante–Post Delta Forensic Report. Quantifying the structural forces behind England's five-party fragmentation.</p>
       <a href="TarCo_Ante_Post_Delta_Forensic_Report_UK_2026.html" class="btn">Read Briefing</a>
+      <div class="seal-extraordinary">
+        <span class="top">TarCo Forensic</span>
+        <span class="mid">EXTRAORDINARY</span>
+        <span class="bot">CANONICAL SEAL</span>
+      </div>
     </div>
   </div>
   <div class="brief-row">

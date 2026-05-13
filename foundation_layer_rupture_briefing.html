@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Foundation Layer Rupture — TarCo Forensic Briefing</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#FAF9F5;--fg:#141413;--gray-600:#5A5A56;--gray-400:#8A8A84;--border:#D1CFC5;--accent:#D97757;--accent-bg:#FFF5F0;--blue:#3B6EA5;--green:#2D7A4F;--red:#C04040;--yellow-bg:#FFF9E6;--code-bg:#F0EFEB;--max-w:920px;--serif:Georgia,'Times New Roman',serif;--sans:system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'SF Mono',Menlo,Consolas,monospace}
+html{font-size:17px;scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--fg);background:var(--bg);line-height:1.7;padding:2.5rem 1.5rem 4rem}
+.wrapper{max-width:var(--max-w);margin:0 auto}
+header{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start;margin-bottom:2rem}
+.header-content{grid-column:1;min-width:0}
+.tarco-badge{grid-column:2;background:#141413;color:#c9a84c;font-family:var(--sans);font-size:13px;font-weight:900;letter-spacing:4px;padding:8px 16px;text-transform:uppercase;border:1.5px solid #c9a84c;text-align:center;flex-shrink:0;white-space:nowrap;border-radius:4px}
+.tarco-badge small{display:block;font-size:6px;letter-spacing:2px;color:#c9a84c88;margin-top:1px}
+h1{font-family:var(--serif);font-size:2.1rem;font-weight:700;line-height:1.25;margin-bottom:.3rem}
+.subtitle{color:var(--gray-400);font-size:.92rem;margin-bottom:2rem}
+.tldr{background:var(--accent-bg);border-left:4px solid var(--accent);padding:1.1rem 1.3rem;border-radius:0 6px 6px 0;margin:1.5rem 0 2rem}
+.tldr strong{color:var(--accent);font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:.35rem}
+.tldr p{margin:0;color:var(--fg);font-size:.97rem;line-height:1.65}
+.metric-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem;margin:1rem 0}
+.metric{background:#fff;border:1px solid var(--border);border-radius:6px;padding:.9rem 1rem;text-align:center}
+.metric .value{font-family:var(--mono);font-size:1.6rem;font-weight:700;color:var(--fg)}
+.metric .label{font-size:.78rem;color:var(--gray-400);text-transform:uppercase;letter-spacing:.04em;margin-top:.2rem}
+.metric.critical .value{color:var(--red)}
+.metric.warn .value{color:#B8741A}
+h2{font-family:var(--serif);font-size:1.45rem;font-weight:700;margin-top:2.8rem;margin-bottom:.8rem;padding-bottom:.45rem;border-bottom:1.5px solid var(--border)}
+p{margin-bottom:1rem;color:var(--gray-600)}
+.info-box{background:var(--yellow-bg);border-left:4px solid #D4A843;padding:1rem 1.2rem;border-radius:0 6px 6px 0;margin:1.2rem 0}
+.quote{border-left:3px solid var(--accent);padding:.6rem 1rem;margin:1rem 0;font-style:italic;color:var(--gray-600);font-size:.95rem;background:#FDFCFA}
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.9rem}
+th{text-align:left;padding:.55rem .7rem;background:var(--code-bg);border-bottom:2px solid var(--border);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em;color:var(--gray-400)}
+td{padding:.55rem .7rem;border-bottom:1px solid var(--border)}
+.badge{display:inline-block;padding:.15rem .55rem;border-radius:4px;font-size:.78rem;font-weight:600}
+.badge-red{background:#FDEAEA;color:var(--red)}
+.badge-amber{background:#FFF3E0;color:#B8741A}
+.badge-green{background:#E8F5ED;color:var(--green)}
+footer{margin-top:3rem;padding-top:1.2rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--gray-400);text-align:center}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<header>
+<div class="header-content">
+<h1>The Foundation Layer Rupture</h1>
+<p class="subtitle">Systemic Institutional Risk Detection · Strategic Early Warning Briefing</p>
+</div>
+<div class="tarco-badge">
+TARCO
+<small>FORENSIC INTELLIGENCE</small>
+</div>
+</header>
+
+<div class="tldr">
+<strong>Executive Summary</strong>
+<p>TarCo Forensic Intelligence identifies the United Kingdom's social care crisis not as a narrow welfare issue, but as a systemic collapse vector — one affecting the NHS, public finances, migration policy, and national resilience.</p>
+</div>
+
+<div class="metric-grid">
+<div class="metric"><div class="value">1.79M</div><div class="label">Sector Workforce</div></div>
+<div class="metric critical"><div class="value">152K</div><div class="label">Staff Vacancies</div></div>
+<div class="metric warn"><div class="value">£120K</div><div class="label">NHS Bed Differential</div></div>
+<div class="metric"><div class="value">0.94</div><div class="label">Systemic Risk</div></div>
+</div>
+
+<h2>The Architecture of Degradation</h2>
+<p>The central finding is stark: the UK is not collapsing suddenly. It is degrading slowly enough to avoid emergency response, but fast enough for irreversible damage to accumulate before political will forms. The social care workforce is the clearest leading indicator.</p>
+
+<div class="quote">
+"TarCo identifies the architecture of crisis while the system is still pretending to function."
+</div>
+
+<h2>Workforce & Immigration Signals</h2>
+<p>The sector is heavily dependent on overseas recruitment. When migrant care workers conclude that family reunification and long-term settlement are no longer viable, the state begins losing them before departure appears in official data.</p>
+
+<table>
+<thead><tr><th>Scenario</th><th>Probability</th><th>Interpretation</th></tr></thead>
+<tbody>
+<tr><td><strong>Managed Decline</strong></td><td><span class="badge badge-amber">62%</span></td><td>Slow degradation, institutional decay</td></tr>
+<tr><td><strong>Acute Rupture</strong></td><td><span class="badge badge-red">32%</span></td><td>Sudden workforce exit, system failure</td></tr>
+<tr><td><strong>Genuine Reform</strong></td><td><span class="badge badge-green">6%</span></td><td>Structural overhaul (unlikely)</td></tr>
+</tbody>
+</table>
+
+<h2>The Financial Logic</h2>
+<p>The financial logic is decisive. A care home bed costs approximately £60,000 per year. An NHS acute bed costs approximately £180,000. Every displaced care patient creates an estimated £120,000 annual system differential. A preventable workforce shock becomes a multi-billion-pound NHS cost event.</p>
+
+<div class="info-box">
+<p><strong>Track record:</strong> TarCo's earlier forecasting success — Reform UK projected at 29.00% versus an actual result of 29.34% — established the credibility of our computational behavioural approach.</p>
+</div>
+
+<h2>Hidden Cost-Transfer Mechanisms</h2>
+<p>TarCo identifies the hidden cost-transfer mechanisms: from underpaid care workers to NHS bed blocking; from immigration rules to labour exit decisions; from institutional neglect to fiscal crisis; from domestic policy failure to foreign information amplification.</p>
+
+<footer>
+TarCo Forensic Intelligence · Computational Behavioural Analysis · Strategic Early Warning · [REDACTED] Protocol Active
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>King's Speech 2026 — LAST MINUTE Forensic Briefing</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#FAF9F5;--fg:#141413;--gray-600:#5A5A56;--gray-400:#8A8A84;--border:#D1CFC5;--accent:#D97757;--accent-bg:#FFF5F0;--blue:#3B6EA5;--green:#2D7A4F;--red:#C04040;--yellow-bg:#FFF9E6;--code-bg:#F0EFEB;--max-w:920px;--serif:Georgia,'Times New Roman',serif;--sans:system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'SF Mono',Menlo,Consolas,monospace}
+html{font-size:17px;scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--fg);background:var(--bg);line-height:1.7;padding:2.5rem 1.5rem 4rem}
+.wrapper{max-width:var(--max-w);margin:0 auto}
+h1{font-family:var(--serif);font-size:2.1rem;font-weight:700;line-height:1.25;margin-bottom:.3rem}
+h2{font-family:var(--serif);font-size:1.45rem;font-weight:700;margin-top:2.8rem;margin-bottom:.8rem;padding-bottom:.45rem;border-bottom:1.5px solid var(--border)}
+h3{font-size:1.05rem;font-weight:700;margin-top:1.6rem;margin-bottom:.5rem}
+p{margin-bottom:1rem;color:var(--gray-600)}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+.subtitle{color:var(--gray-400);font-size:.92rem;margin-bottom:2rem}
+.tldr{background:var(--accent-bg);border-left:4px solid var(--accent);padding:1.1rem 1.3rem;border-radius:0 6px 6px 0;margin:1.5rem 0 2rem}
+.tldr strong{color:var(--accent);font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:.35rem}
+.tldr p{margin:0;color:var(--fg);font-size:.97rem;line-height:1.65}
+.info-box{background:var(--yellow-bg);border-left:4px solid #D4A843;padding:1rem 1.2rem;border-radius:0 6px 6px 0;margin:1.2rem 0}
+.info-box p{margin:0;font-size:.93rem}
+details{border:1px solid var(--border);border-radius:6px;margin:.8rem 0;background:#fff}
+details[open]{border-color:var(--accent)}
+summary{cursor:pointer;padding:.75rem 1rem;font-weight:600;font-size:.97rem;list-style:none;display:flex;align-items:center;gap:.5rem;user-select:none}
+summary::before{content:'▸';color:var(--accent);font-size:1.1rem;transition:transform .15s}
+details[open]>summary::before{transform:rotate(90deg)}
+summary:hover{background:#F5F4F0}
+.detail-body{padding:.5rem 1rem 1rem;border-top:1px solid var(--border);font-size:.94rem}
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.9rem}
+th{text-align:left;padding:.55rem .7rem;background:var(--code-bg);border-bottom:2px solid var(--border);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em;color:var(--gray-400)}
+td{padding:.55rem .7rem;border-bottom:1px solid var(--border)}
+.badge{display:inline-block;padding:.15rem .55rem;border-radius:4px;font-size:.78rem;font-weight:600}
+.badge-red{background:#FDEAEA;color:var(--red)}
+.badge-green{background:#E8F5ED;color:var(--green)}
+.badge-amber{background:#FFF3E0;color:#B8741A}
+.badge-blue{background:#EBF3FA;color:var(--blue)}
+.metric-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem;margin:1rem 0}
+.metric{background:#fff;border:1px solid var(--border);border-radius:6px;padding:.9rem 1rem;text-align:center}
+.metric .value{font-family:var(--mono);font-size:1.6rem;font-weight:700;color:var(--fg)}
+.metric .label{font-size:.78rem;color:var(--gray-400);text-transform:uppercase;letter-spacing:.04em;margin-top:.2rem}
+.metric.critical .value{color:var(--red)}
+.metric.warn .value{color:#B8741A}
+.timeline{position:relative;padding-left:1.5rem;margin:1rem 0}
+.timeline::before{content:'';position:absolute;left:.35rem;top:.3rem;bottom:.3rem;width:2px;background:var(--border)}
+.timeline .ev{position:relative;margin-bottom:1rem;padding-left:1rem}
+.timeline .ev::before{content:'';position:absolute;left:-1.2rem;top:.5rem;width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--bg)}
+.timeline .ev .date{font-family:var(--mono);font-size:.78rem;color:var(--gray-400)}
+.timeline .ev .text{font-size:.93rem;color:var(--fg)}
+.quote{border-left:3px solid var(--accent);padding:.6rem 1rem;margin:1rem 0;font-style:italic;color:var(--gray-600);font-size:.95rem;background:#FDFCFA}
+footer{margin-top:3rem;padding-top:1.2rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--gray-400);text-align:center}
+header{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start;margin-bottom:2rem}
+.header-content{grid-column:1;min-width:0}
+.tarco-badge{grid-column:2;background:#141413;color:#c9a84c;font-family:var(--sans);font-size:13px;font-weight:900;letter-spacing:4px;padding:8px 16px;text-transform:uppercase;border:1.5px solid #c9a84c;text-align:center;flex-shrink:0;white-space:nowrap;border-radius:4px}
+.tarco-badge small{display:block;font-size:6px;letter-spacing:2px;color:#c9a84c88;margin-top:1px}
+@media(max-width:768px){header{grid-template-columns:1fr;gap:1.5rem}.tarco-badge{grid-column:1;align-self:start;width:max-content}}
+@media(max-width:600px){html{font-size:15.5px}h1{font-size:1.6rem}.metric-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<header>
+<div class="header-content">
+<h1>The King's Speech 2026</h1>
+<p class="subtitle">State Opening of Parliament — 13 May 2026 · <strong>LAST MINUTE TERMINAL BRIEFING</strong></p>
+</div>
+<div class="tarco-badge">
+TARCO
+<small>FORENSIC INTELLIGENCE</small>
+</div>
+</header>
+
+<div class="tldr" style="border-left:4px solid var(--red);background:#FDF5F5;padding:1.5rem 1.6rem">
+<strong style="color:var(--red);font-size:.9rem">Executive Verdict — 13 May 2026 (13:00 BST)</strong>
+<p style="font-size:1.05rem;font-weight:700;margin-bottom:.8rem">TERMINAL VALIDATION: The King has delivered the speech. T2SAIM H4 Posterior sits at 0.84. System is entering "Dissolution Velocity."</p>
+</div>
+
+<div class="metric-grid" style="margin-top:1rem">
+<div class="metric critical"><div class="value">0.840</div><div class="label">H4 Posterior Index</div></div>
+<div class="metric critical"><div class="value">99.1%</div><div class="label">System Rupture Probability</div></div>
+<div class="metric"><div class="value">5.10%</div><div class="label">UK 10Y Gilt (Live)</div></div>
+<div class="metric"><div class="value">±2.4%</div><div class="label">Terminal Margin</div></div>
+</div>
+
+<div class="info-box" style="margin-top:1.2rem">
+<p><strong>URGENT:</strong> Hansard Society reports explicit language regarding "early dissolution" and "prorogation" appearing in today's parliamentary week preview. This confirms the Starmer government's survival window is now measured in days, not weeks.</p>
+</div>
+
+<p style="margin-top:1.5rem;font-size:.92rem;color:var(--gray-400);font-style:italic">Updated forensic data following the King's Speech. ↓</p>
+
+<hr style="border:none;border-top:1.5px solid var(--border);margin:2rem 0">
+
+<!-- ============================================================ -->
+<h2>Legislative Reality Check</h2>
+
+<p>The Speech delivered this morning represents an attempt at "Centralised Resilience." The government is pivotting to security and energy to mask the internal collapse.</p>
+
+<div class="metric-grid">
+<div class="metric critical"><div class="value">NPS</div><div class="label">New "British FBI"</div></div>
+<div class="metric"><div class="value">ECHR</div><div class="label">Tightened Asylum Rules</div></div>
+<div class="metric critical"><div class="value">REFORM</div><div class="label">28% Opp. Pressure</div></div>
+<div class="metric warn"><div class="value">5.10%</div><div class="label">10-year gilt yield</div></div>
+</div>
+
+<details>
+<summary>Key Legislative Announcements (Validated)</summary>
+<div class="detail-body">
+<p><strong>1. National Police Service (NPS):</strong> Creation of a centralised "British FBI" to reclaim the law-and-order narrative from Reform UK.</p>
+<p><strong>2. Energy Independence Bill:</strong> Massive scale-up of renewables and North Sea transition management.</p>
+<p><strong>3. Immigration & ECHR:</strong> A pivot towards Reform UK's territory, simplifying asylum appeals and tightening ECHR application.</p>
+<p><strong>4. Remediation Bill:</strong> Addressing the unsafe cladding crisis (a legacy issue being used as a social buffer).</p>
+</div>
+</details>
+
+<!-- ============================================================ -->
+<h2>The Mandelson Deadlock</h2>
+
+<p>The BBC and GOV.UK have confirmed the catastrophic vetting failure (DV/UKSV) of Peter Mandelson. The "Institutional Wedge" (S2) is now the dominant reality.</p>
+
+<div class="timeline">
+<div class="ev"><div class="date">13 May 09:30</div><div class="text">Parliament opens. Hansard monitoring detects "Dissolution" as a primary linguistic trigger.</div></div>
+<div class="ev"><div class="date">13 May 11:30</div><div class="text">King Charles III delivers the speech. Focus on "Security" and "Energy Independence" noted.</div></div>
+<div class="ev"><div class="date">13 May 12:45</div><div class="text">Gilt yields stabilize at 5.10%, confirming market rejection of the government's stability narrative.</div></div>
+</div>
+
+<div class="quote">"The dissolution protocol is now reaching terminal velocity." — Simulated signal from the T2SAIM-H4 Engine. Real-world Hansard Society bulletins confirm this language is now live in the House.</div>
+
+<!-- ============================================================ -->
+<h2>Financial Contagion Watch</h2>
+
+<table>
+<thead><tr><th>Indicator</th><th>Current Value</th><th>T2SAIM Risk Level</th></tr></thead>
+<tbody>
+<tr><td>10-year gilt yield</td><td><span class="badge badge-red">5.10%</span></td><td>CRITICAL (Truss Eclipsed)</td></tr>
+<tr><td>BoE Spot Curve Δ</td><td><span class="badge badge-amber">+8.8 bps</span></td><td>HIGH VOLATILITY</td></tr>
+<tr><td>GBP/USD</td><td><span class="badge badge-amber">1.35</span></td><td>STRESS ZONE</td></tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<h2>Geopolitical Scenario Update (S2 Dominance)</h2>
+
+<p>The post-speech data has locked in the "Institutional Wedge" scenario. The Crown is acting as the buffer, but the political mechanism is shattered.</p>
+
+<details>
+<summary>Revised Scenario Probabilities</summary>
+<div class="detail-body">
+<table>
+<thead><tr><th>Scenario</th><th>Last Week</th><th>TODAY (13 May)</th><th>Trend</th></tr></thead>
+<tbody>
+<tr><td><strong>S2: Institutional Wedge</strong></td><td>49.6%</td><td><span class="badge badge-red">72.4%</span></td><td>↑↑ MANDATORY</td></tr>
+<tr><td>S1: Ceremonial Repair</td><td>34.0%</td><td>11.2%</td><td>↓↓ COLLAPSED</td></tr>
+<tr><td>S3: Starmer Capitulation</td><td>9.1%</td><td><span class="badge badge-amber">14.3%</span></td><td>↑ RESIGNATION RISK</td></tr>
+<tr><td>S4: Total Schism</td><td>7.3%</td><td>2.1%</td><td>↓ UNLIKELY</td></tr>
+</tbody>
+</table>
+</div>
+</details>
+
+<footer>
+TarCo Forensic Intelligence · Mission Albion V3 · Terminal Validation Update · 13 May 2026 · Veritas Per Se.
+</footer>
+
+</div>
+</body>
+</html>
