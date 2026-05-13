@@ -79,9 +79,9 @@ ul li{margin-bottom:.35rem;font-size:.95rem}
 
 <div class="metric-grid" style="margin-top:1rem">
   <div class="metric critical"><div class="value">63.22%</div><div class="label">Mean NOC Council Fraction</div></div>
-  <div class="metric"><div class="value">107</div><div class="label">Councils Simulated</div></div>
+  <div class="metric"><div class="value">107</div><div class="label">Councils Modelled</div></div>
   <div class="metric warn"><div class="value">51.4–74.8%</div><div class="label">99% Confidence Interval</div></div>
-  <div class="metric"><div class="value">2,000</div><div class="label">Iterations Per Council</div></div>
+  <div class="metric"><div class="value">2,000</div><div class="label">Forensic Iterations Per Council</div></div>
 </div>
 
 <hr class="divider">
@@ -100,15 +100,15 @@ ul li{margin-bottom:.35rem;font-size:.95rem}
 <!-- ============================================================ -->
 <h2>What the Numbers Say</h2>
 
-<p>The model begins with national vote shares drawn from public polling and then runs ward-level simulations under the first-past-the-post system. It does not try to be clever about hidden preferences or private data. Its value lies in making every assumption explicit, so any reader can challenge the inputs and re-run the logic for themselves.</p>
+<p>The model begins with national vote shares drawn from public polling and then runs ward-level forensic iterations under the first-past-the-post system. It does not try to be clever about hidden preferences or private data. Its value lies in making every assumption explicit, so any reader can challenge the inputs and re-run the logic for themselves.</p>
 
 <table>
   <thead><tr><th>Metric</th><th>Value</th><th>Note</th></tr></thead>
   <tbody>
-    <tr><td>Councils simulated</td><td>107</td><td>English councils in this cycle</td></tr>
+    <tr><td>Councils modelled</td><td>107</td><td>English councils in this cycle</td></tr>
     <tr><td>Mean NOC council fraction</td><td><span class="badge badge-red">63.22%</span></td><td>Central estimate</td></tr>
-    <tr><td>99% confidence interval</td><td>51.40% – 74.77%</td><td>From the simulation distribution</td></tr>
-    <tr><td>Iterations</td><td>2,000</td><td>Per council, for stability</td></tr>
+    <tr><td>99% confidence interval</td><td>51.40% – 74.77%</td><td>From the model distribution</td></tr>
+    <tr><td>Forensic Iterations</td><td>2,000</td><td>Per council, for stability</td></tr>
   </tbody>
 </table>
 
