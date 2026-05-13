@@ -17,11 +17,11 @@ header{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start;ma
 h1{font-family:var(--serif);font-size:2.5rem;font-weight:700;line-height:1.25;margin-bottom:.3rem}
 .subtitle{color:var(--gray-400);font-size:.92rem;margin-bottom:2rem;text-transform: uppercase; letter-spacing: 1px;}
 .tldr{background:var(--red);color:white;padding:1.5rem 1.6rem;border-radius:4px;margin:1.5rem 0 2rem}
-.tldr strong{font-size:.9rem;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:.35rem}
-.tldr p{margin:0;font-size:1.1rem;font-weight:700;line-height:1.4}
+.tldr strong{font-size:.9rem;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:.35rem;color:white;}
+.tldr p{margin:0;font-size:1.1rem;font-weight:700;line-height:1.4;color:white;}
 .metric-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:2rem 0}
 .metric{background:#fff;border:1px solid var(--border);border-radius:6px;padding:1.2rem;text-align:center;box-shadow: 0 4px 6px rgba(0,0,0,0.02);}
-.metric .value{font-family:var(--mono);font-size:2rem;font-weight:700;color:var(--fg)}
+.metric .value{font-family:var(--mono);font-size:1.6rem;font-weight:700;color:var(--fg);word-break:break-word;}
 .metric .label{font-size:.78rem;color:var(--gray-400);text-transform:uppercase;letter-spacing:.04em;margin-top:.4rem}
 .metric.critical .value{color:var(--red)}
 .metric.warn .value{color:#B8741A}
@@ -63,7 +63,7 @@ TARCO
 
 <div class="metric-grid">
 <div class="metric critical"><div class="value">91.4%</div><div class="label">Insolvency Probability (12m)</div></div>
-<div class="metric critical"><div class="value">HF</div><div class="label">Forensic Model Accuracy</div></div>
+<div class="metric critical"><div class="value">High-Fidelity</div><div class="label">Model Convergence</div></div>
 <div class="metric warn"><div class="value">£925</div><div class="label">Intl Student Levy / Year</div></div>
 <div class="metric"><div class="value">45%</div><div class="label">Providers in Deficit</div></div>
 </div>
