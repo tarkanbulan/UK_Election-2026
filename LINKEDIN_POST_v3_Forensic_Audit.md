@@ -4,7 +4,7 @@
 
 The United Kingdom has entered a period of structural phase transition. 
 
-TarCo Forensic Intelligence has finalized **Forensic Audit v3.1**, leveraging 10 million model iterations to map the collapse of governing capacity following the 7 May electoral rupture. While traditional analysts await official statements, TarCo’s high-fidelity instrumentation is already tracking the terminal velocity of the current administration.
+TarCo Forensic Intelligence has finalized **Forensic Audit v3.1**, leveraging high-fidelity model iterations to map the collapse of governing capacity following the 7 May electoral rupture. While traditional analysts await official statements, TarCo’s high-fidelity instrumentation is already tracking the terminal velocity of the current administration.
 
 ### 🖖 The Forensic Briefing: Key Outcomes
 

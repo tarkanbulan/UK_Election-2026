@@ -104,6 +104,12 @@
       "event_type": "POLLING_DATA",
       "description": "Automated yield capture for Event-Study Engine.",
       "yield_10y": 5.07
+    },
+    {
+      "timestamp": "2026-05-13T17:03:11.173645Z",
+      "event_type": "POLLING_DATA",
+      "description": "Automated yield capture for Event-Study Engine.",
+      "yield_10y": 5.09
     }
   ],
   "variable_matrix": {
