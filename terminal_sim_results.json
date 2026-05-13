@@ -1,0 +1,16 @@
+{
+  "timestamp": "2026-05-13T17:25:52.465627",
+  "mission": "MISSION_ALBION_V3.1_SIM",
+  "ke_adjusted": 0.6375,
+  "probabilities": {
+    "Gilt_Yield_5.25": 0.7258993,
+    "Gilt_Yield_5.40": 0.1841283,
+    "Snap_Election_May_18_Week": 0.5452903,
+    "Cabinet_Collapse_Total": 0.6665644
+  },
+  "conclusions": [
+    "Gilt Yield has a 72% probability of breaching the 5.25% Policy Error threshold by May 18.",
+    "Cabinet Resignations are in a 'Normative Contagion' phase with 85% probability of exceeding 15 members.",
+    "Snap Election call is now the 'Dominant Equilibrium' with a 64% probability in the May 18-22 window."
+  ]
+}
