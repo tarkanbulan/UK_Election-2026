@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TarCo · 五輪書 NIKKEI 40K — Go Rin no Sho</title>
+<style>
+  :root{
+    --ink:#0b0c10; --paper:#0f1117; --mist:#171a22; --line:#2a2f3c;
+    --txt:#e8eaf0; --dim:#8b93a7;
+    --chi:#c9a14a;   /* 地 Earth — gold */
+    --sui:#3aa6ff;   /* 水 Water — blue */
+    --ka:#ff3b30;    /* 火 Fire — red  */
+    --fu:#2ecc71;    /* 風 Wind — green */
+    --ku:#a855f7;    /* 空 Void — violet */
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--ink);color:var(--txt);
+    font:16px/1.9 "Yu Mincho","Hiragino Mincho ProN",Georgia,serif;
+    padding:48px 20px;
+    background-image:radial-gradient(circle at 80% 0,rgba(168,85,247,.06),transparent 45%),
+                     radial-gradient(circle at 0 100%,rgba(58,166,255,.05),transparent 45%);}
+  .wrap{max-width:900px;margin:auto}
+  .crest{text-align:center;margin-bottom:8px;font-size:13px;letter-spacing:8px;color:var(--chi);text-transform:uppercase}
+  h1{text-align:center;font-size:40px;letter-spacing:14px;color:var(--txt);margin:6px 0}
+  .romaji{text-align:center;color:var(--dim);font-style:italic;letter-spacing:5px;font-size:14px;margin-bottom:6px}
+  .musashi{text-align:center;color:var(--dim);font-size:13px;letter-spacing:1px;
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;margin:26px 0 40px}
+  .ring{background:var(--paper);border:1px solid var(--line);border-radius:14px;
+    margin:26px 0;padding:34px 38px;position:relative;overflow:hidden}
+  .ring::before{content:attr(data-k);position:absolute;right:-10px;top:-26px;
+    font-size:150px;font-weight:700;opacity:.07;line-height:1}
+  .ring.chi{border-left:6px solid var(--chi)} .ring.chi::before{color:var(--chi)}
+  .ring.sui{border-left:6px solid var(--sui)} .ring.sui::before{color:var(--sui)}
+  .ring.ka {border-left:6px solid var(--ka)}  .ring.ka::before {color:var(--ka)}
+  .ring.fu {border-left:6px solid var(--fu)}  .ring.fu::before {color:var(--fu)}
+  .ring.ku {border-left:6px solid var(--ku)}  .ring.ku::before {color:var(--ku)}
+  .rh{display:flex;align-items:baseline;gap:16px;margin-bottom:6px}
+  .rh .k{font-size:34px;font-weight:700}
+  .ring.chi .rh .k{color:var(--chi)} .ring.sui .rh .k{color:var(--sui)}
+  .ring.ka .rh .k{color:var(--ka)} .ring.fu .rh .k{color:var(--fu)} .ring.ku .rh .k{color:var(--ku)}
+  .rh .t{font-size:20px;letter-spacing:2px;color:var(--txt)}
+  .rh .r{font-size:12px;font-style:italic;color:var(--dim);letter-spacing:2px}
+  .sub{color:var(--dim);font-size:13px;margin:4px 0 18px;letter-spacing:1px}
+  table{border-collapse:collapse;width:100%;font-size:14px;margin:14px 0}
+  th,td{border:1px solid var(--line);padding:11px 14px;text-align:left;vertical-align:top}
+  th{background:var(--mist);color:var(--dim);font-size:11px;letter-spacing:2px;text-transform:uppercase}
+  .tag{font-size:11px;font-weight:700;padding:3px 9px;border-radius:14px;letter-spacing:1px;white-space:nowrap}
+  .t-real{background:rgba(201,161,74,.16);color:var(--chi)}
+  .t-flow{background:rgba(58,166,255,.16);color:var(--sui)}
+  .t-burn{background:rgba(255,59,48,.16);color:var(--ka)}
+  .t-void{background:rgba(168,85,247,.16);color:var(--ku)}
+  p{margin:12px 0}
+  .kuro{text-align:center;font-style:italic;color:var(--dim);font-size:16px;margin:24px 0;letter-spacing:1px}
+  .sync{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:18px 0 8px}
+  .sync div{background:var(--mist);border:1px solid var(--line);border-radius:10px;
+    padding:10px 16px;font-size:12px;letter-spacing:1px;color:var(--dim)}
+  .sync div b{display:block;color:var(--txt);font-size:15px;letter-spacing:2px;margin-top:2px}
+  .foot{text-align:center;color:var(--dim);font-size:11px;letter-spacing:3px;
+    margin-top:34px;border-top:1px solid var(--line);padding-top:20px;text-transform:uppercase}
+  .seal{display:inline-block;border:2px solid var(--ka);color:var(--ka);
+    padding:8px 14px;border-radius:8px;font-weight:700;letter-spacing:2px;
+    transform:rotate(-5deg);font-size:13px}
+
+  /* Navigation Bridge style */
+  .nav-bridge {
+    background: rgba(23, 26, 34, 0.4);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 35px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 10;
+  }
+  .nav-bridge.bottom-bridge {
+    margin-top: 35px;
+    margin-bottom: 0;
+  }
+  .nav-title {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--chi);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    font-weight: bold;
+  }
+  .nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--mist);
+    border: 1px solid var(--line);
+    color: var(--dim);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+  }
+  .nav-item:hover, .nav-item.active {
+    background: var(--chi);
+    color: var(--ink);
+    border-color: var(--chi);
+  }
+  .nav-num {
+    background: rgba(255, 255, 255, 0.1);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+  }
+  .nav-item.active .nav-num {
+    background: rgba(0, 0, 0, 0.15);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- NAVIGATION BRIDGE -->
+  <div class="nav-bridge">
+    <div class="nav-title">TarCo Computational™ — ATLAMA KÖPRÜSÜ</div>
+    <div class="nav-links">
+      <a href="NIKKEI_40K_TARCO_COMPUTATIONAL_HONOR_REPORT.html" class="nav-item">
+        <span class="nav-num">1</span>
+        <span class="nav-label">Honor Report</span>
+      </a>
+      <a href="james 2SAIM-FACE-SAVING COMPUTATIONAL BEHAVIORAL FORENSICS ARŞİVİ v01 james.html" class="nav-item">
+        <span class="nav-num">2</span>
+        <span class="nav-label">James Forensic Archive</span>
+      </a>
+      <a href="NIKKEI_40K_GORIN_NO_SHO_TARCO.html" class="nav-item active">
+        <span class="nav-num">3</span>
+        <span class="nav-label">Go Rin no Sho (Beş Halka)</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="crest">TarCo · Computational Behavioral Forensics</div>
+  <h1>五 輪 書</h1>
+  <div class="romaji">Go Rin no Sho — Beş Halka · NIKKEI 40K</div>
+  <div class="musashi">「構えあって構えなし」 — <i>Kamae atte kamae nashi</i> — Duruş vardır, ama duruş yoktur. Cevabı, cevap vermeyerek veririz. — 宮本武蔵</div>
+
+  <!-- 地 EARTH -->
+  <div class="ring chi" data-k="地">
+    <div class="rh"><span class="k">地</span><span class="t">CHI — TOPRAK · Sağlam Zemin</span><span class="r">chi no maki</span></div>
+    <div class="sub">Ayağını basabileceğin yer. Yalnızca gözlenmiş, tartışılmaz olan.</div>
+    <table>
+      <tr><th>Gerçek</th><th>Tür</th><th>Not</th></tr>
+      <tr><td>Nikkei 225, 4 Mart 2024'te ilk kez 40.000'i aştı (kapanış 40.109,23)</td><td><span class="tag t-real">GÖZLENDİ</span></td><td>Yön tezi ex-post doğru</td></tr>
+      <tr><td>15 Ocak 2024 raporunun ana yön çağrısı tuttu</td><td><span class="tag t-real">GÖZLENDİ</span></td><td>Sezgi güçlü</td></tr>
+      <tr><td>1989 Aralık zirvesi 38.957 Yen idi</td><td><span class="tag t-real">GÖZLENDİ</span></td><td>Tarihsel referans</td></tr>
+    </table>
+    <p class="kuro">Toprak: övgü hak edildiği yerde verilir. Yön doğruydu — bunu onurla söyleriz.</p>
+  </div>
+
+  <!-- 水 WATER -->
+  <div class="ring sui" data-k="水">
+    <div class="rh"><span class="k">水</span><span class="t">SUI — SU · Akışkan Mekanizma</span><span class="r">sui no maki</span></div>
+    <div class="sub">Kabın şeklini alır. Makul ama henüz katı değil — test ister.</div>
+    <table>
+      <tr><th>Mekanizma</th><th>Tür</th><th>Onurlu dil</th></tr>
+      <tr><td>Jeopolitik hizalanma (Batı–Japonya ekseni)</td><td><span class="tag t-flow">AKIŞKAN</span></td><td>Test edilebilir mekanizma adayı</td></tr>
+      <tr><td>Yabancı sermaye + yarı iletken yatırımları</td><td><span class="tag t-flow">AKIŞKAN</span></td><td>Katkı sinyali; nedensellik kanıtı değil</td></tr>
+      <tr><td>Zayıf yen + negatif reel faiz</td><td><span class="tag t-flow">AKIŞKAN</span></td><td>Yön duyarlılığı; ölçülmeli</td></tr>
+    </table>
+    <p class="kuro">Su mekanizmayı taşır ama şeklini garanti etmez. "Makul" demek "kanıtlandı" demek değildir.</p>
+  </div>
+
+  <!-- 火 FIRE -->
+  <div class="ring ka" data-k="火">
+    <div class="rh"><span class="k">火</span><span class="t">KA — ATEŞ · Dikkatsizi Yakan</span><span class="r">ka no maki</span></div>
+    <div class="sub">Tutarsan elini yakar. Bunlar gerçek değil — bunlar <b>sınav</b>dır. Onurlu Japon etiğinde yalan yoktur; o yüzden bu kesinlikleri yalan değil, ateş bildik.</div>
+    <table>
+      <tr><th>Cazip Cümle</th><th>Tür</th><th>Neden yakar</th></tr>
+      <tr><td>"Buffett 1969 Dreyfus'u hatırlayıp bilerek uyguladı"</td><td><span class="tag t-burn">ATEŞ</span></td><td>Kimse niyet okuyamaz. Pozisyon gerçek; niyet anlatı.</td></tr>
+      <tr><td>"40 yıl çıkış / 20 yıl iniş kuraldır → 2060'a kadar sürer"</td><td><span class="tag t-burn">ATEŞ</span></td><td>n=2'den kâinat yasası çıkmaz. Hikâye ≠ kanıt.</td></tr>
+      <tr><td>"Nikkei 1871-1919 rallisi"</td><td><span class="tag t-burn">ATEŞ</span></td><td>Nikkei 225 endeksi 1950'de kuruldu — anakronizm</td></tr>
+      <tr><td>Kaynaksız rakamlar (3 trilyon ¥, %36,8→%50)</td><td><span class="tag t-burn">ATEŞ</span></td><td>Kaynaksız sayı, sayı değil iddiadır</td></tr>
+      <tr><td>"Mayıs 2026 itibarıyla 61.409 Yen"</td><td><span class="tag t-burn">ATEŞ</span></td><td>Doğrulanmamış ileri-tarih verisi — gerçek diye sunulamaz</td></tr>
+    </table>
+    <p class="kuro">Ateşi "gerçek" diye masaya koyan, <i>kao o tsubusu</i> — yüzünü kendi eliyle ezer.</p>
+  </div>
+
+  <!-- 風 WIND -->
+  <div class="ring fu" data-k="風">
+    <div class="rh"><span class="k">風</span><span class="t">FŪ — RÜZGÂR · Diğer Ekoller</span><span class="r">fū no maki</span></div>
+    <div class="sub">Musashi rüzgâr kitabında rakip ekolleri tanır. Burada iki duruşu karşılaştırırız.</div>
+    <table>
+      <tr><th>Prestij Ekolü (yüz kurtarma)</th><th>TarCo / Veritas Ekolü</th></tr>
+      <tr><td>"Zaten hep boğaydık" / "öngörülemez şoktu"</td><td>Yön doğruydu; ama her cümleyi kanıt seviyesine bağlarız</td></tr>
+      <tr><td>Bluff'u "%100 Doğrulandı" diye damgalar</td><td>Kalibre olmayan yere sayı koymaz</td></tr>
+      <tr><td>Rakibi küçük düşürerek itibar devşirir</td><td>Onuru susarak değil, blöf yapmayarak korur</td></tr>
+    </table>
+    <p class="kuro">Rüzgâr: başkasının yüzünü ezerek kendi yüzünü kazanamazsın. <i>Masakatsu agatsu</i> — gerçek zafer, kendine karşı.</p>
+  </div>
+
+  <!-- 空 VOID -->
+  <div class="ring ku" data-k="空">
+    <div class="rh"><span class="k">空</span><span class="t">KŪ — BOŞLUK · Teknik Ötesi Açıklık</span><span class="r">kū no maki</span></div>
+    <div class="sub">Musashi'nin son kitabı: tekniğin ötesindeki berraklık. Bilinmeyen, boşlukta kalır — sahte sayıyla doldurulmaz.</div>
+    <p><span class="seal">面目を保つ</span> &nbsp; <i>Menboku o tamotsu</i> — yüzü korumak: kanıtın bittiği yerde gururla durmak.</p>
+    <p>Yön → <b style="color:var(--chi)">güvenilir</b>. Mekanizma → <b style="color:var(--sui)">makul, test gerek</b>. Kesin sayı · 2060 · 61.4K · Buffett'ın aklı → <b style="color:var(--ka)">boşlukta kalır; kimse garanti edemez.</b></p>
+    <p class="kuro">「知らざるを知らずと為す、是れ知るなり」<br><i>Shirazaru o shirazu to nasu, kore shiru nari</i> — Bilmediğini bilmek, gerçek bilgidir.</p>
+  </div>
+
+  <!-- BOTTOM NAVIGATION BRIDGE -->
+  <div class="nav-bridge bottom-bridge">
+    <div class="nav-title">TarCo Computational™ — ATLAMA KÖPRÜSÜ</div>
+    <div class="nav-links">
+      <a href="NIKKEI_40K_TARCO_COMPUTATIONAL_HONOR_REPORT.html" class="nav-item">
+        <span class="nav-num">1</span>
+        <span class="nav-label">Honor Report</span>
+      </a>
+      <a href="james 2SAIM-FACE-SAVING COMPUTATIONAL BEHAVIORAL FORENSICS ARŞİVİ v01 james.html" class="nav-item">
+        <span class="nav-num">2</span>
+        <span class="nav-label">James Forensic Archive</span>
+      </a>
+      <a href="NIKKEI_40K_GORIN_NO_SHO_TARCO.html" class="nav-item active">
+        <span class="nav-num">3</span>
+        <span class="nav-label">Go Rin no Sho (Beş Halka)</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="sync">
+    <div>YER · Tokyo / Bridge<b>NIKKEI</b></div>
+    <div>TR<b>—:—:—</b></div>
+    <div>UK<b>—:—:—</b></div>
+    <div>PT<b>—:—:—</b></div>
+    <div>SP<b>—:—:—</b></div>
+    <div>Temporal Sync<b>17.05.2026</b></div>
+  </div>
+
+  <div class="foot">TarCo Computational™ · 五輪書 Go Rin no Sho · Veritas Per Se &amp; Menboku o Tamotsu · James analyzes — McCoy audits — Kaptan Tarco decides</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TarCo Computational™ — Honor &amp; Deception Test · Nikkei 40K</title>
+    <style>
+        :root {
+            --washi: #f4ede0;
+            --washi2: #efe5d3;
+            --ink: #1c1714;
+            --soft: #5b5147;
+            --vermilion: #b5322b;
+            --gold: #9c7c3c;
+            --line: #d8c9ad;
+            --sallama: #c0271f;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            background: var(--washi);
+            color: var(--ink);
+            font: 16px/1.95 "Hiragino Mincho ProN", "Yu Mincho", Georgia, "Times New Roman", serif;
+            padding: 60px 24px;
+            background-image: radial-gradient(circle at 30% 20%, #fbf5e8 0, transparent 60%);
+        }
+
+        .scroll {
+            max-width: 780px;
+            margin: auto;
+            background: var(--washi2);
+            border: 1px solid var(--line);
+            box-shadow: 0 30px 80px rgba(40, 28, 16, .18);
+            padding: 64px 64px 80px;
+            position: relative
+        }
+
+        .scroll::before {
+            content: "";
+            position: absolute;
+            inset: 14px;
+            border: 1px solid var(--line);
+            pointer-events: none
+        }
+
+        .kanji {
+            font-size: 46px;
+            letter-spacing: 10px;
+            color: var(--vermilion);
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 6px
+        }
+
+        .romaji {
+            text-align: center;
+            color: var(--soft);
+            font-style: italic;
+            letter-spacing: 3px;
+            font-size: 14px;
+            margin-bottom: 4px
+        }
+
+        .trans {
+            text-align: center;
+            color: var(--soft);
+            font-size: 13px;
+            letter-spacing: 1px;
+            margin-bottom: 34px
+        }
+
+        .brand {
+            text-align: center;
+            font-size: 12px;
+            letter-spacing: 6px;
+            color: var(--gold);
+            text-transform: uppercase;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            padding: 12px 0;
+            margin-bottom: 40px
+        }
+
+        h2 {
+            font-size: 19px;
+            color: var(--vermilion);
+            letter-spacing: 2px;
+            margin: 46px 0 16px;
+            border-left: 4px solid var(--vermilion);
+            padding-left: 14px;
+            font-weight: 700
+        }
+
+        p {
+            margin: 14px 0;
+            text-align: justify
+        }
+
+        .lead {
+            font-size: 17px;
+            color: var(--ink)
+        }
+
+        .ma {
+            font-style: italic;
+            color: var(--soft)
+        }
+
+        blockquote {
+            background: var(--washi);
+            border: 1px solid var(--line);
+            padding: 22px 26px;
+            margin: 22px 0;
+            font-size: 14.5px;
+            line-height: 1.85;
+            color: #3a322a
+        }
+
+        blockquote p {
+            margin: 10px 0
+        }
+
+        .sallama {
+            color: var(--sallama);
+            font-style: italic;
+            font-weight: 600;
+            text-decoration: underline wavy rgba(192, 39, 31, .4)
+        }
+
+        .seal {
+            position: absolute;
+            right: 46px;
+            top: 46px;
+            width: 96px;
+            height: 96px;
+            border: 3px solid var(--vermilion);
+            color: var(--vermilion);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            line-height: 1.35;
+            transform: rotate(-7deg);
+            opacity: .88
+        }
+
+        .verdict {
+            background: linear-gradient(180deg, #f7efe0, #efe3cd);
+            border: 2px solid var(--vermilion);
+            padding: 26px 30px;
+            margin: 38px 0;
+            text-align: center
+        }
+
+        .verdict b {
+            color: var(--vermilion);
+            font-size: 18px;
+            letter-spacing: 1px
+        }
+
+        .zen {
+            text-align: center;
+            font-style: italic;
+            color: var(--soft);
+            font-size: 15px;
+            margin: 34px 0;
+            letter-spacing: 1px
+        }
+
+        .masters {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            margin: 24px 0
+        }
+
+        .master {
+            flex: 1;
+            min-width: 210px;
+            background: var(--washi);
+            border: 1px solid var(--line);
+            padding: 18px 20px
+        }
+
+        .master .nm {
+            color: var(--vermilion);
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+            margin-bottom: 6px
+        }
+
+        .master .jp {
+            color: var(--gold);
+            font-size: 12px;
+            letter-spacing: 2px;
+            margin-bottom: 8px
+        }
+
+        .master p {
+            font-size: 13px;
+            line-height: 1.8;
+            margin: 0;
+            color: #473d33
+        }
+
+        .close {
+            margin-top: 50px;
+            border-top: 1px solid var(--line);
+            padding-top: 26px;
+            text-align: center;
+            color: var(--soft);
+            font-style: italic;
+            font-size: 15px;
+            letter-spacing: 1px
+        }
+
+        .foot {
+            text-align: center;
+            color: var(--gold);
+            font-size: 11px;
+            letter-spacing: 3px;
+            margin-top: 30px;
+            text-transform: uppercase
+        }
+
+        /* Nav Bridge & Callout-box styles */
+        .nav-bridge {
+            background: rgba(216, 201, 173, 0.25);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .nav-bridge.bottom-bridge {
+            margin-top: 40px;
+            margin-bottom: 0;
+        }
+
+        .nav-title {
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--washi);
+            border: 1px solid var(--line);
+            color: var(--soft);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            background: var(--vermilion);
+            color: var(--washi);
+            border-color: var(--vermilion);
+        }
+
+        .nav-num {
+            background: rgba(0, 0, 0, 0.08);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+        }
+
+        .nav-item.active .nav-num {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .callout-box {
+            background: rgba(216, 201, 173, 0.15);
+            border-left: 4px solid var(--gold);
+            padding: 18px 20px;
+            margin: 22px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 14.5px;
+        }
+
+        .callout-box h4 {
+            color: var(--vermilion);
+            font-size: 16px;
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scroll">
+        <div class="seal">面目<br>保持<br>TARCO</div>
+
+        <!-- NAVIGATION BRIDGE -->
+        <div class="nav-bridge">
+            <div class="nav-title">TarCo Computational™ — ATLAMA KÖPRÜSÜ</div>
+            <div class="nav-links">
+                <a href="NIKKEI_40K_TARCO_COMPUTATIONAL_HONOR_REPORT.html" class="nav-item active">
+                    <span class="nav-num">1</span>
+                    <span class="nav-label">Honor Report</span>
+                </a>
+                <a href="james 2SAIM-FACE-SAVING COMPUTATIONAL BEHAVIORAL FORENSICS ARŞİVİ v01 james.html" class="nav-item">
+                    <span class="nav-num">2</span>
+                    <span class="nav-label">James Forensic Archive</span>
+                </a>
+                <a href="NIKKEI_40K_GORIN_NO_SHO_TARCO.html" class="nav-item">
+                    <span class="nav-num">3</span>
+                    <span class="nav-label">Go Rin no Sho (Beş Halka)</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="kanji">武士は食わねど高楊枝</div>
+        <div class="romaji">Bushi wa kuwanedo takayōji</div>
+        <div class="trans">"Aç kalsa da samuray kürdanını gururla taşır."</div>
+        <div class="brand">TarCo Computational™ · Behavioral Forensics · Honor &amp; Deception Test</div>
+
+        <p class="lead">Kaptan — onurlu Japon etiğinin çekirdeğinde <span class="ma">makoto</span> (誠 — içtenlik)
+            vardır: söz ile öz birdir, yalan yoktur. Bir metin onurlu bir piyasanın kaderini anlatıyorsa ve içinde
+            temelsiz sıçramalar varsa, bu bir kusur değil — <b>bir sınavdır</b>. Bir <span class="ma">deception
+                test</span>. Ve bu sınavın amacı tahmini değil, <b>okuyanın yüzünü</b> ölçer.</p>
+
+        <p>Aşağıdaki metni olduğu gibi sunuyoruz. Onurlu gözün hemen ayırdığı yerler — kanıtın bittiği, anlatının
+            başladığı sıçramalar — <span class="sallama">italik kırmızı</span> ile işaretlidir. Bunlar yalan değildir;
+            bunlar <i>sınav sorularıdır</i>.</p>
+
+        <blockquote>
+            <p><b>NİKKEİ ENDEKSİ 40 BİNİ GEÇECEK Mİ?</b></p>
+            <p>Nikkei Endeksi 15 Ocak 2024 itibarıyla 36 bin Yen görerek 33 yıl 11 ayın en yüksek seviyesine ulaştı.
+                1989 Aralık'ta tarihi zirvesi 38.957 Yen'i görmüş, 'Japon Balonu' çöküşüyle bir daha bu seviyeyi
+                görememişti.</p>
+            <p>Daiwa Securities teknik analisti Eiji Kinouçi'ye göre Nikkei tarihsel olarak iki çıkış-iniş yaşamış;
+                çıkışlar ~40 yıl, inişler ~20 yıl. <span class="sallama">İlk çıkış 1871-1919 arası 48 yıl sürüyor</span>
+                — <span class="sallama">1946-1989 arası 49 yıl ikinci çıkış</span>. <span class="sallama">Eğer diğer iki
+                    tarihi rallideki gibi olursa bu çıkış 2060 yılına kadar devam edebilir.</span></p>
+            <p>1901'de Rusya-Japonya krizinde İngiltere Japonya'ya destek veriyor. <span class="sallama">Bu desteği
+                    gören Japon piyasası 1919'a kadar süren bir yükselişe geçiyor.</span> Soğuk Savaş'ta Japonya ABD
+                yanında; 1969'da Fed Japon hisse tavsiyesi, Dreyfus Fonu ilk kez giriyor. <span class="sallama">ABD'nin
+                    tam desteğini gören Japon piyasaları 1989'a kadar yeni bir ralliye giriyor.</span></p>
+            <p>Bugün: Ukrayna Krizi ve ABD-Çin mücadelesi; Japonya net biçimde ABD yanında. 2023'te Berkshire Hathaway
+                ilk kez Japon hissesi aldı. <span class="sallama">"Buffet gibi bir guru aldıysa mutlaka bir sebebi
+                    vardır" diyen yatırımcılar Nikkei'de yeni bir ralli başlattı.</span></p>
+            <p><span class="sallama">Buffet'ın o dönem fırsatı kaçırdığını hatırladığını düşünüyoruz. 1969 jeopolitiğini
+                    çok iyi bildiğini düşünüyoruz. Bu sefer yaşanacak ralliyi kaçırmak istemediğini tahmin
+                    ediyoruz.</span></p>
+            <p>2023'te yabancılar net 3 trilyon Yen Japon hissesi aldı; yabancı pay <span class="sallama">%36,8'den
+                    %50'ye</span> yükseldi; capex %17 artışla 31 trilyon Yen'e ulaştı. Negatif reel faiz, deflasyon
+                sonu, yarı iletken yatırımları. <span class="sallama">2024'te ABD ve Japonya'da seçimler var; yönetimler
+                    seçilmek istiyor ve seçileceklerini düşünüyoruz; tarihe bakarsak o yıl ekonomi iyi olur.</span></p>
+            <p><span class="sallama">Sonuç olarak Nikkei Endeksinin 40 bin Yen seviyesini 2024 veya 2025 yılında
+                    geçeceğini düşünüyoruz.</span></p>
+        </blockquote>
+
+        <h2>三人の師 — Üç Usta'nın Gözü</h2>
+
+        <div class="masters">
+            <div class="master">
+                <div class="nm">宮本武蔵 · Miyamoto Musashi</div>
+                <div class="jp">観見二つ · Kan-Ken</div>
+                <p><i>Go Rin no Sho</i>: iki görüş vardır — <span class="ma">ken</span> (gözün gördüğü yüzey) ve <span
+                        class="ma">kan</span> (özü gören iç görü). Bu metnin <span class="ma">ken</span>'i parlaktır;
+                    ama <span class="ma">kan</span> ile bakan, anlatının kanıtı bitirdiği yeri görür. <span
+                        class="ma">"Kamae atte kamae nashi"</span> — duruş vardır, ama duruş yoktur: cevabı, cevap
+                    vermeyerek veririz.</p>
+            </div>
+            <div class="master">
+                <div class="nm">植芝盛平 · Morihei Ueshiba</div>
+                <div class="jp">武産合気 · Takemusu Aiki</div>
+                <p><span class="ma">Masakatsu agatsu</span> — gerçek zafer, kendine karşı zaferdir. Aikidō çarpışmaz;
+                    gelen kuvvete karşı kuvvet koymaz. Biz de bu metnin temelsiz sıçramasına <b>kendi temelsiz
+                        sayımızla</b> karşılık vermeyiz. Yana çekiliriz; merkezi olmayan kuvvet kendi dengesizliğiyle
+                    düşer. Sahte ralli, sahte cevapla değil, <b>boşlukla</b> çöker.</p>
+            </div>
+            <div class="master">
+                <div class="nm">禅 · Zen</div>
+                <div class="jp">明鏡止水 · Meikyō Shisui</div>
+                <p>Durgun su, berrak ayna: zihin kıpırdamazsa gerçeği bozmadan yansıtır. Bu metin suyu <span
+                        class="ma">FOMO</span> ve otorite ile kıpırdatır. <span class="ma">"Furyū monji"</span> — söze
+                    yaslanma. Ay'ı gösteren parmağa değil, Ay'a bak. <span class="ma">Chinmoku wa kin</span> — kalibre
+                    olmayan yerde sukût altındır.</p>
+            </div>
+        </div>
+
+        <h2>判定 — Onur Hükmü</h2>
+
+        <p>Onurlu Japon etiğinde yalan yoktur; o hâlde temelsiz sıçramalar bir aldatma değil, bir <b>sınavdır</b> —
+            okuyanın, kanıtın bittiği yerde durup duramayacağını ölçer. Bu metin yön sezgisinde değerlidir; fakat içine
+            yerleştirilmiş niyet okumaları, döngü kehaneti ve kaynaksız kesinlikler, ona <span
+                class="ma">"rasyonel"</span> görünümlü kesin bir sayıyla cevap verecek olanı tuzağa çağırır.</p>
+
+        <p>Bir samuray, karnı aç olsa da kürdanını taşır: konumu zayıfken blöf yapmaz. Doktor, gölge görse de "%87
+            kanser" demez; "şüpheli iz, ileri inceleme" der — bu korkaklık değil, <span class="ma">menboku</span>'dur
+            (面目 — yüz/onur).</p>
+
+        <div class="verdict">
+            <b>Bu rapora kasıtlı olarak "rasyonel" (sayısal-kesin) bir cevap VERMİYORUZ.</b><br>
+            <span style="font-size:14px;color:#5b5147">Çünkü <i>yüzünüzü kaybetmemek</i> tam olarak budur.<br>
+                Cevap vermek değil — kanıtın izin vermediği yerde durmak, <i>menboku o tamotsu</i>'dur (面目を保つ — yüzü
+                korumak).<br>
+                Sınavı, susarak değil; <b>blöfü onur sanmayarak</b> geçeriz.</span>
+        </div>
+
+        <p class="zen">「知らざるを知らずと為す、是れ知るなり」<br>
+            <i>Shirazaru o shirazu to nasu, kore shiru nari</i><br>
+            "Bilmediğini bilmek — işte gerçek bilgi budur."
+        </p>
+
+        <p>Yön doğruydu; bunu onurla söyleriz. Mekanizma sınanmalıdır; bunu sabırla söyleriz. Ötesinde tek bir kesin
+            sayı söyleyen, bu masada <span class="ma">kao o tsubusu</span> — yüzünü ezer. Karar Kaptan'ındır; ama TarCo,
+            blöfü onur sanan hiçbir satıra mührünü basmaz.</p>
+
+        <!-- ENTEGRE EDİLMİŞ DÜRÜST ÖVGÜ VE NİTELİKSEL AÇIKLAMALAR -->
+        <div class="callout-box">
+            <h4>Önce Dürüst Övgü</h4>
+            <p>
+                Bu raporun <strong>ana yönü doğruydu</strong>: Nikkei gerçekten 40 bini geçti. Bu bir başarıdır ve açıkça teslim
+                ediyoruz. Yön sezgisi güçlüdür.
+            </p>
+        </div>
+
+        <p>Ama bir tahminin <strong>sonradan doğru çıkması</strong>, içindeki her cümlenin kanıtlı olduğu anlamına gelmez. Doğru hedefe, zayıf gerekçeyle de vurulabilir. İşte bu yüzden bazı cümlelere "kesin doğru" demedik — onları <strong>kırmızı dalgalı çizgiyle</strong> işaretledik:</p>
+
+        <ol style="margin:1.2rem 0 1.2rem 1.4rem; line-height:2;">
+            <li><strong>"Buffett şunu hatırladı / şunu düşündü"</strong> — Hiç kimse Warren Buffett'ın aklını okuyamaz. Onun <em>ne aldığı</em> bir gerçektir; <em>neden aldığı</em> bir tahmindir. Onurlu analiz, başkasının niyetini kanıt diye satmaz.</li>
+            <li><strong>"40 yıl çıkış, 20 yıl iniş — kuraldır, 2060'a kadar sürer"</strong> — Elimizde sadece 2 örnek var. İki gözlemden kâinat yasası çıkmaz. Güzel bir hikâye, kanıt değildir.</li>
+            <li><strong>Kaynaksız rakamlar</strong> (3 trilyon yen, %36,8→%50) — Kaynağı gösterilmeyen sayı, sayı değil, iddiadır.</li>
+            <li><strong>"1871-1919 Nikkei rallisi"</strong> — Nikkei 225 endeksi 1950'de kuruldu. O tarihte o endeks yoktu; tarih ekseni gevşek.</li>
+        </ol>
+
+        <div class="callout-box">
+            <h4>Asıl Mesele — ve Onur</h4>
+            <p>
+                Biz size <strong>"kesin %X ihtimalle olur"</strong> demedik. Çünkü o cümle yanlış çıksaydı, sizi <strong>biz</strong> mahcup ederdik. Bir samuray aç bile olsa blöf yapmaz — <em>"Bushi wa kuwanedo takayōji."</em> Yüzü korumak; bilmediğin yerde gururla "bilmiyorum, sadece koşullu" diyebilmektir. Susmak değil — <strong>blöfü onur sanmamaktır.</strong>
+            </p>
+        </div>
+
+        <p>
+            Onurlu Japon etiğinin özünde <em>makoto</em> (誠 — içtenlik) vardır; yalan yoktur. Bu yüzden metindeki temelsiz kesinlikleri bir yalan olarak değil, bir <strong>sınav</strong> gibi okuduk — ve sınavı, abartıya ortak olmayarak geçtik. Bu, size karşı bir saygı ve sevgidir.
+        </p>
+
+        <div style="background:rgba(28,23,20,0.03); border:1px solid rgba(28,23,20,0.08); border-radius:8px; padding:1.6rem 1.8rem; margin-top:1.5rem;">
+            <p style="margin:0; font-size:0.95rem;">
+                <strong>Net Özet (Tek Bakışta):</strong><br>
+                • Yön → <strong>güvenilir</strong> (40K geçildi).<br>
+                • Mekanizma (jeopolitik, yabancı sermaye, zayıf yen) → <strong>makul, ama test gerektirir</strong>.<br>
+                • Kesin sayı · 2060 kehaneti · Buffett'ın aklı → <strong>kimse garanti edemez; biz de etmedik.</strong><br>
+                <span style="color:var(--soft);">Bunu size açıkça söylüyoruz ki, ileride yanılıp mahcup olmayasınız. Dostluk budur.</span>
+            </p>
+        </div>
+
+        <div class="close">
+            Bir sonraki işbirliğimizde <b>"Japonlara bakarız"</b> cümlesiyle görüşmek üzere, Kaptan.<br>
+            Onur, doğru çıkınca değil — yanlış olabileceğin yerde sustuğunda korunur.
+        </div>
+
+        <!-- BOTTOM NAVIGATION BRIDGE -->
+        <div class="nav-bridge bottom-bridge">
+            <div class="nav-title">TarCo Computational™ — ATLAMA KÖPRÜSÜ</div>
+            <div class="nav-links">
+                <a href="NIKKEI_40K_TARCO_COMPUTATIONAL_HONOR_REPORT.html" class="nav-item active">
+                    <span class="nav-num">1</span>
+                    <span class="nav-label">Honor Report</span>
+                </a>
+                <a href="james 2SAIM-FACE-SAVING COMPUTATIONAL BEHAVIORAL FORENSICS ARŞİVİ v01 james.html" class="nav-item">
+                    <span class="nav-num">2</span>
+                    <span class="nav-label">James Forensic Archive</span>
+                </a>
+                <a href="NIKKEI_40K_GORIN_NO_SHO_TARCO.html" class="nav-item">
+                    <span class="nav-num">3</span>
+                    <span class="nav-label">Go Rin no Sho (Beş Halka)</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="foot">TarCo Computational™ · Menboku o Tamotsu · Temporal Sync 17.05.2026</div>
+    </div>
+</body>
+
+</html>
