@@ -1,0 +1,53 @@
+import os
+template = """<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T2SAIM - Temporal Lock / Pending Release</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-dark: #070d19; --gold: #c9a84c; --accent: #8b1a1a; --ink: #f7f4ec; --muted: #8e9bb0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-dark); color: var(--ink); font-family: 'Inter', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; text-align: center; background-image: radial-gradient(at 50% 50%, rgba(15, 26, 46, 0.8) 0px, transparent 100%); }
+        .box { border: 1px solid rgba(201, 168, 76, 0.3); padding: 50px; border-radius: 8px; background: rgba(15, 26, 46, 0.5); backdrop-filter: blur(10px); max-width: 600px; }
+        .icon { font-size: 50px; margin-bottom: 20px; }
+        h1 { font-family: 'Playfair Display', serif; color: var(--gold); margin-bottom: 15px; font-size: 24px; letter-spacing: 1px; }
+        p { color: var(--muted); line-height: 1.6; margin-bottom: 20px; font-size: 15px; }
+        .tr-text { border-left: 3px solid var(--accent); padding-left: 15px; text-align: left; margin-bottom: 20px; }
+        .en-text { border-left: 3px solid var(--gold); padding-left: 15px; text-align: left; }
+        .footer { margin-top: 30px; font-size: 10px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="icon">⏳</div>
+        <h1>TEMPORAL LOCK ACTIVE</h1>
+        <div class="tr-text">
+            <strong style="color: #fff;">TR: Lütfen Bekleyin.</strong><br>
+            Bu rapor henüz erişime açılmamıştır. Gerçek anlatı (Veritas), yayın takvimine göre planlanan günde tam bu adreste deşifre edilecektir. Bizi izlemeye devam edin.
+        </div>
+        <div class="en-text">
+            <strong style="color: #fff;">EN: Please Stand By.</strong><br>
+            The temporal lock on this report has not yet been released. The true narrative will be decrypted and published at this exact address according to our operational schedule. Stay tuned.
+        </div>
+        <div class="footer">Tarco Forensic Intelligence &middot; T2SAIM Protocol</div>
+    </div>
+</body>
+</html>"""
+
+files = [
+    'LM_ECON_COMPARATIVE_KEMALIST_MODEL.html',
+    'LM_ECON_YAVI_BATIRILAN_ULKE_ANALIZI.html',
+    'LM_ECON_DARON_TURKIYE_SURDURULEBILIRLIK.html',
+    'OPERATION_SENTINEL_TURKIYE.html',
+    'OPERATION_SWARM_CONVERGENCE_002.html'
+]
+
+path = r"E:\T2SAIM_GITHUB\UK-2026-elections"
+
+for f in files:
+    with open(os.path.join(path, f), 'w', encoding='utf-8') as out:
+        out.write(template)
+
+print("Placeholders created.")

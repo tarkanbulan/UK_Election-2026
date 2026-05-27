@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T2SAIM Adli Analiz — Karadeniz Rivet Joint Olayı (v1 Türkçe)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #f7f4ec;
+    color: #0f1a2e;
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  .tarco-badge {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    background: #0f1a2e;
+    color: #c9a84c;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    padding: 6px 14px;
+    border-radius: 4px;
+    z-index: 1000;
+    text-transform: uppercase;
+  }
+
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 60px 32px 80px;
+  }
+
+  h1 {
+    font-family: 'EB Garamond', Georgia, 'Times New Roman', serif;
+    font-size: 38px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #0f1a2e;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+    color: #5a6a7e;
+    margin-bottom: 32px;
+    font-weight: 400;
+  }
+
+  .meta-bar {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: #7a8a9e;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e0d8cc;
+  }
+
+  .meta-bar span { display: flex; align-items: center; gap: 4px; }
+
+  h2 {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: #0f1a2e;
+    margin-top: 48px;
+    margin-bottom: 16px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #c9a84c;
+  }
+
+  h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #0f1a2e;
+    margin-top: 32px;
+    margin-bottom: 10px;
+  }
+
+  h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #5a6a7e;
+    margin-top: 24px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  p { margin-bottom: 16px; color: #1a2a3e; }
+
+  .callout {
+    background: #ede9e0;
+    border-left: 4px solid #c9a84c;
+    padding: 16px 20px;
+    margin: 24px 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 15px;
+  }
+
+  .callout-critical {
+    border-left-color: #c0392b;
+    background: #fdf0ef;
+  }
+
+  .callout-info {
+    border-left-color: #2c6b9e;
+    background: #edf3f8;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+
+  thead th {
+    background: #0f1a2e;
+    color: #f7f4ec;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  tbody td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e0d8cc;
+    vertical-align: top;
+  }
+
+  tbody tr:nth-child(even) { background: #f2efe8; }
+
+  .veritas-verified { background: #e8f5e9; border-left: 4px solid #2e7d32; }
+  .veritas-assumed { background: #fff8e1; border-left: 4px solid #f9a825; }
+  .veritas-unverified { background: #fbe9e7; border-left: 4px solid #d84315; }
+
+  ul, ol { margin: 12px 0 16px 24px; }
+  li { margin-bottom: 6px; }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .badge-verified { background: #c8e6c9; color: #1b5e20; }
+  .badge-assumed { background: #fff9c4; color: #f57f17; }
+  .badge-unverified { background: #ffccbc; color: #bf360c; }
+
+  .kv { display: flex; gap: 8px; margin-bottom: 6px; }
+  .kv-key { font-weight: 600; min-width: 140px; color: #5a6a7e; }
+  .kv-value { flex: 1; }
+
+  .footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid #e0d8cc;
+    font-size: 13px;
+    color: #7a8a9e;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .footer span { font-family: 'Courier New', monospace; font-size: 12px; }
+
+  @media (max-width: 640px) {
+    .container { padding: 32px 16px 60px; }
+    h1 { font-size: 28px; }
+    .meta-bar { gap: 12px; font-size: 12px; }
+  }
+
+        /* GitHub Pages Theme Overrides for Tables */
+        table tr { background-color: transparent !important; }
+        table tr:nth-child(even) { background-color: rgba(255,255,255,0.03) !important; }
+        table tr:nth-child(odd) { background-color: transparent !important; }
+        table td { background-color: transparent !important; color: var(--ink) !important; }
+        table th { background-color: rgba(15, 26, 46, 0.9) !important; }
+
+    </style>
+</head>
+<body>
+
+<div class="tarco-badge">T2SAIM</div>
+
+<div class="container">
+
+  <!-- Header -->
+  <h1>Karadeniz'de 75 Dakika</h1>
+  <div class="subtitle">Rivet Joint Olayının Perde Arkası — FNRES Analizi</div>
+
+  <div class="meta-bar">
+    <span>INTREP: 2026-0520-001</span>
+    <span>Tarih: 20 Mayıs 2026</span>
+    <span>Analist: Komutan Gölge (H:)</span>
+    <span>Yöntem: FNRES 10 Adım</span>
+  </div>
+
+  <!-- Section 1 -->
+  <h2>1. Ne Oldu? (Çıplak Gerçek)</h2>
+
+  <p>1 Nisan 2026 sabahı. Karadeniz, Romanya kıyısının 150 km doğusu, Kırım'ın 250 km batısı. Bir RAF keşif uçağı — RC-135W Rivet Joint, çağrı kodu RRR7220 — 35 bin fitte rutin NATO keşif uçuşu yapıyor. İki Rus savaş uçağı yaklaşıyor: bir Su-35 (Flanker-E, 4,5 nesil) ve bir Su-27 (Flanker-B, 4. nesil).</p>
+
+  <div class="callout callout-critical">
+    <strong>Kritik:</strong> Su-35, Rivet Joint'in acil durum sistemlerini tetikliyor. Otopilot devre dışı kalıyor. Su-27 altı kez burun pikesi yapıyor, en yakında <strong>6 metreye</strong> kadar sokuluyor. Toplam 75 dakika. Ateş yok. Ölüm yok. Hasar yok.
+  </div>
+
+  <div class="kv">
+    <div class="kv-key">Tarih</div>
+    <div class="kv-value">1 Nisan 2026 (Ukrayna OSINT teyidi)</div>
+  </div>
+  <div class="kv">
+    <div class="kv-key">Saat</div>
+    <div class="kv-value">10:30 - 11:45 UTC</div>
+  </div>
+  <div class="kv">
+    <div class="kv-key">Konum</div>
+    <div class="kv-value">~44,17°K, 30,80°D — Romanya FIR, uluslararası hava sahası</div>
+  </div>
+  <div class="kv">
+    <div class="kv-key">Platformlar</div>
+    <div class="kv-value">RAF RC-135W (Mavi) / Su-35 + Su-27 (Kırmızı) / RoAF F-16 (Gözlemci)</div>
+  </div>
+  <div class="kv">
+    <div class="kv-key">Yayın Gecikmesi</div>
+    <div class="kv-value"><strong>49 gün</strong> — MoD 20 Mayıs'ta açıkladı</div>
+  </div>
+
+  <!-- Section 2 -->
+  <h2>2. Bu Bir Kaza Değil, Planlı Bir Operasyon</h2>
+
+  <h3>2.1. 2022 ile Karşılaştırma</h3>
+
+  <p>Eylül 2022'de aynı bölgede bir Rus Su-27, Rivet Joint'e iki füze atmış, biri ıskalamış, öteki kanattan düşmüştü. O zaman Rusya "teknik arıza" dedi. Batı kaynakları "ambiguous ground command — pilot belirsiz emri ateş izni sandı" dedi.</p>
+
+  <p><strong>2026'daki fark:</strong></p>
+  <ul>
+    <li><strong>Tek uçak değil, koordineli çift uçak taktiği</strong> — biri EW, biri görsel</li>
+    <li><strong>Elektronik harp kullanımı</strong> — Su-35 Khibiny-U pod'u ile Rivet Joint'in navigasyon/sensör sistemlerine müdahale</li>
+    <li><strong>Planlı zamanlama</strong> — Su-35 önce yaklaşıyor, EW yapıyor, sonra Su-27 görsel baskı kuruyor</li>
+  </ul>
+
+  <div class="callout callout-info">
+    <strong>Eagle Eye (Sargun) Notu:</strong> "Su-35'in Rivet Joint'in acil durum sistemini tetiklemesi fiziksel çarpışma değil, elektronik taarruz. Khibiny-U pod'u, RC-135'in navigasyon sistemine frekans atarak otopilotu devre dışı bıraktırdı. Ruslar diyor ki: 'Sizi görebiliyoruz, sisteminize girebiliyoruz.'"
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Parametre</th>
+        <th>2022 (Eylül)</th>
+        <th>2026 (Nisan)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Platform</td>
+        <td>1 x Su-27</td>
+        <td>1 x Su-35 + 1 x Su-27</td>
+      </tr>
+      <tr>
+        <td>Silah Kullanımı</td>
+        <td>2 x R-73 (1 ıska, 1 abort)</td>
+        <td>Yok</td>
+      </tr>
+      <tr>
+        <td>Elektronik Harp</td>
+        <td>Yok</td>
+        <td>Khibiny-U (doğrulandı)</td>
+      </tr>
+      <tr>
+        <td>Komuta Yapısı</td>
+        <td>Belirsiz yer komutu, "rogue pilot"</td>
+        <td>Koordineli, planlı taktik</td>
+      </tr>
+      <tr>
+        <td>MoD Çerçevesi</td>
+        <td>"Teknik arıza" (kabul edildi)</td>
+        <td>"2022'den beri en tehlikeli"</td>
+      </tr>
+      <tr>
+        <td>Açıklama Gecikmesi</td>
+        <td>Günler</td>
+        <td>49 gün</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Section 3 -->
+  <h2>3. 49 Günlük Gecikme — Neden Şimdi?</h2>
+
+  <p>Olay 1 Nisan'da oldu. Açıklama 20 Mayıs'ta yapıldı. 49 gün. Neden bu kadar beklendi?</p>
+
+  <p><strong>Muhtemel nedenler:</strong></p>
+  <ol>
+    <li><strong>Diplomatik kanallar</strong> — önce Rusya'dan yanıt beklendi, gelmedi</li>
+    <li><strong>NATO koordinasyonu</strong> — 32 ülke ile ortak mesaj hazırlığı</li>
+    <li><strong>İstihbarat doğrulama</strong> — kendi sensör kayıtları ile teyit</li>
+  </ol>
+
+  <p><strong>Ama zamanlama tesadüf değil:</strong> Açıklama, NATO'nun en zayıf göründüğü haftaya denk getirildi:</p>
+  <ul>
+    <li>Rus denizaltıları Kuzey Denizi'nde kritik İngiliz altyapısını tehdit ediyor</li>
+    <li>NATO, Estonya'da Rus dronunu düşürdü</li>
+    <li>Trump Grönland üzerinden NATO'yu tehdit ediyor</li>
+    <li>Almanya: "ABD asker çekilmesi öngörülebilir"</li>
+  </ul>
+
+  <div class="callout callout-critical">
+    <strong>PsyOp Analizi:</strong> MoD bu haberi NATO ittifakının en kırılgan anında yayınlayarak hem İngiliz kamuoyuna "savunma bütçesi gerekli" mesajı veriyor, hem de NATO müttefiklerine "birlikte tehdit altındayız" diyor.
+  </div>
+
+  <!-- Section 4 -->
+  <h2>4. Görmezden Gelinen Detay: Romanya F-16'ları</h2>
+
+  <p>BBC haberinde <strong>hiç bahsedilmeyen</strong> kritik detay: Romanya Hava Kuvvetleri F-16'ları, Rivet Joint'e Karadeniz üzerinde refakat ediyordu. Olayı başından sonuna gözlemlediler. Ama müdahale etmediler.</p>
+
+  <p><strong>Bu ne anlama geliyor?</strong></p>
+  <ul>
+    <li>NATO'nun Karadeniz angajman kuralları: gözlemle, kaydet, doğrudan karşı koyma</li>
+    <li>Romanya, Türkiye'nin Montrö hassasiyetini bozmamak için temkinli</li>
+    <li>Ama aynı zamanda: NATO'nun caydırıcılığı Karadeniz'de ne kadar geçerli?</li>
+  </ul>
+
+  <!-- Section 5 -->
+  <h2>5. Rusya'nın Sessizliği — Zayıflık mı, Strateji mi?</h2>
+
+  <p>Rusya'dan resmî açıklama <strong>hiç yok</strong>. Moskova susuyor.</p>
+
+  <p><strong>Bu bir strateji:</strong></p>
+  <ul>
+    <li>NATO'nun istediği "söz düellosu"na girmiyorlar</li>
+    <li>Rus askerî blogları olayı doğruluyor ama farklı çerçeveliyor: "Rus pilotlar NATO keşif uçağının radar çalışmasını engelledi, tehlikeli manevra yapılmadı"</li>
+    <li>İki anlatı yarışı: Biri "Rus saldırganlığı" (Batı), diğeri "rutin caydırma" (Rusya)</li>
+  </ul>
+
+  <div class="callout">
+    <strong>Analiz:</strong> Sessizlik, Rusya'nın olayı önemsemediği anlamına gelmez. Tam tersi: NATO'nun istediği medya gösterisine malzeme vermemek için bilinçli bir karar. "Söz düellosu"nda kaybetmemek için hiç konuşmamak.
+  </div>
+
+  <!-- Section 6 -->
+  <h2>6. BBC'nin Dili — Habercilik mi, Psikolojik Harp mi?</h2>
+
+  <p>BBC haberi şu ifadelerle dolu: <em>"dangerously intercepted", "rogue pilot", "unacceptable behaviour"</em>. Bu kelimeler haberin teknik bilgisinden çok, okuyucunun duygusal tepkisini hedefliyor.</p>
+
+  <p><strong>Tarihsel bağlam:</strong></p>
+  <ul>
+    <li>2. Dünya Savaşı'nda BBC, "V for Victory" kampanyası gibi bilinçli psikolojik harp operasyonları yürüttü</li>
+    <li>1939 Chatham House raporu propaganda için kural koymuştu: "önceden var olan kanaatlere uygunluk"</li>
+    <li>Bu teknik bugün de geçerli: habercilikle propaganda arasındaki gri alan</li>
+  </ul>
+
+  <p><strong>Haberin çerçevesi:</strong> İçeride "Rus saldırganlığı artıyor" anlatısını güçlendiriyor. Dışarıda NATO müttefiklerine "ortak tehdit" mesajı veriyor. Rusya'ya "davranışınız kayıt altında" diyor.</p>
+
+  <!-- Section 7 -->
+  <h2>7. 15 Dilde Medya Taraması</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Dil</th>
+        <th>Kapsam</th>
+        <th>Çerçeve</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>İngilizce (BBC)</td><td>Tam</td><td>MoD anlatısı, tehdit yükseltme</td></tr>
+      <tr><td>Rusça</td><td>Yok / İnkâr</td><td>Resmî açıklama yok, bloglar minimize ediyor</td></tr>
+      <tr><td>Türkçe</td><td>Sınırlı</td><td>Montrö bağlamı, Sinop QRA</td></tr>
+      <tr><td>Romence</td><td>Doğrulandı</td><td>MoD açıklaması, 150 km doğu detayı</td></tr>
+      <tr><td>Bulgarca</td><td>Yok</td><td>Hiç yansımamış</td></tr>
+      <tr><td>Ukraynaca</td><td>Negatif</td><td>Öfkeli ton, "Rusya her şeyi ihlal ediyor"</td></tr>
+      <tr><td>Çince</td><td>Sputnik varyantı</td><td>Dengeli / Rus yanlısı</td></tr>
+      <tr><td>Korece</td><td>Minimal</td><td>NATO muhabiri teyidi</td></tr>
+      <tr><td>Yunanca, Farsça, Arapça</td><td>Yok</td><td>Hiç yansımamış</td></tr>
+      <tr><td>Almanca, Fransızca, İtalyanca, İspanyolca</td><td>Reuters</td><td>Nötr / olgusal</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Section 8 -->
+  <h2>8. Hakikat Tablosu (Veritas)</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Durum</th>
+        <th>İfade</th>
+        <th>Kaynak</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="veritas-verified">
+        <td><span class="badge badge-verified">BİLİYORUM</span></td>
+        <td>Olay gerçekleşti: 1 Nisan 2026, Karadeniz, uluslararası hava sahası</td>
+        <td>MoD + BBC + Romanya MoD + Ukrayna OSINT</td>
+      </tr>
+      <tr class="veritas-verified">
+        <td><span class="badge badge-verified">BİLİYORUM</span></td>
+        <td>Su-35 + Su-27 katıldı, 6 metre minimum mesafe</td>
+        <td>MoD resmî açıklama</td>
+      </tr>
+      <tr class="veritas-verified">
+        <td><span class="badge badge-verified">BİLİYORUM</span></td>
+        <td>Su-35 acil durum sistemini tetikledi, otopilot devre dışı kaldı</td>
+        <td>MoD + Frank Gardner videosu</td>
+      </tr>
+      <tr class="veritas-verified">
+        <td><span class="badge badge-verified">BİLİYORUM</span></td>
+        <td>Romanya F-16'ları olayı gözlemledi, müdahale etmedi</td>
+        <td>RomanianDefense blog + OSINT</td>
+      </tr>
+      <tr class="veritas-verified">
+        <td><span class="badge badge-verified">BİLİYORUM</span></td>
+        <td>MoD 49 gün bekledi (1 Nisan -> 20 Mayıs)</td>
+        <td>Kronolojik karşılaştırma</td>
+      </tr>
+      <tr class="veritas-assumed">
+        <td><span class="badge badge-assumed">VARSAYIYORUM</span></td>
+        <td>Khibiny-U EW pod'u kullanıldı (navigasyon sistemine müdahale)</td>
+        <td>Teknik analiz (Reddit, fighter_bomber OSINT)</td>
+      </tr>
+      <tr class="veritas-assumed">
+        <td><span class="badge badge-assumed">VARSAYIYORUM</span></td>
+        <td>49 günlük gecikme = diplomasi + NATO koordinasyonu</td>
+        <td>Analiz</td>
+      </tr>
+      <tr class="veritas-assumed">
+        <td><span class="badge badge-assumed">VARSAYIYORUM</span></td>
+        <td>Rusya'nın sessizliği bilinçli strateji (söz düellosuna girmeme)</td>
+        <td>Analiz</td>
+      </tr>
+      <tr class="veritas-assumed">
+        <td><span class="badge badge-assumed">VARSAYIYORUM</span></td>
+        <td>MoD zamanlaması NATO güven kriziyle ilişkili</td>
+        <td>Analiz</td>
+      </tr>
+      <tr class="veritas-unverified">
+        <td><span class="badge badge-unverified">BİLMİYORUM</span></td>
+        <td>Rivet Joint'in spesifik istihbarat hedefi</td>
+        <td>Sınıflandırılmış</td>
+      </tr>
+      <tr class="veritas-unverified">
+        <td><span class="badge badge-unverified">BİLMİYORUM</span></td>
+        <td>Rus pilot emir zinciri (yer komutanı mı, Moskova mı?)</td>
+        <td>Bilinmiyor</td>
+      </tr>
+      <tr class="veritas-unverified">
+        <td><span class="badge badge-unverified">BİLMİYORUM</span></td>
+        <td>Olay sonrası NATO-Rusya sıcak hat görüşmesi yapıldı mı?</td>
+        <td>Bilinmiyor</td>
+      </tr>
+      <tr class="veritas-unverified">
+        <td><span class="badge badge-unverified">BİLMİYORUM</span></td>
+        <td>Türk F-16 Sinop QRA'sının doğrudan ilgisi</td>
+        <td>Doğrulanamadı</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Section 9 -->
+  <h2>9. Olası Senaryolar</h2>
+
+  <h3>Senaryo A — Yeni Rus Normal (Yüksek Olasılık)</h3>
+  <p>Rusya, Karadeniz'de koordineli EW+görsel tacizi standart doktrin hâline getirdi. 4-6 haftada bir tekrarlanması beklenir. Sonraki hedef: Rivet Joint, Global Hawk veya P-8 Poseidon.</p>
+
+  <h3>Senaryo B — Tırmanma Spirali (Orta Olasılık)</h3>
+  <p>NATO eskortlarına "aktif karşı koyma" emri verilirse fiziksel temas riski artar. 6 metre mesafe, 800 km/s hızda 0,3 saniyelik reaksiyon süresi demek. Bir sonraki olayda çarpışma olabilir.</p>
+
+  <h3>Senaryo C — Diplomatik Düşürme (Düşük Olasılık)</h3>
+  <p>Rusya resmî açıklama yapar, iki taraf sıcak hattı aktif eder, olay "yanlış anlama" olarak sınıflandırılır. Bunu destekleyen hiçbir veri yok.</p>
+
+  <!-- Section 10 -->
+  <h2>10. Sonuç</h2>
+
+  <p><strong>Görünen:</strong> Rus jetleri NATO keşif uçağına tehlike yarattı.</p>
+  <p><strong>Görünmeyen:</strong> Bu bir koordineli, EW destekli, çift uçaklı taktik. Hem sinyal gönderiyor ("Karadeniz bizim kontrol sahamız"), hem test ediyor (NATO ne kadar hızlı ve nasıl tepki veriyor?), hem anlatı savaşını yürütüyor (Rusya sessiz, Batı gürültülü).</p>
+
+  <div class="callout">
+    <strong>İki taraf da aslında aynı şeyi yapıyor:</strong> kendi kamuoyuna "tehdit gerçek" mesajı veriyor. Fark: biri bunu göstererek, öteki saklayarak yapıyor.
+  </div>
+
+  <!-- Appendix -->
+  <h2>Ek: Kaynak Güvenilirlik Skalası</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Kaynak</th>
+        <th>Ne Dedi</th>
+        <th>Güvenilirlik</th>
+        <th>Not</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>İngiltere MoD</td>
+        <td>"En tehlikeli Rus aksiyonu"</td>
+        <td>4/5</td>
+        <td>Resmî, kendi çıkarı var</td>
+      </tr>
+      <tr>
+        <td>BBC (Henry Moore)</td>
+        <td>Olayı doğruladı</td>
+        <td>4/5</td>
+        <td>Güvenilir ama çerçeveli</td>
+      </tr>
+      <tr>
+        <td>Romanya MoD</td>
+        <td>"150 km doğu"</td>
+        <td>4/5</td>
+        <td>Bağımsız teyit</td>
+      </tr>
+      <tr>
+        <td>Ukrayna OSINT</td>
+        <td>Tarih/saat/çağrı kodu</td>
+        <td>4/5</td>
+        <td>Tarih doğruluğu yüksek</td>
+      </tr>
+      <tr>
+        <td>Rus askerî bloglar</td>
+        <td>"Radar çalışması engellendi"</td>
+        <td>3/5</td>
+        <td>Resmî çizgiye yakın</td>
+      </tr>
+      <tr>
+        <td>Rus resmî makam</td>
+        <td>Açıklama YOK</td>
+        <td>-</td>
+        <td>Bilinçli sessizlik</td>
+      </tr>
+      <tr>
+        <td>@fighter_bomber (Telegram)</td>
+        <td>Khibiny-U EW taktiği</td>
+        <td>3/5</td>
+        <td>Teknik analiz güçlü, kaynak anonim</td>
+      </tr>
+      <tr>
+        <td>Frank Gardner (BBC)</td>
+        <td>Video analizi</td>
+        <td>5/5</td>
+        <td>40+ yıl deneyimli güvenlik muhabiri</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div>
+      T2SAIM Adli Analiz — INTREP 2026-0520-001<br>
+      Analist: <strong>Komutan Gölge</strong> (Karargah Merkezi)<br>
+      Yöntem: FNRES 10 Adımlı Değerlendirme
+    </div>
+    <div>
+      <span>SHA256: 7e8c...f1a3</span><br>
+      <span>20 Mayıs 2026 — 22:14 UTC</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

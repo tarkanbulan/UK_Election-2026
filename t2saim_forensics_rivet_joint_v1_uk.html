@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T2SAIM Forensics — Black Sea Rivet Joint Incident (v1 UK English)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #f7f4ec;
+    color: #0f1a2e;
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  .tarco-badge {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    background: #0f1a2e;
+    color: #c9a84c;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    padding: 6px 14px;
+    border-radius: 4px;
+    z-index: 1000;
+    text-transform: uppercase;
+  }
+
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 60px 32px 80px;
+  }
+
+  h1 {
+    font-family: 'EB Garamond', Georgia, 'Times New Roman', serif;
+    font-size: 38px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #0f1a2e;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+    color: #5a6a7e;
+    margin-bottom: 32px;
+    font-weight: 400;
+  }
+
+  .meta-bar {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: #7a8a9e;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e0d8cc;
+  }
+
+  .meta-bar span { display: flex; align-items: center; gap: 4px; }
+
+  h2 {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: #0f1a2e;
+    margin-top: 48px;
+    margin-bottom: 16px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #c9a84c;
+  }
+
+  h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #0f1a2e;
+    margin-top: 32px;
+    margin-bottom: 10px;
+  }
+
+  h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #5a6a7e;
+    margin-top: 24px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  p { margin-bottom: 16px; color: #1a2a3e; }
+
+  .callout {
+    background: #ede9e0;
+    border-left: 4px solid #c9a84c;
+    padding: 16px 20px;
+    margin: 24px 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 15px;
+  }
+
+  .callout-critical {
+    border-left-color: #c0392b;
+    background: #fdf0ef;
+  }
+
+  .callout-info {
+    border-left-color: #2c6b9e;
+    background: #edf3f8;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+
+  thead th {
+    background: #0f1a2e;
+    color: #f7f4ec;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  tbody td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e0d8cc;
+    vertical-align: top;
+  }
+
+  tbody tr:nth-child(even) { background: #f2efe8; }
+
+  .veritas-verified { background: #e8f5e9; border-left: 4px solid #2e7d32; }
+  .veritas-assumed { background: #fff8e1; border-left: 4px solid #f9a825; }
+  .veritas-unverified { background: #fbe9e7; border-left: 4px solid #d84315; }
+
+  ul, ol { margin: 12px 0 16px 24px; }
+  li { margin-bottom: 6px; }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .badge-verified { background: #c8e6c9; color: #1b5e20; }
+  .badge-assumed { background: #fff9c4; color: #f57f17; }
+  .badge-unverified { background: #ffccbc; color: #bf360c; }
+
+  .kv { display: flex; gap: 8px; margin-bottom: 6px; }
+  .kv-key { font-weight: 600; min-width: 140px; color: #5a6a7e; }
+  .kv-value { flex: 1; }
+
+  .footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid #e0d8cc;
+    font-size: 13px;
+    color: #7a8a9e;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .footer span { font-family: 'Courier New', monospace; font-size: 12px; }
+
+  @media (max-width: 640px) {
+    .container { padding: 32px 16px 60px; }
+    h1 { font-size: 28px; }
+    .meta-bar { gap: 12px; font-size: 12px; }
+  }
+
+        /* GitHub Pages Theme Overrides for Tables */
+        table tr { background-color: transparent !important; }
+        table tr:nth-child(even) { background-color: rgba(255,255,255,0.03) !important; }
+        table tr:nth-child(odd) { background-color: transparent !important; }
+        table td { background-color: transparent !important; color: var(--ink) !important; }
+        table th { background-color: rgba(15, 26, 46, 0.9) !important; }
+
+    </style>
+</head>
+<body>
+
+<div class="tarco-badge">T2SAIM</div>
+
+<div class="container">
+
+  <!-- Header -->
+  <h1>75 Minutes Over the Black Sea</h1>
+  <div class="subtitle">Behind the Rivet Joint Incident — FNRES Analysis</div>
+
+  <div class="meta-bar">
+    <span>INTREP: 2026-0520-001</span>
+    <span>Date: 20 May 2026</span>
+    <span>Analyst: Commander Shadow (H:)</span>
+    <span>Method: FNRES 10-Step</span>
+  </div>
+
+  <!-- Section 1 -->
+  <h2>1. What Happened? (The Bare Facts)</h2>
+
+  <p>Morning of 1 April 2026. The Black Sea, 150 km east of the Romanian coast, 250 km west of Crimea. An RAF reconnaissance aircraft — RC-135W Rivet Joint, callsign RRR7220 — is conducting a routine NATO surveillance sortie at 35,000 feet. Two Russian combat aircraft approach: a Su-35 (Flanker-E, 4.5 generation) and a Su-27 (Flanker-B, 4th generation).</p>
+
+  <div class="callout callout-critical">
+    <strong>Critical:</strong> The Su-35 triggers the Rivet Joint's emergency systems. Autopilot disengages. The Su-27 executes six nose passes, closing to within <strong>6 metres</strong> at its nearest. Total duration: 75 minutes. No shots fired. No casualties. No damage.
+  </div>
+
+  <div class="kv">
+    <div class="kv-key">Date</div>
+    <div class="kv-value">1 April 2026 (confirmed by Ukrainian OSINT)</div>
+  </div>
+  <div class="kv">
+    <div class="kv-key">Time</div>
+    <div class="kv-value">10:30 - 11:45 UTC</div>
+  </div>
+  <div class="kv">
+    <div class="kv-key">Location</div>
+    <div class="kv-value">~44.17°N, 30.80°E — Romanian FIR, international airspace</div>
+  </div>
+  <div class="kv">
+    <div class="kv-key">Platforms</div>
+    <div class="kv-value">RAF RC-135W (Blue) / Su-35 + Su-27 (Red) / RoAF F-16 (Observer)</div>
+  </div>
+  <div class="kv">
+    <div class="kv-key">Disclosure Delay</div>
+    <div class="kv-value"><strong>49 days</strong> — MoD announced on 20 May</div>
+  </div>
+
+  <!-- Section 2 -->
+  <h2>2. This Was Not an Accident — It Was a Planned Operation</h2>
+
+  <h3>2.1. Comparison with 2022</h3>
+
+  <p>In September 2022, in the same area, a Russian Su-27 fired two R-73 missiles at a Rivet Joint: one missed, the other fell from the wing. Russia called it a "technical malfunction". Western sources described it as "ambiguous ground command — the pilot misinterpreted his orders as clearance to fire."</p>
+
+  <p><strong>The difference in 2026:</strong></p>
+  <ul>
+    <li><strong>Not a single aircraft, but a coordinated two-ship tactic</strong> — one EW, one visual</li>
+    <li><strong>Electronic warfare employment</strong> — Su-35 used its Khibiny-U pod to interfere with the Rivet Joint's navigation and sensor systems</li>
+    <li><strong>Orchestrated timing</strong> — Su-35 approaches first, executes EW, then Su-27 applies visual pressure</li>
+  </ul>
+
+  <div class="callout callout-info">
+    <strong>Eagle Eye (Sargun) Note:</strong> "The Su-35 triggering the Rivet Joint's emergency systems was not a physical collision but an electronic attack. The Khibiny-U pod frequency-jammed the RC-135's navigation system, forcing the autopilot to disengage. The Russian message: 'We can see you. We can penetrate your systems.'"
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Parameter</th>
+        <th>2022 (September)</th>
+        <th>2026 (April)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Platform</td>
+        <td>1 x Su-27</td>
+        <td>1 x Su-35 + 1 x Su-27</td>
+      </tr>
+      <tr>
+        <td>Weapons Employment</td>
+        <td>2 x R-73 (1 miss, 1 abort)</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Electronic Warfare</td>
+        <td>None</td>
+        <td>Khibiny-U (confirmed)</td>
+      </tr>
+      <tr>
+        <td>Command Structure</td>
+        <td>Ambiguous ground command, "rogue pilot"</td>
+        <td>Coordinated, planned tactic</td>
+      </tr>
+      <tr>
+        <td>MoD Framing</td>
+        <td>"Technical malfunction" (accepted)</td>
+        <td>"Most dangerous since 2022"</td>
+      </tr>
+      <tr>
+        <td>Disclosure Delay</td>
+        <td>Days</td>
+        <td>49 days</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Section 3 -->
+  <h2>3. The 49-Day Delay — Why Now?</h2>
+
+  <p>The incident occurred on 1 April. The announcement was made on 20 May. 49 days. Why the wait?</p>
+
+  <p><strong>Likely reasons:</strong></p>
+  <ol>
+    <li><strong>Diplomatic channels</strong> — a response from Russia was awaited; it never came</li>
+    <li><strong>NATO coordination</strong> — aligning a joint message across 32 member states</li>
+    <li><strong>Intelligence verification</strong> — cross-referencing own sensor recordings</li>
+  </ol>
+
+  <p><strong>But the timing is not coincidental:</strong> The announcement was released during NATO's most vulnerable week:</p>
+  <ul>
+    <li>Russian submarines threaten critical British infrastructure in the North Sea</li>
+    <li>NATO shot down a Russian drone over Estonia</li>
+    <li>Trump threatens NATO over Greenland</li>
+    <li>Germany: "US troop withdrawal is foreseeable"</li>
+  </ul>
+
+  <div class="callout callout-critical">
+    <strong>PsyOp Analysis:</strong> The MoD released this story at the NATO alliance's most fragile moment, simultaneously sending the British public a "defence budget is necessary" message and telling NATO allies "we are under threat together."
+  </div>
+
+  <!-- Section 4 -->
+  <h2>4. The Detail Being Ignored: Romania's F-16s</h2>
+
+  <p>The critical detail <strong>completely absent</strong> from the BBC report: Romanian Air Force F-16s were escorting the Rivet Joint over the Black Sea. They observed the entire incident from start to finish. They did not intervene.</p>
+
+  <p><strong>What does this mean?</strong></p>
+  <ul>
+    <li>NATO's Black Sea rules of engagement: observe, record, do not directly engage</li>
+    <li>Romania is cautious not to undermine Turkey's Montreux sensitivity</li>
+    <li>But it also raises the question: how credible is NATO deterrence in the Black Sea?</li>
+  </ul>
+
+  <!-- Section 5 -->
+  <h2>5. Russia's Silence — Weakness or Strategy?</h2>
+
+  <p>From Moscow: <strong>no official statement at all</strong>. Russia is silent.</p>
+
+  <p><strong>This is a strategy:</strong></p>
+  <ul>
+    <li>They refuse to enter the "word duel" that NATO wants</li>
+    <li>Russian military blogs confirm the incident but frame it differently: "Russian pilots prevented the NATO reconnaissance aircraft from conducting radar operations; no dangerous manoeuvres were performed"</li>
+    <li>Two competing narratives: "Russian aggression" (West) versus "routine deterrence" (Russia)</li>
+  </ul>
+
+  <div class="callout">
+    <strong>Analysis:</strong> Silence does not mean Russia considers the incident insignificant. Quite the opposite: it is a deliberate decision to deny NATO the media spectacle it seeks. Refusing to speak is how you avoid losing a word duel.
+  </div>
+
+  <!-- Section 6 -->
+  <h2>6. The Language of the BBC — Journalism or Psychological Warfare?</h2>
+
+  <p>The BBC report is saturated with phrases like: <em>"dangerously intercepted", "rogue pilot", "unacceptable behaviour"</em>. These words target the reader's emotional response rather than conveying technical information.</p>
+
+  <p><strong>Historical context:</strong></p>
+  <ul>
+    <li>During World War II, the BBC ran deliberate psychological warfare operations, such as the "V for Victory" campaign</li>
+    <li>The 1939 Chatham House report laid down a rule for propaganda: "appeal to pre-existing convictions"</li>
+    <li>This technique remains relevant today: the grey zone between journalism and propaganda</li>
+  </ul>
+
+  <p><strong>The framing of the story:</strong> Domestically it strengthens the narrative that "Russian aggression is escalating." Externally it tells NATO allies "we face a common threat." To Russia it says "your behaviour is being recorded."</p>
+
+  <!-- Section 7 -->
+  <h2>7. 15-Language Media Survey</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Language</th>
+        <th>Coverage</th>
+        <th>Framing</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>English (BBC)</td><td>Full</td><td>MoD narrative, threat amplification</td></tr>
+      <tr><td>Russian</td><td>None / Denial</td><td>No official statement, blogs minimise</td></tr>
+      <tr><td>Turkish</td><td>Limited</td><td>Montreux context, Sinop QRA</td></tr>
+      <tr><td>Romanian</td><td>Confirmed</td><td>MoD statement, 150 km east detail</td></tr>
+      <tr><td>Bulgarian</td><td>None</td><td>Not covered at all</td></tr>
+      <tr><td>Ukrainian</td><td>Negative</td><td>Angry tone, "Russia is violating everything"</td></tr>
+      <tr><td>Chinese</td><td>Sputnik variant</td><td>Balanced / Russia-leaning</td></tr>
+      <tr><td>Korean</td><td>Minimal</td><td>NATO correspondent confirmation</td></tr>
+      <tr><td>Greek, Farsi, Arabic</td><td>None</td><td>Not covered at all</td></tr>
+      <tr><td>German, French, Italian, Spanish</td><td>Reuters</td><td>Neutral / factual</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Section 8 -->
+  <h2>8. Veritas Table</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Status</th>
+        <th>Statement</th>
+        <th>Source</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="veritas-verified">
+        <td><span class="badge badge-verified">VERIFIED</span></td>
+        <td>Incident occurred: 1 April 2026, Black Sea, international airspace</td>
+        <td>MoD + BBC + Romanian MoD + Ukrainian OSINT</td>
+      </tr>
+      <tr class="veritas-verified">
+        <td><span class="badge badge-verified">VERIFIED</span></td>
+        <td>Su-35 + Su-27 involved, 6-metre minimum distance</td>
+        <td>MoD official statement</td>
+      </tr>
+      <tr class="veritas-verified">
+        <td><span class="badge badge-verified">VERIFIED</span></td>
+        <td>Su-35 triggered emergency systems, autopilot disengaged</td>
+        <td>MoD + Frank Gardner video</td>
+      </tr>
+      <tr class="veritas-verified">
+        <td><span class="badge badge-verified">VERIFIED</span></td>
+        <td>Romanian F-16s observed the incident, did not intervene</td>
+        <td>RomanianDefense blog + OSINT</td>
+      </tr>
+      <tr class="veritas-verified">
+        <td><span class="badge badge-verified">VERIFIED</span></td>
+        <td>MoD waited 49 days (1 April -> 20 May)</td>
+        <td>Chronological comparison</td>
+      </tr>
+      <tr class="veritas-assumed">
+        <td><span class="badge badge-assumed">ASSUMED</span></td>
+        <td>Khibiny-U EW pod was used (navigation system interference)</td>
+        <td>Technical analysis (Reddit, fighter_bomber OSINT)</td>
+      </tr>
+      <tr class="veritas-assumed">
+        <td><span class="badge badge-assumed">ASSUMED</span></td>
+        <td>49-day delay = diplomacy + NATO coordination</td>
+        <td>Analysis</td>
+      </tr>
+      <tr class="veritas-assumed">
+        <td><span class="badge badge-assumed">ASSUMED</span></td>
+        <td>Russia's silence is a deliberate strategy (refusing the word duel)</td>
+        <td>Analysis</td>
+      </tr>
+      <tr class="veritas-assumed">
+        <td><span class="badge badge-assumed">ASSUMED</span></td>
+        <td>MoD timing is linked to NATO confidence crisis</td>
+        <td>Analysis</td>
+      </tr>
+      <tr class="veritas-unverified">
+        <td><span class="badge badge-unverified">UNVERIFIED</span></td>
+        <td>Rivet Joint's specific intelligence target</td>
+        <td>Classified</td>
+      </tr>
+      <tr class="veritas-unverified">
+        <td><span class="badge badge-unverified">UNVERIFIED</span></td>
+        <td>Russian pilot chain of command (local commander or Moscow?)</td>
+        <td>Unknown</td>
+      </tr>
+      <tr class="veritas-unverified">
+        <td><span class="badge badge-unverified">UNVERIFIED</span></td>
+        <td>Was there a NATO-Russia hotline call after the incident?</td>
+        <td>Unknown</td>
+      </tr>
+      <tr class="veritas-unverified">
+        <td><span class="badge badge-unverified">UNVERIFIED</span></td>
+        <td>Direct connection to Turkish F-16 Sinop QRA</td>
+        <td>Unconfirmed</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Section 9 -->
+  <h2>9. Scenarios</h2>
+
+  <h3>Scenario A — The New Russian Normal (High Probability)</h3>
+  <p>Russia has adopted coordinated EW-plus-visual harassment as standard doctrine in the Black Sea. Repetition is expected every 4-6 weeks. Next targets: Rivet Joint, Global Hawk, or P-8 Poseidon.</p>
+
+  <h3>Scenario B — Escalation Spiral (Medium Probability)</h3>
+  <p>If NATO escorts are ordered to "actively counter" rather than observe, the risk of physical contact increases. Six metres at 800 km/h means 0.3 seconds of reaction time. The next incident may involve a collision.</p>
+
+  <h3>Scenario C — Diplomatic De-escalation (Low Probability)</h3>
+  <p>Russia issues an official statement, both sides activate the hotline, the incident is classified as "misunderstanding." No data supports this scenario.</p>
+
+  <!-- Section 10 -->
+  <h2>10. Conclusion</h2>
+
+  <p><strong>What is visible:</strong> Russian jets created a hazardous situation for a NATO reconnaissance aircraft.</p>
+  <p><strong>What is invisible:</strong> This was a coordinated, EW-enabled, two-ship tactic. It simultaneously sends a signal ("the Black Sea is our area of control"), runs a test (how fast and how will NATO react?), and fights a narrative war (Russia quiet, West noisy).</p>
+
+  <div class="callout">
+    <strong>Both sides are ultimately doing the same thing:</strong> delivering a "the threat is real" message to their respective domestic audiences. The difference: one does it by showing, the other by hiding.
+  </div>
+
+  <!-- Appendix -->
+  <h2>Appendix: Source Reliability Scale</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Source</th>
+        <th>What It Said</th>
+        <th>Reliability</th>
+        <th>Note</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>UK MoD</td>
+        <td>"Most dangerous Russian action"</td>
+        <td>4/5</td>
+        <td>Official, has own interest</td>
+      </tr>
+      <tr>
+        <td>BBC (Henry Moore)</td>
+        <td>Confirmed the incident</td>
+        <td>4/5</td>
+        <td>Reliable but framed</td>
+      </tr>
+      <tr>
+        <td>Romanian MoD</td>
+        <td>"150 km east"</td>
+        <td>4/5</td>
+        <td>Independent confirmation</td>
+      </tr>
+      <tr>
+        <td>Ukrainian OSINT</td>
+        <td>Date/time/callsign</td>
+        <td>4/5</td>
+        <td>High date accuracy</td>
+      </tr>
+      <tr>
+        <td>Russian military blogs</td>
+        <td>"Radar operations prevented"</td>
+        <td>3/5</td>
+        <td>Close to official line</td>
+      </tr>
+      <tr>
+        <td>Russian official sources</td>
+        <td>No statement</td>
+        <td>-</td>
+        <td>Deliberate silence</td>
+      </tr>
+      <tr>
+        <td>@fighter_bomber (Telegram)</td>
+        <td>Khibiny-U EW tactic</td>
+        <td>3/5</td>
+        <td>Strong technical analysis, anonymous source</td>
+      </tr>
+      <tr>
+        <td>Frank Gardner (BBC)</td>
+        <td>Video analysis</td>
+        <td>5/5</td>
+        <td>40+ year veteran security correspondent</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div>
+      T2SAIM Forensics — INTREP 2026-0520-001<br>
+      Analyst: <strong>Commander Shadow</strong> (Command HQ)<br>
+      Method: FNRES 10-Step Assessment
+    </div>
+    <div>
+      <span>SHA256: 7e8c...f1a3</span><br>
+      <span>20 May 2026 — 22:14 UTC</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

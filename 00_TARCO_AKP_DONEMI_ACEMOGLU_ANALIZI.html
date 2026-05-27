@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AKP Dönemi Türkiye Analizi: Daron Acemoğlu Çerçevesi (2002-2026)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-dark: #070d19; --bg-card: rgba(15, 26, 46, 0.6); --border-glow: rgba(201, 168, 76, 0.3); --gold: #c9a84c; --accent: #8b1a1a; --ink: #f7f4ec; --muted: #8e9bb0; --font-serif: 'Playfair Display', serif; --font-sans: 'Inter', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-dark); color: var(--ink); font-family: var(--font-sans); line-height: 1.7; padding: 40px 20px; background-image: radial-gradient(at 50% 0%, rgba(15, 26, 46, 0.8) 0px, transparent 100%); }
+        .wrap { max-width: 900px; margin: auto; }
+        header { border-bottom: 1px solid var(--border-glow); padding-bottom: 30px; margin-bottom: 40px; }
+        .eyebrow { font-size: 11px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; font-weight: 700; }
+        h1 { font-family: var(--font-serif); font-size: 2.8rem; color: #fff; line-height: 1.2; margin-bottom: 15px; }
+        h2 { font-family: var(--font-serif); font-size: 1.8rem; color: var(--gold); margin: 40px 0 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+        h3 { font-size: 1.2rem; color: #fff; margin: 25px 0 10px 0; }
+        p { color: var(--muted); margin-bottom: 20px; font-size: 1.05rem; text-align: justify; }
+        .callout { background: rgba(201, 168, 76, 0.05); border-left: 4px solid var(--gold); padding: 20px; margin: 25px 0; border-radius: 0 8px 8px 0; }
+        .callout-red { background: rgba(139, 26, 26, 0.05); border-left: 4px solid var(--accent); padding: 20px; margin: 25px 0; border-radius: 0 8px 8px 0; }
+        
+        /* Table Styling */
+        .table-wrap { overflow-x: auto; margin: 30px 0; border: 1px solid var(--border-glow); border-radius: 8px; }
+        table { width: 100%; border-collapse: collapse; text-align: left; background: var(--bg-card); }
+        th { background: rgba(15, 26, 46, 0.9); color: var(--gold); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 15px; border-bottom: 1px solid var(--border-glow); }
+        td { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--ink); font-size: 14px; }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: rgba(255,255,255,0.02); }
+        .v-red { color: #ef4444; font-weight: 600; }
+        .v-green { color: #22c55e; font-weight: 600; }
+        .v-amber { color: #f59e0b; font-weight: 600; }
+        
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+        .card { background: var(--bg-card); border: 1px solid var(--border-glow); padding: 25px; border-radius: 8px; }
+        .card h4 { color: #fff; margin-bottom: 15px; font-family: var(--font-serif); font-size: 1.3rem; }
+        .card ul { list-style-type: none; }
+        .card li { margin-bottom: 15px; padding-left: 20px; position: relative; color: var(--muted); font-size: 0.95rem; }
+        .card li::before { content: '▪'; color: var(--gold); position: absolute; left: 0; font-size: 1.2rem; line-height: 1; }
+    
+        /* GitHub Pages Theme Overrides for Tables */
+        table tr { background-color: transparent !important; }
+        table tr:nth-child(even) { background-color: rgba(255,255,255,0.03) !important; }
+        table tr:nth-child(odd) { background-color: transparent !important; }
+        table td { background-color: transparent !important; color: var(--ink) !important; }
+        table th { background-color: rgba(15, 26, 46, 0.9) !important; }
+
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div class="eyebrow">T2SAIM Arşiv &middot; Orijinal Tarih: 12 Nisan 2025 &middot; Güncelleme: 22 Mayıs 2026</div>
+            <h1>AKP Dönemi Türkiye Analizi: Daron Acemoğlu Çerçevesi</h1>
+            <p style="color: var(--gold); margin-top: 10px;">Kapsayıcı Kurumlardan Dışlayıcı (Extractive) Kurumlara Geçişin Anatomisi</p>
+        </header>
+
+        <div class="callout">
+            <p><strong style="color:#fff;">Editörün Notu (Kaptan):</strong> Bu rapor ilk olarak 12 Nisan 2025 tarihinde kaleme alınmıştır. Raporda sunulan Acemoğlu çerçeveli analiz, kurumların çöküşünü ve "Sömürücü (Extractive)" düzene geçişi detaylandırmaktadır. Metnin orijinal ruhu korunmuş; ancak yetersiz kalan veri tabloları günümüz (Mayıs 2026) gerçekliğine göre genişletilmiş ve son 13 ayın sağlaması (Post-Mortem analizi) raporun sonuna eklenmiştir.</p>
+        </div>
+
+        <h2>I. Kurumsal Evrim ve Pazara Giriş Engelleri</h2>
+        <p>2000'li yılların başında, 2001 krizi sonrası uygulanan program ve liberalleşme politikaları çerçevesinde özelleştirmeler hız kazanmış ve bazı sektörlerde rekabetin artırılması hedeflenmiştir. Ancak ilerleyen yıllarda, özellikle büyük kamu ihaleleri ve özelleştirme süreçlerinde şeffaflık eksikliği ve kayırmacılık iddiaları yaygınlaşmıştır.</p>
+        <p>Belirli şirketlere sağlanan teşvikler, vergi avantajları ve kamu ihalelerindeki öncelikler, iktidarla yakın ilişkileri olmayan aktörler için fiili engeller oluşturmuştur. Bu durum, Acemoğlu ve Robinson'un anlattığı, <em>sömürücü rejimlerde özelleştirmelerin nasıl dar bir elit grubun zenginleşmesine hizmet edebileceği</em> mekanizmasıyla tam bir benzerlik taşımaktadır.</p>
+
+        <h2>II. Yatırım, Teknoloji ve Kapsayıcı Büyüme Sorunu</h2>
+        <p>AKP döneminde, özellikle ulaştırma (yollar, köprüler, havalimanları), enerji ve inşaat sektörlerinde büyük altyapı yatırımları gerçekleştirilmiştir. Ancak kapsayıcı büyümenin temeli olan beşeri sermayeye, eğitime ve geniş tabanlı teknolojiye yapılan yatırımların etkinliği sorunludur.</p>
+        <p>Üniversitelerin özerkliğindeki gerileme ve Ar-Ge harcamalarının yetersizliği, ülkenin uzun vadeli potansiyelini sınırlamıştır. Sömürücü rejimler genellikle elitlerin kontrolünü tehdit etmeyen, "gösterişli" alanlarda yatırım yaparken, yenilikçiliği tabana yayacak eğitim yatırımlarını ihmal ederler.</p>
+
+        <h2>III. Ekonomik Performans ve İstikrarsızlık</h2>
+        <p>2002-2007 arasında sağlanan yüksek büyüme, büyük ölçüde dış finansmana ve inşaat sektörüne dayalı olmuştur. İlk dönemdeki hızlı büyümenin, kapsayıcı kurumların sağladığı sürdürülebilir bir büyümeden ziyade, dışsal faktörlere bağlı olduğu anlaşılmıştır. Bu faktörler tersine döndüğünde yapısal zayıflıklar belirginleşmiş, 2018 sonrası dönemde yüksek enflasyon, kur dalgalanmaları ve yavaşlayan büyüme kalıcı hale gelmiştir.</p>
+
+        <h2>IV. Genişletilmiş Veri Tablosu: Makroekonomik Yıkımın Anatomisi</h2>
+        <p>12 Nisan 2025'te yarım bırakılan <em>Tablo 1</em>, T2SAIM veri tabanı kullanılarak 2002'den Mayıs 2026'ya kadar olan dönemi kapsayacak şekilde genişletilmiş ve tamamlanmıştır.</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Dönem / Yıl</th>
+                        <th>GSYH Büyüme (%)</th>
+                        <th>TÜFE Enflasyon (%)</th>
+                        <th>USD/TRY (Yıl Sonu)</th>
+                        <th>Politika Faizi (%)</th>
+                        <th>Acemoğlu Fazı</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2002 (Kriz Çıkışı)</td>
+                        <td class="v-green">6.4</td>
+                        <td class="v-amber">29.7</td>
+                        <td>1.63</td>
+                        <td>44.00</td>
+                        <td>Reform / Kapsayıcıya Geçiş</td>
+                    </tr>
+                    <tr>
+                        <td>2007 (Altın Çağ Sonu)</td>
+                        <td class="v-green">4.8</td>
+                        <td class="v-green">8.3</td>
+                        <td>1.16</td>
+                        <td>15.75</td>
+                        <td>Kapsayıcı (Inclusive)</td>
+                    </tr>
+                    <tr>
+                        <td>2013 (Kırılma Başlangıcı)</td>
+                        <td class="v-green">8.5</td>
+                        <td class="v-green">7.4</td>
+                        <td>2.13</td>
+                        <td>4.50</td>
+                        <td>Hibrit / Kayma</td>
+                    </tr>
+                    <tr>
+                        <td>2018 (Kur Şoku)</td>
+                        <td class="v-amber">3.0</td>
+                        <td class="v-red">20.3</td>
+                        <td>5.28</td>
+                        <td>24.00</td>
+                        <td>Dışlayıcı (Extractive) Geçiş</td>
+                    </tr>
+                    <tr>
+                        <td>2023 (Seçim Ekonomisi)</td>
+                        <td class="v-amber">4.5</td>
+                        <td class="v-red">64.7</td>
+                        <td>29.48</td>
+                        <td>42.50</td>
+                        <td>Tam Sömürücü Denge</td>
+                    </tr>
+                    <tr>
+                        <td>2024 (Şimşek Dönemi)</td>
+                        <td class="v-amber">3.1</td>
+                        <td class="v-red">43.0</td>
+                        <td>36.50</td>
+                        <td>50.00</td>
+                        <td>Sıkılaşma İllüzyonu</td>
+                    </tr>
+                    <tr>
+                        <td>2025 (Raporun Yazıldığı Yıl)</td>
+                        <td class="v-amber">3.6</td>
+                        <td class="v-red">38.5</td>
+                        <td>41.20</td>
+                        <td>45.00</td>
+                        <td>Yapışkan Enflasyon</td>
+                    </tr>
+                    <tr>
+                        <td>2026 (Mayıs - Güncel)</td>
+                        <td class="v-red">2.8 (Tahmin)</td>
+                        <td class="v-red">32.3</td>
+                        <td class="v-red">45.70</td>
+                        <td>37.00</td>
+                        <td>Kusursuz Fırtına Öncesi</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>V. Adli Sağlama (Post-Mortem): 13 Ayın Hesaplaşması</h2>
+        <p>12 Nisan 2025 tarihinde yazdığınız orijinal analiz ile 22 Mayıs 2026 güncel gerçekliği arasındaki kesişimler. T2SAIM protokolüyle yapılan doğrulama sonuçları:</p>
+
+        <div class="grid-2">
+            <div class="card" style="border-top: 3px solid #22c55e;">
+                <h4>✅ Tutan Öngörüler (Gerçekleşenler)</h4>
+                <ul>
+                    <li><strong style="color: #fff;">Kurumsal Sömürü (Extractive) Düzenin Kalıcılığı:</strong> Seçimlerden sonra hukuka dönüş beklentisi (yabancı sermaye umudu) boş çıktı. Kayyum atamaları ve İmamoğlu krizleri, Acemoğlu'nun "elitler gücü bırakmaz" tezini %100 doğruladı.</li>
+                    <li><strong style="color: #fff;">Gelir Dağılımı ve Yoksulluk:</strong> "Büyümenin nimetlerinin adil paylaşılmaması" uyarınız tam isabet etti. 2026 itibarıyla orta sınıf tamamen çöktü, asgari ücret enflasyon karşısında eridi.</li>
+                    <li><strong style="color: #fff;">Dış Ticaret ve Cari Açık Kırılganlığı:</strong> İhracat artışına rağmen dış finansman bağımlılığı sürdü. Kur 45 TL'yi aşarken, yapısal döviz açığı devam etti.</li>
+                </ul>
+            </div>
+            
+            <div class="card" style="border-top: 3px solid #ef4444;">
+                <h4>❌ Tutmayan/Sapan Beklentiler</h4>
+                <ul>
+                    <li><strong style="color: #fff;">Enflasyonun Hızlı Düşüş Beklentisi:</strong> 2025 başında Mehmet Şimşek programının enflasyonu %20'lere hızla çekeceği piyasa beklentisi vardı. Ancak enflasyon %32 bandında "katılaştı" (yapışkan enflasyon).</li>
+                    <li><strong style="color: #fff;">Sıcak Para Gelişimi:</strong> Doğrudan Yabancı Yatırım (FDI) gelir sanıldı. Ancak sadece %60'ı "Carry Trade" olan, son derece kırılgan ve vur-kaç tarzı sıcak para girdi. Uzun vadeli fabrika yatırımı gelmedi.</li>
+                    <li><strong style="color: #fff;">Büyüme Direnci:</strong> Krizin daha sert bir resesyona yol açacağı düşünülüyordu; ancak kayıt dışı ekonomi (%30) ve kara para sirkülasyonu sayesinde kağıt üzerinde büyüme tamamen durmadı, sürüncemede kaldı.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

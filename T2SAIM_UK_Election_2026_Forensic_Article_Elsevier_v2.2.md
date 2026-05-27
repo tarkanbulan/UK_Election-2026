@@ -69,7 +69,7 @@ Bu amigdala tepkisi tesadüfi değildir; denetimsiz anlık mesajlaşma platforml
 
 ## 3. BULGULAR (Results)
 
-Model, 107 İngiliz yerel meclisi üzerinde çalıştırılmış ve parçalanmanın (NOC) istisnai değil, yeni bir norm (New Equilibrium) olduğu kanıtlanmıştır.
+Model, seçimlerden dört hafta önce çalıştırılmış ve TARCOMAP SNCX altyapısı üzerinden Monte Carlo simülasyonları ile 10,000 iterasyon yapılmıştır. Algı operasyonu olarak tespit edilen medyanın pompaladığı söylemler, FNRES matrisiyle denklemden çıkartılmıştır.
 
 ### Tablo 1: NOC Modeli ile Geleneksel Anketlerin Karşılaştırmalı Analizi
 

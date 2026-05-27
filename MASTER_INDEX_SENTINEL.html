@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T2SAIM / Sentinel Türkiye — Kusursuz Fırtına</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #070d19;
+            --bg-card: rgba(15, 26, 46, 0.6);
+            --border-glow: rgba(201, 168, 76, 0.3);
+            --gold: #c9a84c;
+            --gold-hover: #dfbe63;
+            --accent: #8b1a1a;
+            --ink: #f7f4ec;
+            --muted: #8e9bb0;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(201, 168, 76, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(139, 26, 26, 0.08) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(15, 26, 46, 0.5) 0px, transparent 100%);
+            background-attachment: fixed;
+            color: var(--ink);
+            font-family: var(--font-sans);
+            min-height: 100vh;
+            padding: 50px 20px;
+        }
+
+        .wrap {
+            max-width: 1000px;
+            width: 100%;
+            margin: auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .eyebrow {
+            font-size: 12px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 30%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .story-intro {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            color: var(--ink);
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            line-height: 1.8;
+            font-weight: 300;
+            text-align: justify;
+            background: rgba(201, 168, 76, 0.02);
+            padding: 30px;
+            border-left: 3px solid var(--gold);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .story-intro p {
+            margin-bottom: 15px;
+        }
+
+        /* Chapter Cards */
+        .chapter-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .chapter-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-glow);
+            border-radius: 12px;
+            padding: 35px;
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 30px;
+            align-items: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .chapter-card:hover {
+            border-color: var(--gold);
+            transform: translateX(10px);
+            box-shadow: -5px 15px 30px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(201, 168, 76, 0.05);
+        }
+
+        .chapter-number {
+            font-family: var(--font-serif);
+            font-size: 4rem;
+            font-weight: 700;
+            color: rgba(201, 168, 76, 0.2);
+            text-align: center;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            padding-right: 30px;
+            transition: color 0.4s ease;
+        }
+
+        .chapter-card:hover .chapter-number {
+            color: var(--gold);
+        }
+
+        .chapter-content h2 {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .chapter-content p {
+            font-size: 1rem;
+            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .badge-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .badge {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+
+        .badge.b-ekon { border: 1px solid #15803d; color: #15803d; }
+        .badge.b-dato { border: 1px solid #b45309; color: #b45309; }
+        .badge.b-jeo { border: 1px solid #1d4ed8; color: #1d4ed8; }
+        .badge.b-psyop { border: 1px solid var(--accent); color: var(--accent); }
+        .badge.b-gold { border: 1px solid var(--gold); color: var(--gold); background: rgba(201, 168, 76, 0.1); }
+
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .veritas { color: var(--accent); font-weight: 700; }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .chapter-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .chapter-number {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                padding-right: 0;
+                padding-bottom: 20px;
+            }
+        }
+    
+        /* GitHub Pages Theme Overrides for Tables */
+        table tr { background-color: transparent !important; }
+        table tr:nth-child(even) { background-color: rgba(255,255,255,0.03) !important; }
+        table tr:nth-child(odd) { background-color: transparent !important; }
+        table td { background-color: transparent !important; color: var(--ink) !important; }
+        table th { background-color: rgba(15, 26, 46, 0.9) !important; }
+
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div class="eyebrow">T2SAIM Kesişimsel Analiz Merkezi</div>
+            <h1>OPERATION SENTINEL:<br>KUSURSUZ FIRTINA</h1>
+        </header>
+
+        <div class="story-intro">
+            <p>Bir ülkenin hikayesi, rakamların soğuk dünyasında değil, o rakamları var eden kurumların ve kararların gölgesinde yazılır. Biz, son 10 yılın bilançosuna sadece "enflasyon ve faiz" olarak bakmadık. Türkiye'yi uluslararası piyasalarda var kalmaya çalışan devasa bir işletme (Türkiye A.Ş.) olarak hayal ettik.</p>
+            <p>Bir zamanlar kasası dolup taşan, dışarıdan sürekli sıcak para çeken bu şirket, nasıl oldu da kendi hissedarlarını (vatandaşlarını) ve yabancı yatırımcılarını ürküten bir "Dışlayıcı Kurumlar" labirentine dönüştü?</p>
+            <p>Bu, sadece rakamların değil; çöken hukukun, Doğu Akdeniz'deki kuşatmanın ve sokağa pompalanan algı operasyonlarının (PsyOp) birbirini nasıl tetiklediğinin adım adım hikayesidir. Kemerlerinizi bağlayın. Raporu özetlemedik, çünkü hakikat özetlenemeyecek kadar gerçektir.</p>
+        </div>
+
+        <div class="chapter-grid">
+            <!-- Bölüm 1 -->
+            <a href="01_LM_ECON_COMPARATIVE_KEMALIST_MODEL.html" class="chapter-card">
+                <div class="chapter-number">I</div>
+                <div class="chapter-content">
+                    <h2>Kurucu Felsefenin Terk Edilişi</h2>
+                    <p>8 farklı ülkenin kalkınma modeli ile Türkiye'nin Kemalist modelden sapmasının hikayesi. Şirketin kurucu vizyonundan uzaklaşıldığında, temellerin nasıl çatırdamaya başladığını tarihsel ve yapısal kanıtlarıyla inceliyoruz.</p>
+                    <div class="badge-row">
+                        <span class="badge b-gold">Tarihsel Analiz</span>
+                        <span class="badge b-ekon">Yapısal Ekon</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Bölüm 2 -->
+            <a href="02_LM_ECON_YAVI_BATIRILAN_ULKE_ANALIZI.html" class="chapter-card">
+                <div class="chapter-number">II</div>
+                <div class="chapter-content">
+                    <h2>"En Ucuz, En Uydurulmuş Ülke"</h2>
+                    <p>Piyasaların nasıl yavaş yavaş dışarıya bağımlı hale getirildiğinin acı bir anatomisi. Üretmeyen, sadece dışarıdan borçla tüketen bir yapının sürdürülemez nakit akışı döngüsü.</p>
+                    <div class="badge-row">
+                        <span class="badge b-ekon">Makroekonomi</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Bölüm 3 -->
+            <a href="03_LM_ECON_DARON_TURKIYE_SURDURULEBILIRLIK.html" class="chapter-card">
+                <div class="chapter-number">III</div>
+                <div class="chapter-content">
+                    <h2>Acemoğlu Kapanı: Dışlayıcı Kurumlar</h2>
+                    <p>Hukukun, liyakatin ve kurumların bağımsızlığının yitirilmesi sadece siyasi bir sorun mudur? Daron Acemoğlu çerçevesiyle; kayyumların, yargı krizlerinin (Mutlak Butlan) ve güç zehirlenmesinin doğrudan kasadaki dolarları (FDI) nasıl kaçırdığını anlatıyoruz.</p>
+                    <div class="badge-row">
+                        <span class="badge b-dato">Kurumsal Zafiyet</span>
+                        <span class="badge b-ekon">Sıcak Para</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Bölüm 4 -->
+            <a href="04_OPERATION_SENTINEL_TURKIYE.html" class="chapter-card">
+                <div class="chapter-number">IV</div>
+                <div class="chapter-content">
+                    <h2>İç ve Dış Kuşatma (Kesişim)</h2>
+                    <p>İçeride CHP "Mutlak Butlan" krizi siyaseti kilitlerken, dışarıda İsrail'in "Hexagon" ittifakı (Doğu Akdeniz'de Yunanistan, Mısır, Kıbrıs ekseni) Türkiye A.Ş.'yi lojistik ve diplomatik olarak nasıl boğuyor? İki cephede birden daralan nefes borusu.</p>
+                    <div class="badge-row">
+                        <span class="badge b-jeo">Jeopolitik</span>
+                        <span class="badge b-dato">Siyasi Veri</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Bölüm 5 -->
+            <a href="05_OPERATION_SWARM_CONVERGENCE_002.html" class="chapter-card">
+                <div class="chapter-number">V</div>
+                <div class="chapter-content">
+                    <h2>Kusursuz Fırtına: Ekim 2026 Projeksiyonu</h2>
+                    <p>Hikayenin finali. Tüm faktörler (Ekonomi, Hukuksuzluk, Dış Düşmanlık ve Algı Operasyonları) tek bir tarihte kesişiyor. 12 ay içindeki sistemik aksama (Teknik İflas) ihtimali ve bizi bekleyen son çeyrek senaryoları.</p>
+                    <div class="badge-row">
+                        <span class="badge b-gold">Final Projeksiyonu</span>
+                        <span class="badge b-psyop">PsyOp</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <footer>
+            <p>Tarco Forensic Intelligence &middot; T2SAIM Protocol &middot; <span class="veritas">Veritas Per Se</span></p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T2SAIM / Sentinel Turkiye — The Perfect Storm</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #070d19;
+            --bg-card: rgba(15, 26, 46, 0.6);
+            --border-glow: rgba(201, 168, 76, 0.3);
+            --gold: #c9a84c;
+            --gold-hover: #dfbe63;
+            --accent: #8b1a1a;
+            --ink: #f7f4ec;
+            --muted: #8e9bb0;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(201, 168, 76, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(139, 26, 26, 0.08) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(15, 26, 46, 0.5) 0px, transparent 100%);
+            background-attachment: fixed;
+            color: var(--ink);
+            font-family: var(--font-sans);
+            min-height: 100vh;
+            padding: 50px 20px;
+        }
+
+        .wrap {
+            max-width: 1000px;
+            width: 100%;
+            margin: auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .eyebrow {
+            font-size: 12px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 30%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .story-intro {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            color: var(--ink);
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            line-height: 1.8;
+            font-weight: 300;
+            text-align: justify;
+            background: rgba(201, 168, 76, 0.02);
+            padding: 30px;
+            border-left: 3px solid var(--gold);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .story-intro p {
+            margin-bottom: 15px;
+        }
+
+        /* Chapter Cards */
+        .chapter-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .chapter-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-glow);
+            border-radius: 12px;
+            padding: 35px;
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 30px;
+            align-items: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .chapter-card:hover {
+            border-color: var(--gold);
+            transform: translateX(10px);
+            box-shadow: -5px 15px 30px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(201, 168, 76, 0.05);
+        }
+
+        .chapter-number {
+            font-family: var(--font-serif);
+            font-size: 4rem;
+            font-weight: 700;
+            color: rgba(201, 168, 76, 0.2);
+            text-align: center;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            padding-right: 30px;
+            transition: color 0.4s ease;
+        }
+
+        .chapter-card:hover .chapter-number {
+            color: var(--gold);
+        }
+
+        .chapter-content h2 {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .chapter-content p {
+            font-size: 1rem;
+            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .badge-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .badge {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+
+        .badge.b-ekon { border: 1px solid #15803d; color: #15803d; }
+        .badge.b-dato { border: 1px solid #b45309; color: #b45309; }
+        .badge.b-jeo { border: 1px solid #1d4ed8; color: #1d4ed8; }
+        .badge.b-psyop { border: 1px solid var(--accent); color: var(--accent); }
+        .badge.b-gold { border: 1px solid var(--gold); color: var(--gold); background: rgba(201, 168, 76, 0.1); }
+
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .veritas { color: var(--accent); font-weight: 700; }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .chapter-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .chapter-number {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                padding-right: 0;
+                padding-bottom: 20px;
+            }
+        }
+    
+        /* GitHub Pages Theme Overrides for Tables */
+        table tr { background-color: transparent !important; }
+        table tr:nth-child(even) { background-color: rgba(255,255,255,0.03) !important; }
+        table tr:nth-child(odd) { background-color: transparent !important; }
+        table td { background-color: transparent !important; color: var(--ink) !important; }
+        table th { background-color: rgba(15, 26, 46, 0.9) !important; }
+
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div class="eyebrow">T2SAIM Convergent Analysis Centre</div>
+            <h1>OPERATION SENTINEL:<br>THE PERFECT STORM</h1>
+        </header>
+
+        <div class="story-intro">
+            <p>The story of a nation is not written in the cold realm of numbers, but in the shadow of the institutions and decisions that forge those numbers. We did not merely look at the past decade's balance sheet as 'inflation and interest rates'. We modelled Turkiye as a massive enterprise—Turkiye PLC—struggling to survive in global markets.</p>
+            <p>How did an enterprise, once flush with capital and consistently attracting foreign direct investment, transform into a labyrinth of "Extractive Institutions" that terrifies both its own shareholders (citizens) and foreign investors?</p>
+            <p>This is not just a tale of numbers; it is the step-by-step chronicle of how the collapse of the rule of law, the diplomatic containment in the Eastern Mediterranean, and the perception operations (PsyOp) pumped into the streets trigger one another. Fasten your seatbelts. We did not summarise the report, because the truth is too real to be abridged.</p>
+        </div>
+
+        <div class="chapter-grid">
+            <!-- Chapter 1 -->
+            <a href="01_LM_ECON_COMPARATIVE_KEMALIST_MODEL.html" class="chapter-card">
+                <div class="chapter-number">I</div>
+                <div class="chapter-content">
+                    <h2>Abandonment of the Founding Philosophy</h2>
+                    <p>The story of how Turkiye deviated from the Kemalist model, benchmarked against the development models of 8 different nations. We examine the historical and structural evidence of how the foundations began to crack once the enterprise strayed from its founding vision.</p>
+                    <div class="badge-row">
+                        <span class="badge b-gold">Historical Analysis</span>
+                        <span class="badge b-ekon">Structural Econ</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Chapter 2 -->
+            <a href="02_LM_ECON_YAVI_BATIRILAN_ULKE_ANALIZI.html" class="chapter-card">
+                <div class="chapter-number">II</div>
+                <div class="chapter-content">
+                    <h2>"The Cheapest, Most Fabricated Nation"</h2>
+                    <p>A bitter anatomy of how markets were gradually rendered externally dependent. The unsustainable cash-flow cycle of a structure that does not produce, but merely consumes through external borrowing.</p>
+                    <div class="badge-row">
+                        <span class="badge b-ekon">Macroeconomics</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Chapter 3 -->
+            <a href="03_LM_ECON_DARON_TURKIYE_SURDURULEBILIRLIK.html" class="chapter-card">
+                <div class="chapter-number">III</div>
+                <div class="chapter-content">
+                    <h2>The Acemoglu Trap: Extractive Institutions</h2>
+                    <p>Is the loss of the rule of law, meritocracy, and institutional independence merely a political issue? Using the Daron Acemoglu framework, we explain how appointed trustees (kayyums), judicial crises, and power intoxication directly drive away dollars (FDI) from the treasury.</p>
+                    <div class="badge-row">
+                        <span class="badge b-dato">Institutional Weakness</span>
+                        <span class="badge b-ekon">Hot Money</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Chapter 4 -->
+            <a href="04_OPERATION_SENTINEL_TURKIYE.html" class="chapter-card">
+                <div class="chapter-number">IV</div>
+                <div class="chapter-content">
+                    <h2>Internal and External Containment</h2>
+                    <p>Whilst the CHP "Mutlak Butlan" crisis creates political gridlock internally, how is Israel's "Hexagon" alliance (the Greece, Egypt, Cyprus axis) logistically and diplomatically suffocating Turkiye PLC in the Eastern Mediterranean? A tightening chokehold on two fronts.</p>
+                    <div class="badge-row">
+                        <span class="badge b-jeo">Geopolitics</span>
+                        <span class="badge b-dato">Political Data</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Chapter 5 -->
+            <a href="05_OPERATION_SWARM_CONVERGENCE_002.html" class="chapter-card">
+                <div class="chapter-number">V</div>
+                <div class="chapter-content">
+                    <h2>The Perfect Storm: October 2026 Projection</h2>
+                    <p>The finale of the story. All factors (Economy, Lawlessness, External Hostility, and Perception Operations) intersect at a single date. The probability of systemic disruption (Technical Bankruptcy) within 12 months and the final quarter scenarios awaiting us.</p>
+                    <div class="badge-row">
+                        <span class="badge b-gold">Final Projection</span>
+                        <span class="badge b-psyop">PsyOp</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <footer>
+            <p>Tarco Forensic Intelligence &middot; T2SAIM Protocol &middot; <span class="veritas">Veritas Per Se</span></p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Operation Integrity Shield — Consolidated Forensic Finding and Evidence Register</title>
+<style>
+:root {
+  --ink:#0f1a2e; --paper:#f7f4ec; --rule:#1a2a4a; --gold:#c9a84c; --accent:#8b1a1a; --muted:#6b7280;
+  --soft:#e8e4dc; --soft2:#ece8e0; --green:#15803d; --amber:#b45309; --red:#b91c1c;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:Georgia,'Times New Roman',serif;background:var(--paper);color:var(--ink);max-width:1080px;margin:36px auto;padding:24px;line-height:1.68;font-size:16px;}
+header{display:grid;grid-template-columns:1fr auto;gap:22px;margin-bottom:30px;align-items:start;border-bottom:3px solid var(--gold);padding-bottom:18px;}
+.eyebrow{font-family:Helvetica,Arial,sans-serif;font-size:11px;color:var(--muted);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:8px;}
+h1{font-family:Helvetica,Arial,sans-serif;color:var(--ink);font-size:2.05em;line-height:1.15;margin-bottom:6px;}
+.subtitle{font-style:italic;color:var(--muted);margin-top:4px;}
+.tarco-badge{background:#141413;color:var(--gold);font-family:Helvetica,Arial,sans-serif;font-size:13px;font-weight:900;letter-spacing:4px;padding:10px 18px;text-transform:uppercase;border:1.5px solid var(--gold);text-align:center;white-space:nowrap;border-radius:4px;box-shadow:0 3px 0 rgba(0,0,0,.15);}
+.tarco-badge small{display:block;font-size:6px;letter-spacing:2px;color:#c9a84c88;margin-top:2px;}
+.stamp{display:inline-block;padding:4px 11px;font-family:Helvetica,Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;border:2px solid;margin:10px 5px 0 0;border-radius:2px;}
+.stamp-red{border-color:var(--red);color:var(--red);} .stamp-gold{border-color:#8a5a00;color:#8a5a00;}
+nav{background:var(--soft);border-left:4px solid var(--gold);padding:14px 18px;margin:20px 0 28px;border-radius:0 8px 8px 0;font-family:Helvetica,Arial,sans-serif;font-size:.9em;}
+nav a{color:var(--rule);text-decoration:none;margin-right:16px;font-weight:700;display:inline-block;margin-bottom:4px;}
+nav a:hover{color:var(--accent);}
+h2{font-family:Helvetica,Arial,sans-serif;color:var(--ink);border-bottom:2px solid var(--gold);padding-bottom:7px;margin:34px 0 16px;font-size:1.34em;}
+h3{font-family:Helvetica,Arial,sans-serif;color:var(--rule);margin:22px 0 10px;font-size:1.05em;}
+h4{font-family:Helvetica,Arial,sans-serif;color:var(--rule);margin:18px 0 8px;font-size:.98em;}
+p{margin-bottom:13px;text-align:justify;}
+ul,ol{margin:8px 0 14px 26px;} li{margin-bottom:7px;}
+table{width:100%;border-collapse:collapse;margin:17px 0;font-size:.9em;} th{background:var(--rule);color:var(--gold);font-family:Helvetica,Arial,sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:1px;padding:10px 12px;text-align:left;}td{padding:9px 12px;border-bottom:1px solid #d2cec3;vertical-align:top;}tr:nth-child(even) td{background:var(--soft2);}code{background:var(--soft);padding:1px 5px;border-radius:3px;font-family:'Courier New',monospace;font-size:.85em;}
+pre{background:var(--soft);padding:14px;border-radius:6px;overflow-x:auto;border-left:4px solid var(--gold);font-family:'Courier New',monospace;font-size:.85em;margin:14px 0;}
+.callout{background:var(--soft);border-left:4px solid var(--accent);padding:14px 18px;margin:18px 0;border-radius:0 8px 8px 0;}
+.callout-gold{border-left-color:var(--gold);} .callout-rule{border-left-color:var(--rule);}
+.verdict-box{background:var(--rule);color:var(--paper);padding:22px 26px;border-radius:10px;margin:24px 0;border:2px solid var(--gold);box-shadow:0 8px 18px rgba(15,26,46,.12);} .verdict-box h2{color:var(--gold);border:none;margin:0 0 12px;} .verdict-box .big{font-size:2.25em;line-height:1.05;color:var(--gold);font-weight:800;display:block;margin:5px 0 8px;}
+.confidence{display:inline-block;background:var(--rule);color:var(--paper);padding:24px 46px;border-radius:12px;border:3px solid var(--gold);text-align:center;margin:18px auto;} .confidence .label{font-family:Helvetica,Arial,sans-serif;font-size:11px;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:4px;} .confidence .number{font-size:4em;font-weight:bold;color:var(--gold);line-height:1;}
+.good{color:var(--green);font-weight:bold;} .watch{color:var(--amber);font-weight:bold;} .bad{color:var(--red);font-weight:bold;} .muted{color:var(--muted);} .mono{font-family:'Courier New',monospace;}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:16px 0;} .card{background:var(--soft);border-top:4px solid var(--gold);padding:14px 16px;border-radius:8px;} .card h3{margin-top:0;}
+.section-divider{margin:44px 0 26px;border:0;border-top:2px solid var(--gold);} .appendix-label{background:var(--rule);color:var(--gold);font-family:Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:7px 15px;display:inline-block;border-radius:4px;margin:6px 0 8px;}
+.linkbox{background:#141413;color:var(--gold);padding:16px 18px;border-radius:8px;border:1px solid var(--gold);font-family:Helvetica,Arial,sans-serif;margin:16px 0;} .linkbox code{background:#24231f;color:#f1d67a;}
+.footer{margin-top:52px;padding-top:18px;border-top:2px solid var(--gold);font-size:.85em;color:var(--muted);text-align:center;line-height:1.6;} .footer span{font-family:'Courier New',monospace;font-size:10px;color:#999;}
+@media(max-width:760px){body{margin:0;padding:18px;} header{grid-template-columns:1fr;} .grid{grid-template-columns:1fr;} .confidence{display:block;padding:20px;} .confidence .number{font-size:3em;} table{font-size:.82em;} th,td{padding:8px;}}
+
+        /* GitHub Pages Theme Overrides for Tables */
+        table tr { background-color: transparent !important; }
+        table tr:nth-child(even) { background-color: rgba(255,255,255,0.03) !important; }
+        table tr:nth-child(odd) { background-color: transparent !important; }
+        table td { background-color: transparent !important; color: var(--ink) !important; }
+        table th { background-color: rgba(15, 26, 46, 0.9) !important; }
+
+    </style>
+</head>
+<body>
+<header>
+  <div>
+    <div class="eyebrow">MISSION ALBION · INTEGRITY SHIELD · CONSOLIDATED RELEASE · 22 MAY 2026</div>
+    <h1>Operation Integrity Shield — Consolidated Forensic Finding and Evidence Register</h1>
+    <p class="subtitle">A UK English public-facing consolidation of the Harmony Jets Flight 185 assessment, its evidentiary basis and its narrative-risk controls.</p>
+    <span class="stamp stamp-red">Forensic Finding</span>
+    <span class="stamp stamp-gold">Public Release</span>
+  </div>
+  <div class="tarco-badge">TARCO<small>FORENSIC INTELLIGENCE</small></div>
+</header>
+
+<nav>
+<a href="#opening">Opening Note</a><a href="#verdict">Final Finding</a><a href="#sources">Source Register</a><a href="#method">Method</a><a href="#claims">Claims</a><a href="#appendix-a">Appendix A</a><a href="#appendix-b">Appendix B</a>
+</nav>
+
+<section id="opening">
+<h2>Opening Note for This Release</h2>
+<p>This public release brings together the Integrity Shield findings and their supporting evidence reports in order to clarify a set of conspiracy claims already circulating in public discussion. The aim is not to create a new allegation, but to show how the available material separates a verified aviation accident from single-source claims, unresolved evidence gaps and rapidly mutating social-media narratives.</p>
+<p>It has been prepared to support public confidence through evidentiary discipline: verified facts are stated as verified; plausible but unconfirmed details are preserved as unresolved; unsupported claims are not promoted into conclusions. In Starfleet terms, this is a sensor-fusion report: the bridge should not fire phasers because one panel blinks red; the command decision must wait for cross-checked telemetry.</p>
+<div class="linkbox"><strong>Public link slot:</strong> replace <code>{{PUBLIC_URL}}</code> after publication. Suggested slug: <code>operation-integrity-shield-consolidated-finding</code>.</div>
+</section>
+
+<section id="verdict" class="verdict-box">
+<h2>Final Finding</h2>
+<p>Here is the consolidated assessment stated plainly:</p>
+<p><span class="big">Harmony Jets Flight 185 was an accident.</span> Based on the uploaded assessment set, the strongest explanation is an electrical malfunction affecting a Dassault Falcon 50 over the Haymana area on 23 December 2025. Eight people died. The available assessment set does not support a shoot-down, electronic warfare intervention, foreign intelligence sabotage or a coordinated cover-up.</p>
+<p style="color:#c9a84ccc;">A later allegation concerning an Israeli-registered aircraft on the same apron remains unverified. It is relevant enough to preserve as an evidence gap, but not strong enough to change the primary finding.</p>
+</section>
+
+<section>
+<h2>Combined Confidence</h2>
+<p>The source files state a combined confidence of <strong>97.8%</strong> for the electrical-malfunction accident finding. This number belongs to the internal convergent-assessment model in these files. It should not be presented as an official accident-investigation probability.</p>
+<div style="text-align:center;"><div class="confidence"><div class="label">Model Confidence</div><div class="number">97.8%</div><div>Electrical-malfunction accident with no demonstrated external intervention</div></div></div>
+<p>The residual uncertainty is treated as <strong>2.2%</strong>: not as hidden proof of sabotage, but as the normal margin that remains when a single aviation event has unresolved data gaps.</p>
+</section>
+
+<section id="sources">
+<h2>Source Register</h2>
+<table>
+<tr><th>Source File</th><th>Role in Consolidation</th><th>Bytes</th><th>SHA-256 Prefix</th></tr>
+<tr><td><code>INTEGRITY_SHIELD_CONSOLIDATED_FINDING.html</code></td><td>Primary consolidated finding</td><td>15,614</td><td class='mono'>9da5df4aae9fc9d4</td></tr>
+<tr><td><code>INTEGRITY_SHIELD_TARCO_CONSOLIDATED.html</code></td><td>TarCo consolidated assessment with technical appendix</td><td>14,113</td><td class='mono'>a1e1a7301387a9bf</td></tr>
+<tr><td><code>OPERATION_INTEGRITY_SHIELD.html</code></td><td>Evidence appendix: convergent multivector analysis</td><td>21,642</td><td class='mono'>4564b9a49ee95cfd</td></tr>
+<tr><td><code>T2SAIM_ESENBOGA_INTEL_ANALIZI.html</code></td><td>Evidence appendix: T2SAIM / IntelAIM cross-protocol analysis</td><td>20,444</td><td class='mono'>bba691c026a8f685</td></tr>
+</table>
+<div class="callout callout-gold"><strong>Epistemic boundary:</strong> this consolidated release restructures and harmonises the uploaded files. It does not independently re-investigate the accident, recover new flight data, or verify fresh public records beyond the provided source set.</div>
+</section>
+
+<section id="method">
+<h2>I. What Was Tested</h2>
+<p>The consolidated assessment uses four verification gates and three technical streams. The gates test whether independent reporting agrees, whether alternative hypotheses survive falsification, whether the allegation layer mutates like contaminated information, and whether the incident matches known operational signatures.</p>
+<table>
+<tr><th>Gate</th><th>Question</th><th>Consolidated Result</th></tr>
+<tr><td><strong>Gate 1 — Source Convergence</strong></td><td>Do independent reporting hierarchies agree on the core event?</td><td><span class="good">Passed</span>: the crash, aircraft profile, emergency transmission and casualty outcome are treated as materially established across the source set.</td></tr>
+<tr><td><strong>Gate 2 — Hypothesis Elimination</strong></td><td>Which explanation survives active falsification?</td><td><span class="good">Electrical malfunction survives</span>. Sabotage and electronic-warfare explanations fail for lack of case-specific evidence.</td></tr>
+<tr><td><strong>Gate 3 — Narrative Stability</strong></td><td>Does the allegation layer behave like a stable discovery or a mutating information object?</td><td><span class="watch">Watch</span>: single-source dependency, mutation velocity and correction resistance are present.</td></tr>
+<tr><td><strong>Gate 4 — Comparative Signature</strong></td><td>Does the case match known hostile aviation-operation patterns?</td><td><span class="good">No operational signature match</span> in the source set.</td></tr>
+</table>
+
+<h3>Three Supporting Streams</h3>
+<table>
+<tr><th>Stream</th><th>Function</th><th>Evidence Domain</th></tr>
+<tr><td>Alpha — Incident Forensics</td><td>Chronology, aircraft data, emergency transmission and accident profile.</td><td>ATC transcript references, flight tracking references, accident reporting and official statements.</td></tr>
+<tr><td>Beta — Historical Pattern Recognition</td><td>Comparison against historical aviation-security analogues.</td><td>Verified, corrected and rejected analogies are kept separate.</td></tr>
+<tr><td>Gamma — Electronic Warfare Environment</td><td>Contextual risk mapping for GNSS spoofing and jamming.</td><td>Regional EW threat context, without treating general risk as case-specific proof.</td></tr>
+</table>
+</section>
+
+<section>
+<h2>II. Event Chronology</h2>
+<table>
+<tr><th>Time / Period</th><th>Event</th><th>Status</th></tr>
+<tr><td>22–23 Dec 2025</td><td>Libyan Chief of Staff Gen. Mohammed Ali Ahmed al-Haddad conducts an official visit to Ankara.</td><td><span class="good">Verified in source set</span></td></tr>
+<tr><td>23 Dec 2025, approx. 20:10</td><td>Harmony Jets Dassault Falcon 50, registration 9H-DFS, departs Ankara Esenboğa for Tripoli Mitiga.</td><td><span class="good">Verified in source set</span></td></tr>
+<tr><td>23 Dec 2025, approx. 20:33</td><td>Pilot transmits emergency squawk 7700 and reports an electrical malfunction.</td><td><span class="good">Core evidentiary point</span></td></tr>
+<tr><td>23 Dec 2025, approx. 20:41–20:52</td><td>Radar contact is lost and the crash is confirmed near the Haymana area; eight occupants are reported dead.</td><td><span class="good">Core event</span></td></tr>
+<tr><td>29 Apr 2026</td><td>Opposition deputy Deniz Yavuzyılmaz alleges 4X-CNA apron co-presence and camera irregularity.</td><td><span class="watch">Single-source allegation</span></td></tr>
+</table>
+</section>
+
+<section id="claims">
+<h2>III. Claim Register</h2>
+<table>
+<tr><th>Claim</th><th>Status</th><th>Assessment</th></tr>
+<tr><td>Flight 185 crashed because of an electrical malfunction.</td><td><span class="good">Confirmed within the source set</span></td><td>Supported by the emergency transmission and convergent reporting in the uploaded files.</td></tr>
+<tr><td>Israeli-registered aircraft 4X-CNA shared apron space with the Libyan delegation aircraft.</td><td><span class="watch">Unverified</span></td><td>Relevant but single-source. It requires complete independent flight-tracking and airport movement records.</td></tr>
+<tr><td>4X-CNB was the relevant aircraft.</td><td><span class="bad">Corrected / rejected</span></td><td>The source set treats 4X-CNB as an erroneous registration associated with a scrapped aircraft.</td></tr>
+<tr><td>Airport cameras were non-functional during the relevant interval.</td><td><span class="watch">Unverified</span></td><td>Requires CCTV system logs and independent audit. Ministerial non-answer is not confirmation.</td></tr>
+<tr><td>GNSS spoofing and jamming are real regional threats.</td><td><span class="good">Context verified in source set</span></td><td>General EW risk is real, but it does not prove intervention in this specific crash.</td></tr>
+<tr><td>Electronic warfare caused or contributed to Flight 185.</td><td><span class="bad">Unsupported</span></td><td>The reported electrical malfunction is not, on the provided evidence, characteristic of GNSS interference.</td></tr>
+<tr><td>Deliberate sabotage and cover-up occurred.</td><td><span class="bad">Rejected in source set</span></td><td>No physical, technical or documentary evidence is presented in the uploaded files.</td></tr>
+</table>
+</section>
+
+<section>
+<h2>IV. Narrative Ecology</h2>
+<p>The files separate the information environment into three layers. This separation is essential because a real crash can attract both legitimate questions and opportunistic narrative inflation.</p>
+<table>
+<tr><th>Layer</th><th>Core Narrative</th><th>Risk</th></tr>
+<tr><td>V1 — Official / Primary</td><td>Electrical malfunction leading to a fatal crash.</td><td><span class="good">Stable</span></td></tr>
+<tr><td>V2 — Opposition Allegation</td><td>Crash plus foreign aircraft co-presence and camera irregularity.</td><td><span class="watch">Watch / preserve evidence gap</span></td></tr>
+<tr><td>V3 — Social-Media Expansion</td><td>Sabotage, cyber attack, electronic warfare and cover-up.</td><td><span class="bad">High mutation, low evidentiary density</span></td></tr>
+</table>
+<div class="callout"><strong>Operational rule:</strong> V2 should be observed; V3 should not be amplified as fact. The correct defensive posture is preservation, audit, and controlled language.</div>
+</section>
+
+<section>
+<h2>V. Hypothesis Register</h2>
+<table>
+<tr><th>Hypothesis</th><th>Description</th><th>Posterior Probability Stated in Source Set</th></tr>
+<tr><td>H₁</td><td>Electrical malfunction resulting in loss of control and crash; no external intervention.</td><td><span class="good">0.854</span></td></tr>
+<tr><td>H₂</td><td>Electrical malfunction plus coincidental presence of a foreign-registered aircraft; no causal link.</td><td><span class="watch">0.018</span></td></tr>
+<tr><td>H₃</td><td>Electrical malfunction plus undetected electronic-warfare intervention.</td><td><span class="bad">0.003</span></td></tr>
+<tr><td>H₄</td><td>Deliberate hostile action with coordinated cover operation.</td><td><span class="bad">0.001</span></td></tr>
+</table>
+</section>
+
+<section>
+<h2>VI. Evidence Gaps</h2>
+<table>
+<tr><th>Gap</th><th>What Is Needed</th><th>Why It Matters</th></tr>
+<tr><td>GAP-01</td><td>Complete independent ADS-B / MLAT / airport movement archive for Esenboğa on 23 December 2025.</td><td>Would confirm or refute the 4X-CNA co-presence claim.</td></tr>
+<tr><td>GAP-02</td><td>Independent forensic examination of recovered Falcon 50 avionics and flight-data logs.</td><td>Would test for case-specific GNSS or electronic-interference traces.</td></tr>
+<tr><td>GAP-03</td><td>Independent audit of airport CCTV status and log integrity for the relevant interval.</td><td>Would resolve the camera-functionality allegation.</td></tr>
+<tr><td>GAP-04</td><td>Contextual review of airport authority personnel decisions.</td><td>Would distinguish ordinary administrative timing from suspicious patterning.</td></tr>
+</table>
+</section>
+
+<section>
+<h2>VII. Recommendations</h2>
+<ol>
+<li><strong>Close the primary accident assessment</strong> at the current evidentiary level: electrical malfunction, no demonstrated external intervention.</li>
+<li><strong>Keep the 4X-CNA and CCTV claims under observation</strong> until independent logs either confirm or refute them.</li>
+<li><strong>Do not convert general GNSS risk into case-specific proof.</strong> The Eastern Mediterranean threat environment is real, but context is not causation.</li>
+<li><strong>Monitor narrative mutation</strong> where single-source allegations become sabotage claims without new evidence.</li>
+<li><strong>Preserve language discipline:</strong> verified, assumed, unverified and rejected claims must remain visibly separated.</li>
+</ol>
+</section>
+
+<hr class="section-divider">
+<span class="appendix-label" id="appendix-a">Appendix A — Convergent Multivector Evidence Notes</span>
+<h2>Technical Evidence Register</h2>
+<p>The supporting multivector report adds a structured chronology, aircraft profile, claim table, intelligence-ecology mapping and electronic-warfare context. Its most important contribution is not a new accusation; it is the disciplined separation between <strong>general capability</strong> and <strong>case-specific evidence</strong>.</p>
+<div class="grid">
+<div class="card"><h3>Incident Forensics</h3><p>Aircraft type correction, emergency code, reported electrical malfunction, radar-loss sequence and casualty outcome are treated as the stable core.</p></div>
+<div class="card"><h3>Historical Analogues</h3><p>Sabena 571, the Iranian presidential helicopter crash and the Von der Leyen GNSS incident are not treated as one pattern. They are separate events with separate evidentiary statuses.</p></div>
+<div class="card"><h3>Intelligence Ecology</h3><p>Host-state, foreign-service, opposition and informal-network actors are mapped by interest and capability, but mapping capability does not prove participation in this event.</p></div>
+<div class="card"><h3>EW Environment</h3><p>GNSS spoofing and jamming remain aviation-security risks; the report does not find a case-specific link to Flight 185.</p></div>
+</div>
+
+<span class="appendix-label" id="appendix-b">Appendix B — T2SAIM / IntelAIM Cross-Protocol Notes</span>
+<h2>Analytical Control Layer</h2>
+<p>The T2SAIM / IntelAIM file contributes the control logic: evidence inventory, hypothesis generation, ACH-style inconsistency testing, bias audit, calibration and collection-gap analysis. Its strongest defensive value is the Autonomy Preservation Gate: the reader is not forced toward belief; the uncertainty remains visible.</p>
+<table>
+<tr><th>Control</th><th>Meaning</th><th>Result in Consolidated Report</th></tr>
+<tr><td>Evidence Trace Visible</td><td>The reader can see where each claim sits.</td><td><span class="good">Maintained</span></td></tr>
+<tr><td>Uncertainty Visible</td><td>Verified, assumed, unverified and rejected claims are labelled.</td><td><span class="good">Maintained</span></td></tr>
+<tr><td>No Suppression Action</td><td>The allegation is not erased; it is weighted.</td><td><span class="good">Maintained</span></td></tr>
+<tr><td>Appeal Path Available</td><td>New independent evidence can reopen the relevant gap.</td><td><span class="good">Maintained</span></td></tr>
+</table>
+
+<section>
+<h2>Epistemic Hygiene Summary</h2>
+<table>
+<tr><th>Category</th><th>Contents</th></tr>
+<tr><td><span class="good">Verified within source set</span></td><td>Crash, aircraft profile, emergency electrical-fault report, fatalities, regional GNSS-risk context.</td></tr>
+<tr><td><span class="watch">Assumed / Watch</span></td><td>4X-CNA apron co-presence, CCTV irregularity, administrative timing questions.</td></tr>
+<tr><td><span class="bad">Unverified / Rejected</span></td><td>Electronic-warfare causation, deliberate sabotage, coordinated cover-up, incorrect 4X-CNB line.</td></tr>
+</table>
+</section>
+
+<div class="footer">
+TarCo Forensic Intelligence Research · Computational Behavioural Analysis · Canonical Filing<br>
+Consolidated release generated from four uploaded source files · <em>Veritas Per Se</em><br>
+<span>TEMPORAL LOCK: 2026-05-22T20:08:08Z · SOURCE-SET HASH PREFIXES: 9da5df4aae9fc9d4, a1e1a7301387a9bf, 4564b9a49ee95cfd, bba691c026a8f685</span>
+</div>
+</body>
+</html>
