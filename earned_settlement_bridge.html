@@ -4,36 +4,338 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Administrative Possibility Axis — Earned Settlement Forensic Bridge</title>
-
 <style>
-:root {
-  --ink: #0f1a2e; --paper: #f7f4ec; --rule: #1a2a4a;
-  --gold: #c9a84c; --accent: #8b1a1a; --muted: #6b7280;
-}
-body {
-  background: var(--paper); color: var(--ink);
-  font-family: Georgia, 'Times New Roman', serif;
-  margin: 2em auto; max-width: 960px; padding: 0 1.5em;
-}
-.tarco-badge {
-  background: #141413; color: #c9a84c;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 13px; font-weight: 900; letter-spacing: 4px;
-  padding: 8px 16px; text-transform: uppercase;
-  border: 1.5px solid #c9a84c; text-align: center;
-  border-radius: 4px; display: inline-block;
-}
-.tarco-badge small { display: block; font-size: 6px; letter-spacing: 2px; color: #c9a84c88; }
-.stamp { display: inline-block; padding: 2px 10px; font: 11px Helvetica, sans-serif;
-  letter-spacing: 2px; text-transform: uppercase; margin-left: 1em; border: 2px solid; }
-.stamp-red { border-color: #b91c1c; color: #b91c1c; }
-.stamp-gold { border-color: #8a5a00; color: #8a5a00; }
-.footer { margin-top: 3em; border-top: 1px solid var(--gold); padding-top: 1em; font-size: 0.8em; color: var(--muted); }
-table { width: 100%; border-collapse: collapse; margin: 1em 0; }
-th { background: var(--rule); color: var(--gold); font: bold 11px Helvetica, sans-serif;
-  padding: 6px 10px; text-align: left; text-transform: uppercase; letter-spacing: 1px; }
-td { padding: 6px 10px; border-bottom: 1px solid #d4d0c8; }
-tr:nth-child(even) td { background: #ede9df; }
+  :root {
+    --ink: #0f1a2e;
+    --ink-soft: #2a3855;
+    --paper: #f7f4ec;
+    --paper-warm: #efeadd;
+    --rule: #1a2a4a;
+    --accent: #8b1a1a;
+    --amber: #8a5a00;
+    --muted: #6b7280;
+    --row-alt: #f2f4f8;
+    --ok: #2d5a3d;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  .container { max-width: 1120px; margin: 0 auto; padding: 56px 36px 80px; }
+  header {
+    border-bottom: 2px solid var(--rule);
+    padding-bottom: 28px;
+    margin-bottom: 36px;
+  }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 11px;
+    color: var(--muted);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 600;
+  }
+  h1 {
+    font-size: 38px;
+    margin: 8px 0 6px;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+  }
+  .subtitle {
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 16px;
+  }
+  .meta {
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--muted);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    background: var(--paper-warm);
+    border: 1px solid #d9d3c2;
+    font-size: 11px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-right: 6px;
+  }
+  .lead {
+    font-size: 17px;
+    line-height: 1.75;
+    margin: 0 0 36px;
+    padding: 24px 28px;
+    background: var(--paper-warm);
+    border-left: 4px solid var(--amber);
+  }
+  h2 {
+    font-size: 24px;
+    margin: 56px 0 14px;
+    color: var(--rule);
+    border-bottom: 1px solid #d9d3c2;
+    padding-bottom: 8px;
+  }
+  h2 .num {
+    display: inline-block;
+    width: 42px;
+    color: var(--accent);
+    font-style: italic;
+  }
+  h3 {
+    font-size: 17px;
+    color: var(--ink-soft);
+    margin: 28px 0 10px;
+  }
+  p { margin: 0 0 14px; text-align: justify; }
+  /* Comparison split */
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin: 28px 0;
+  }
+  .split .col {
+    background: #fff;
+    border: 1px solid #d9d3c2;
+    padding: 24px 26px;
+  }
+  .split .col.left { border-top: 4px solid var(--amber); }
+  .split .col.right { border-top: 4px solid var(--accent); }
+  .col h3 {
+    margin-top: 0;
+    color: var(--rule);
+    font-size: 17px;
+  }
+  .col .verdict {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid #e8e2d2;
+    font-size: 14px;
+  }
+  .verdict.feasible { color: var(--amber); font-weight: 600; }
+  .verdict.impossible { color: var(--accent); font-weight: 600; }
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 26px;
+    font-size: 13px;
+    background: #fff;
+    border: 1px solid #d9d3c2;
+  }
+  th {
+    background: var(--rule);
+    color: var(--paper);
+    text-align: left;
+    padding: 10px 12px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e8e2d2;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  tr:nth-child(even) td { background: var(--row-alt); }
+  td strong { color: var(--rule); }
+  /* Pressure-point cards */
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    margin: 20px 0;
+  }
+  .pp {
+    background: #fff;
+    border: 1px solid #d9d3c2;
+    border-left: 4px solid var(--amber);
+    padding: 18px 20px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .pp:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(15,26,46,0.08); }
+  .pp .tag {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .pp h4 { margin: 0 0 8px; font-size: 15px; color: var(--rule); }
+  .pp p { margin: 0; font-size: 13.5px; color: var(--ink-soft); line-height: 1.55; }
+  .pp .case { margin-top: 8px; font-size: 12px; font-style: italic; color: var(--muted); }
+  /* Stats */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 14px;
+    margin: 24px 0 32px;
+  }
+  .stat {
+    background: #fff;
+    border: 1px solid #d9d3c2;
+    padding: 16px 14px;
+    text-align: center;
+  }
+  .stat .n {
+    display: block;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--accent);
+    font-family: Georgia;
+  }
+  .stat .l {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin-top: 6px;
+    display: block;
+  }
+  /* Asymmetry pullquote */
+  .pull {
+    margin: 36px 0;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 32px 36px;
+    border-left: 4px solid var(--accent);
+  }
+  .pull .label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #c89868;
+    margin-bottom: 8px;
+  }
+  .pull .quote {
+    font-size: 19px;
+    font-style: italic;
+    line-height: 1.55;
+  }
+  /* Timeline */
+  .timeline {
+    margin: 24px 0;
+    padding-left: 30px;
+    border-left: 2px solid var(--rule);
+  }
+  .tl-item {
+    margin-bottom: 22px;
+    position: relative;
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -38px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
+    border: 2px solid var(--paper);
+  }
+  .tl-date {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .tl-text {
+    margin-top: 4px;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  /* Family asymmetry diagram */
+  .family {
+    background: #fff;
+    border: 1px solid #d9d3c2;
+    padding: 24px;
+    margin: 20px 0 30px;
+  }
+  .family h4 {
+    margin: 0 0 16px;
+    color: var(--rule);
+    font-size: 15px;
+    text-align: center;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 11px;
+  }
+  .family-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    text-align: center;
+  }
+  .fam-card {
+    padding: 16px 12px;
+    border: 1px solid #d9d3c2;
+    background: var(--paper-warm);
+  }
+  .fam-card .role {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+  }
+  .fam-card .time {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent);
+    margin: 6px 0 4px;
+    font-family: Georgia;
+  }
+  .fam-card .desc { font-size: 12px; color: var(--ink-soft); line-height: 1.4; }
+  .fam-arrow {
+    text-align: center;
+    margin: 14px 0 0;
+    font-size: 13px;
+    color: var(--accent);
+    font-style: italic;
+  }
+  footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid #d9d3c2;
+    font-size: 12px;
+    color: var(--muted);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    text-align: center;
+  }
+  .bottom-line {
+    margin: 40px 0 30px;
+    padding: 28px 32px;
+    background: var(--rule);
+    color: var(--paper);
+    border-left: 5px solid #c89868;
+  }
+  .bottom-line .label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 11px;
+    color: #c89868;
+    margin-bottom: 10px;
+  }
+  .bottom-line p { font-size: 17px; line-height: 1.7; }
 </style>
 </head>
 <body>
@@ -273,17 +575,8 @@ tr:nth-child(even) td { background: #ede9df; }
 </div>
 
 <footer>
-  TarCo Forensic Intelligence Research · Computational Behavioural Analysis · Canonical Filing<br>
-  All claims verified against primary sources as of filing date · 2026-05-26T10:14+03:00 · @36840 · #T2SAIM<br>
-  <em>Veritas Per Se</em><br>
-  <span style="font-family:monospace;font-size:9px;color:#999">
-    TEMPORAL LOCK: 2026-05-26T10:14:33Z · HASH: #0eb22f4ee1a240dc
-  </span>
-
-<div style="text-align:center;margin:40px 0 20px">
-  <a href="index.html" style="font-family:Helvetica,Arial,sans-serif;font-size:12px;text-decoration:none;color:#1a2a4a;font-weight:700;text-transform:uppercase;letter-spacing:1px">← Back to Main Index</a>
-</div>
-
+  TarCo Forensic Validation Chain · UK Local Elections 7 May 2026 · Companion bridge to T2SAIM Forensic Narrative v3.1 — The Administrative Possibility Axis<br>
+  Sibling artifacts: <em>legal_impossibility_bridge.html</em> · <em>T2SAIM_Forensic_Narrative_UK_2026_v3_1.html</em> · Internal calibration ledger available on request to qualifying institutional counterparties.
 </footer>
 
 </div>

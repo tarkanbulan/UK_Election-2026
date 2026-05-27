@@ -5,37 +5,321 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TarCo Computational™ — Honor &amp; Deception Test · Nikkei 40K</title>
-    
-<style>
-:root {
-  --ink: #0f1a2e; --paper: #f7f4ec; --rule: #1a2a4a;
-  --gold: #c9a84c; --accent: #8b1a1a; --muted: #6b7280;
-}
-body {
-  background: var(--paper); color: var(--ink);
-  font-family: Georgia, 'Times New Roman', serif;
-  margin: 2em auto; max-width: 960px; padding: 0 1.5em;
-}
-.tarco-badge {
-  background: #141413; color: #c9a84c;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 13px; font-weight: 900; letter-spacing: 4px;
-  padding: 8px 16px; text-transform: uppercase;
-  border: 1.5px solid #c9a84c; text-align: center;
-  border-radius: 4px; display: inline-block;
-}
-.tarco-badge small { display: block; font-size: 6px; letter-spacing: 2px; color: #c9a84c88; }
-.stamp { display: inline-block; padding: 2px 10px; font: 11px Helvetica, sans-serif;
-  letter-spacing: 2px; text-transform: uppercase; margin-left: 1em; border: 2px solid; }
-.stamp-red { border-color: #b91c1c; color: #b91c1c; }
-.stamp-gold { border-color: #8a5a00; color: #8a5a00; }
-.footer { margin-top: 3em; border-top: 1px solid var(--gold); padding-top: 1em; font-size: 0.8em; color: var(--muted); }
-table { width: 100%; border-collapse: collapse; margin: 1em 0; }
-th { background: var(--rule); color: var(--gold); font: bold 11px Helvetica, sans-serif;
-  padding: 6px 10px; text-align: left; text-transform: uppercase; letter-spacing: 1px; }
-td { padding: 6px 10px; border-bottom: 1px solid #d4d0c8; }
-tr:nth-child(even) td { background: #ede9df; }
-</style>
+    <style>
+        :root {
+            --washi: #f4ede0;
+            --washi2: #efe5d3;
+            --ink: #1c1714;
+            --soft: #5b5147;
+            --vermilion: #b5322b;
+            --gold: #9c7c3c;
+            --line: #d8c9ad;
+            --sallama: #c0271f;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            background: var(--washi);
+            color: var(--ink);
+            font: 16px/1.95 "Hiragino Mincho ProN", "Yu Mincho", Georgia, "Times New Roman", serif;
+            padding: 60px 24px;
+            background-image: radial-gradient(circle at 30% 20%, #fbf5e8 0, transparent 60%);
+        }
+
+        .scroll {
+            max-width: 780px;
+            margin: auto;
+            background: var(--washi2);
+            border: 1px solid var(--line);
+            box-shadow: 0 30px 80px rgba(40, 28, 16, .18);
+            padding: 64px 64px 80px;
+            position: relative
+        }
+
+        .scroll::before {
+            content: "";
+            position: absolute;
+            inset: 14px;
+            border: 1px solid var(--line);
+            pointer-events: none
+        }
+
+        .kanji {
+            font-size: 46px;
+            letter-spacing: 10px;
+            color: var(--vermilion);
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 6px
+        }
+
+        .romaji {
+            text-align: center;
+            color: var(--soft);
+            font-style: italic;
+            letter-spacing: 3px;
+            font-size: 14px;
+            margin-bottom: 4px
+        }
+
+        .trans {
+            text-align: center;
+            color: var(--soft);
+            font-size: 13px;
+            letter-spacing: 1px;
+            margin-bottom: 34px
+        }
+
+        .brand {
+            text-align: center;
+            font-size: 12px;
+            letter-spacing: 6px;
+            color: var(--gold);
+            text-transform: uppercase;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            padding: 12px 0;
+            margin-bottom: 40px
+        }
+
+        h2 {
+            font-size: 19px;
+            color: var(--vermilion);
+            letter-spacing: 2px;
+            margin: 46px 0 16px;
+            border-left: 4px solid var(--vermilion);
+            padding-left: 14px;
+            font-weight: 700
+        }
+
+        p {
+            margin: 14px 0;
+            text-align: justify
+        }
+
+        .lead {
+            font-size: 17px;
+            color: var(--ink)
+        }
+
+        .ma {
+            font-style: italic;
+            color: var(--soft)
+        }
+
+        blockquote {
+            background: var(--washi);
+            border: 1px solid var(--line);
+            padding: 22px 26px;
+            margin: 22px 0;
+            font-size: 14.5px;
+            line-height: 1.85;
+            color: #3a322a
+        }
+
+        blockquote p {
+            margin: 10px 0
+        }
+
+        .sallama {
+            color: var(--sallama);
+            font-style: italic;
+            font-weight: 600;
+            text-decoration: underline wavy rgba(192, 39, 31, .4)
+        }
+
+        .seal {
+            position: absolute;
+            right: 46px;
+            top: 46px;
+            width: 96px;
+            height: 96px;
+            border: 3px solid var(--vermilion);
+            color: var(--vermilion);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            line-height: 1.35;
+            transform: rotate(-7deg);
+            opacity: .88
+        }
+
+        .verdict {
+            background: linear-gradient(180deg, #f7efe0, #efe3cd);
+            border: 2px solid var(--vermilion);
+            padding: 26px 30px;
+            margin: 38px 0;
+            text-align: center
+        }
+
+        .verdict b {
+            color: var(--vermilion);
+            font-size: 18px;
+            letter-spacing: 1px
+        }
+
+        .zen {
+            text-align: center;
+            font-style: italic;
+            color: var(--soft);
+            font-size: 15px;
+            margin: 34px 0;
+            letter-spacing: 1px
+        }
+
+        .masters {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            margin: 24px 0
+        }
+
+        .master {
+            flex: 1;
+            min-width: 210px;
+            background: var(--washi);
+            border: 1px solid var(--line);
+            padding: 18px 20px
+        }
+
+        .master .nm {
+            color: var(--vermilion);
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+            margin-bottom: 6px
+        }
+
+        .master .jp {
+            color: var(--gold);
+            font-size: 12px;
+            letter-spacing: 2px;
+            margin-bottom: 8px
+        }
+
+        .master p {
+            font-size: 13px;
+            line-height: 1.8;
+            margin: 0;
+            color: #473d33
+        }
+
+        .close {
+            margin-top: 50px;
+            border-top: 1px solid var(--line);
+            padding-top: 26px;
+            text-align: center;
+            color: var(--soft);
+            font-style: italic;
+            font-size: 15px;
+            letter-spacing: 1px
+        }
+
+        .foot {
+            text-align: center;
+            color: var(--gold);
+            font-size: 11px;
+            letter-spacing: 3px;
+            margin-top: 30px;
+            text-transform: uppercase
+        }
+
+        /* Nav Bridge & Callout-box styles */
+        .nav-bridge {
+            background: rgba(216, 201, 173, 0.25);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .nav-bridge.bottom-bridge {
+            margin-top: 40px;
+            margin-bottom: 0;
+        }
+
+        .nav-title {
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--washi);
+            border: 1px solid var(--line);
+            color: var(--soft);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            background: var(--vermilion);
+            color: var(--washi);
+            border-color: var(--vermilion);
+        }
+
+        .nav-num {
+            background: rgba(0, 0, 0, 0.08);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+        }
+
+        .nav-item.active .nav-num {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .callout-box {
+            background: rgba(216, 201, 173, 0.15);
+            border-left: 4px solid var(--gold);
+            padding: 18px 20px;
+            margin: 22px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 14.5px;
+        }
+
+        .callout-box h4 {
+            color: var(--vermilion);
+            font-size: 16px;
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+    </style>
 </head>
 
 <body>
@@ -225,19 +509,6 @@ tr:nth-child(even) td { background: #ede9df; }
 
         <div class="foot">TarCo Computational™ · Menboku o Tamotsu · Temporal Sync 17.05.2026</div>
     </div>
-<footer>
-  TarCo Forensic Intelligence Research · Computational Behavioural Analysis · Canonical Filing<br>
-  All claims verified against primary sources as of filing date · 2026-05-26T10:14+03:00 · @36840 · #T2SAIM<br>
-  <em>Veritas Per Se</em><br>
-  <span style="font-family:monospace;font-size:9px;color:#999">
-    TEMPORAL LOCK: 2026-05-26T10:14:33Z · HASH: #92b1f534677b7094
-  </span>
-
-<div style="text-align:center;margin:40px 0 20px">
-  <a href="index.html" style="font-family:Helvetica,Arial,sans-serif;font-size:12px;text-decoration:none;color:#1a2a4a;font-weight:700;text-transform:uppercase;letter-spacing:1px">← Back to Main Index</a>
-</div>
-
-</footer>
 </body>
 
 </html>

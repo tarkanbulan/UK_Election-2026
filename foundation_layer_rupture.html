@@ -4,36 +4,197 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Foundation Layer Rupture — TarCo Forensic Intelligence Brief</title>
-
 <style>
-:root {
-  --ink: #0f1a2e; --paper: #f7f4ec; --rule: #1a2a4a;
-  --gold: #c9a84c; --accent: #8b1a1a; --muted: #6b7280;
-}
-body {
-  background: var(--paper); color: var(--ink);
-  font-family: Georgia, 'Times New Roman', serif;
-  margin: 2em auto; max-width: 960px; padding: 0 1.5em;
-}
-.tarco-badge {
-  background: #141413; color: #c9a84c;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 13px; font-weight: 900; letter-spacing: 4px;
-  padding: 8px 16px; text-transform: uppercase;
-  border: 1.5px solid #c9a84c; text-align: center;
-  border-radius: 4px; display: inline-block;
-}
-.tarco-badge small { display: block; font-size: 6px; letter-spacing: 2px; color: #c9a84c88; }
-.stamp { display: inline-block; padding: 2px 10px; font: 11px Helvetica, sans-serif;
-  letter-spacing: 2px; text-transform: uppercase; margin-left: 1em; border: 2px solid; }
-.stamp-red { border-color: #b91c1c; color: #b91c1c; }
-.stamp-gold { border-color: #8a5a00; color: #8a5a00; }
-.footer { margin-top: 3em; border-top: 1px solid var(--gold); padding-top: 1em; font-size: 0.8em; color: var(--muted); }
-table { width: 100%; border-collapse: collapse; margin: 1em 0; }
-th { background: var(--rule); color: var(--gold); font: bold 11px Helvetica, sans-serif;
-  padding: 6px 10px; text-align: left; text-transform: uppercase; letter-spacing: 1px; }
-td { padding: 6px 10px; border-bottom: 1px solid #d4d0c8; }
-tr:nth-child(even) td { background: #ede9df; }
+  :root {
+    --ink: #0f1a2e;
+    --ink-soft: #2a3855;
+    --paper: #f7f4ec;
+    --paper-warm: #efeadd;
+    --rule: #1a2a4a;
+    --accent: #8b1a1a;
+    --amber: #8a5a00;
+    --gold: #c9a84c;
+    --muted: #6b7280;
+    --row-alt: #f2f4f8;
+    --ok: #2d5a3d;
+    --danger: #7a1010;
+    --warn: #7a4a00;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+  }
+  .container { max-width: 1140px; margin: 0 auto; padding: 56px 36px 100px; }
+
+  /* ── HEADER ── */
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: start;
+    border-bottom: 3px solid var(--rule);
+    padding-bottom: 32px;
+    margin-bottom: 40px;
+    position: relative;
+  }
+  .header-content { grid-column: 1; }
+  .tarco-badge {
+    grid-column: 2;
+    background: var(--rule); color: var(--gold);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px; font-weight: 900; letter-spacing: 4px;
+    padding: 10px 20px; text-transform: uppercase;
+    border: 2px solid var(--gold);
+    text-align: center;
+    white-space: nowrap;
+  }
+  .tarco-badge small { display: block; font-size: 7px; letter-spacing: 2px; color: #c9a84c88; margin-top: 2px; }
+  .eyebrow {
+    text-transform: uppercase; letter-spacing: 3px; font-size: 10px;
+    color: var(--muted); font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 700; margin-bottom: 10px;
+  }
+  h1 { font-size: 40px; letter-spacing: -0.5px; line-height: 1.12; margin-bottom: 8px; }
+  .subtitle { font-style: italic; color: var(--ink-soft); font-size: 17px; margin-bottom: 16px; }
+  .meta { font-size: 11px; color: var(--muted); font-family: 'Helvetica Neue', Arial, sans-serif; }
+  .badge {
+    display: inline-block; padding: 3px 10px;
+    background: var(--paper-warm); border: 1px solid #d9d3c2;
+    font-size: 10px; font-family: 'Helvetica Neue', Arial, sans-serif;
+    letter-spacing: 1px; text-transform: uppercase; color: var(--ink-soft);
+    margin-right: 6px; margin-top: 6px;
+  }
+  .badge.red { background: #f7eeee; border-color: var(--accent); color: var(--accent); }
+  .badge.gold { background: #faf5e8; border-color: var(--gold); color: var(--amber); }
+
+  /* ── TYPOGRAPHY ── */
+  h2 {
+    font-size: 26px; margin: 48px 0 16px;
+    padding-bottom: 8px; border-bottom: 1.5px solid var(--rule);
+    color: var(--rule);
+  }
+  h3 { font-size: 18px; margin: 28px 0 10px; color: var(--ink-soft); }
+  h4 { font-size: 14px; margin: 20px 0 8px; font-family: 'Helvetica Neue', Arial, sans-serif; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); }
+  p { margin-bottom: 14px; }
+  .lead {
+    font-size: 17px; line-height: 1.8; margin: 0 0 40px;
+    padding: 24px 28px; background: var(--paper-warm);
+    border-left: 4px solid var(--amber); color: var(--ink-soft);
+  }
+
+  /* ── CALLOUTS ── */
+  .callout {
+    padding: 18px 22px; margin: 24px 0;
+    border-left: 4px solid var(--accent);
+    background: #fdf5f5;
+    font-style: italic; font-size: 15px;
+  }
+  .callout.navy { border-color: var(--rule); background: #f2f4f8; font-style: normal; }
+  .callout.gold { border-color: var(--gold); background: #faf5e8; font-style: normal; }
+  .callout.danger { border-color: var(--danger); background: #fdf0f0; }
+  .callout strong { color: var(--accent); }
+  .callout.navy strong { color: var(--rule); }
+  .callout.gold strong { color: var(--amber); }
+
+  /* ── TABLES ── */
+  table { width: 100%; border-collapse: collapse; margin: 20px 0 32px; font-size: 14px; }
+  th {
+    background: var(--rule); color: var(--gold);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; padding: 10px 12px; text-align: left;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e0ddd4; vertical-align: top; }
+  tr:nth-child(even) td { background: var(--row-alt); }
+  .p-high { color: var(--ok); font-weight: 700; }
+  .p-med { color: var(--amber); font-weight: 700; }
+  .p-crit { color: var(--danger); font-weight: 700; }
+
+  /* ── METRICS GRID ── */
+  .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 24px 0 36px; }
+  .metric-card {
+    background: var(--paper-warm); border: 1px solid #d9d3c2;
+    padding: 18px; text-align: center;
+  }
+  .metric-card .num { font-size: 32px; font-weight: 700; color: var(--accent); line-height: 1; }
+  .metric-card .lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); font-family: 'Helvetica Neue', Arial, sans-serif; margin-top: 6px; }
+  .metric-card .sub { font-size: 11px; color: var(--ink-soft); margin-top: 4px; font-style: italic; }
+
+  /* ── SVG CHARTS ── */
+  .chart-wrap { background: #fff; border: 1px solid #ddd9cd; padding: 24px; margin: 24px 0 36px; }
+  .chart-wrap h4 { margin-bottom: 16px; }
+
+  /* ── PART DIVIDERS ── */
+  .part-header {
+    background: var(--rule); color: var(--paper);
+    padding: 20px 28px; margin: 56px 0 0;
+  }
+  .part-header .part-num {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 4px;
+  }
+  .part-header h2 {
+    border: none; margin: 0; padding: 0; color: var(--paper); font-size: 22px;
+  }
+
+  /* ── TRUTH TABLE ── */
+  .truth-row-v { background: #edf7ed; }
+  .truth-row-a { background: #fef9ec; }
+  .truth-row-u { background: #fdf4f4; }
+  .truth-tag {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; padding: 2px 8px;
+    display: inline-block;
+  }
+  .tag-v { background: #c8eac8; color: #1a4a1a; }
+  .tag-a { background: #fdedc8; color: #5a3a00; }
+  .tag-u { background: #fad4d4; color: #6a1010; }
+
+  /* ── PROBABILITY BAR ── */
+  .prob-bar { height: 8px; background: #e0ddd4; border-radius: 4px; margin-top: 4px; }
+  .prob-fill { height: 100%; border-radius: 4px; background: var(--accent); }
+
+  /* ── TIMELINE ── */
+  .timeline { position: relative; padding-left: 24px; }
+  .timeline::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background:var(--rule); }
+  .tl-item { position: relative; margin-bottom: 20px; }
+  .tl-item::before {
+    content:''; position:absolute; left:-29px; top:4px;
+    width:10px; height:10px; border-radius:50%;
+    background: var(--accent); border: 2px solid var(--paper);
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+  .tl-year { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; font-weight: 700; color: var(--gold); background: var(--rule); padding: 1px 6px; display: inline-block; margin-bottom: 4px; }
+  .tl-text { font-size: 14px; }
+
+  /* ── FORMULA BLOCK ── */
+  .formula {
+    background: #f0f4f8; border: 1px solid #c8d4e4;
+    padding: 16px 20px; margin: 16px 0;
+    font-family: 'Courier New', monospace; font-size: 14px;
+    color: var(--rule); line-height: 1.8;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    margin-top: 80px; padding-top: 24px;
+    border-top: 2px solid var(--rule);
+    font-size: 11px; color: var(--muted);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .metrics { grid-template-columns: repeat(2, 1fr); }
+    h1 { font-size: 28px; }
+    .tarco-badge { position: static; margin-bottom: 16px; display: inline-block; }
+  }
 </style>
 </head>
 <body>
@@ -757,17 +918,18 @@ Your browser does not support the video tag.
 
 <!-- ══════════════════════════ FOOTER ══════════════════════════ -->
 <footer>
-  TarCo Forensic Intelligence Research · Computational Behavioural Analysis · Canonical Filing<br>
-  All claims verified against primary sources as of filing date · 2026-05-26T10:14+03:00 · @36840 · #T2SAIM<br>
-  <em>Veritas Per Se</em><br>
-  <span style="font-family:monospace;font-size:9px;color:#999">
-    TEMPORAL LOCK: 2026-05-26T10:14:33Z · HASH: #d968c773571056a5
-  </span>
-
-<div style="text-align:center;margin:40px 0 20px">
-  <a href="index.html" style="font-family:Helvetica,Arial,sans-serif;font-size:12px;text-decoration:none;color:#1a2a4a;font-weight:700;text-transform:uppercase;letter-spacing:1px">← Back to Main Index</a>
-</div>
-
+  <div>
+    <strong style="color:var(--rule)">TarCo Forensic Intelligence Research</strong><br>
+    Computational Behavioural Analysis<br>
+    Case: SOCIAL-RUPTURE-UK-2026 · Status: CANONICAL
+  </div>
+  <div style="text-align:right">
+    <strong style="font-size:18px;letter-spacing:4px;color:var(--rule)">TARCO</strong><br>
+    Forensic Intelligence Research<br>
+    Computational Behavioural Analysis<br>
+    <br>
+    2026-05-11
+  </div>
 </footer>
 
 </div>

@@ -4,36 +4,41 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>TarCo Forensic — Case: The Knowledge Economy Rupture (HEI)</title>
-
 <style>
-:root {
-  --ink: #0f1a2e; --paper: #f7f4ec; --rule: #1a2a4a;
-  --gold: #c9a84c; --accent: #8b1a1a; --muted: #6b7280;
-}
-body {
-  background: var(--paper); color: var(--ink);
-  font-family: Georgia, 'Times New Roman', serif;
-  margin: 2em auto; max-width: 960px; padding: 0 1.5em;
-}
-.tarco-badge {
-  background: #141413; color: #c9a84c;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 13px; font-weight: 900; letter-spacing: 4px;
-  padding: 8px 16px; text-transform: uppercase;
-  border: 1.5px solid #c9a84c; text-align: center;
-  border-radius: 4px; display: inline-block;
-}
-.tarco-badge small { display: block; font-size: 6px; letter-spacing: 2px; color: #c9a84c88; }
-.stamp { display: inline-block; padding: 2px 10px; font: 11px Helvetica, sans-serif;
-  letter-spacing: 2px; text-transform: uppercase; margin-left: 1em; border: 2px solid; }
-.stamp-red { border-color: #b91c1c; color: #b91c1c; }
-.stamp-gold { border-color: #8a5a00; color: #8a5a00; }
-.footer { margin-top: 3em; border-top: 1px solid var(--gold); padding-top: 1em; font-size: 0.8em; color: var(--muted); }
-table { width: 100%; border-collapse: collapse; margin: 1em 0; }
-th { background: var(--rule); color: var(--gold); font: bold 11px Helvetica, sans-serif;
-  padding: 6px 10px; text-align: left; text-transform: uppercase; letter-spacing: 1px; }
-td { padding: 6px 10px; border-bottom: 1px solid #d4d0c8; }
-tr:nth-child(even) td { background: #ede9df; }
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#FAF9F5;--fg:#141413;--gray-600:#5A5A56;--gray-400:#8A8A84;--border:#D1CFC5;--accent:#3B6EA5;--accent-bg:#F0F4F8;--blue:#3B6EA5;--green:#2D7A4F;--red:#C04040;--yellow-bg:#FFF9E6;--code-bg:#F0EFEB;--max-w:1000px;--serif:Georgia,'Times New Roman',serif;--sans:system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'SF Mono',Menlo,Consolas,monospace}
+html{font-size:17px;scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--fg);background:var(--bg);line-height:1.7;padding:2.5rem 1.5rem 4rem}
+.wrapper{max-width:var(--max-w);margin:0 auto}
+header{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start;margin-bottom:2rem;border-bottom: 2px solid var(--fg);padding-bottom: 20px;}
+.header-content{grid-column:1;min-width:0}
+.tarco-badge{grid-column:2;background:#141413;color:#c9a84c;font-family:var(--sans);font-size:13px;font-weight:900;letter-spacing:4px;padding:8px 16px;text-transform:uppercase;border:1.5px solid #c9a84c;text-align:center;flex-shrink:0;white-space:nowrap;border-radius:4px}
+.tarco-badge small{display:block;font-size:6px;letter-spacing:2px;color:#c9a84c88;margin-top:1px}
+h1{font-family:var(--serif);font-size:2.5rem;font-weight:700;line-height:1.25;margin-bottom:.3rem}
+.subtitle{color:var(--gray-400);font-size:.92rem;margin-bottom:2rem;text-transform: uppercase; letter-spacing: 1px;}
+.tldr{background:var(--red);color:white;padding:1.5rem 1.6rem;border-radius:4px;margin:1.5rem 0 2rem}
+.tldr strong{font-size:.9rem;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:.35rem;color:white;}
+.tldr p{margin:0;font-size:1.1rem;font-weight:700;line-height:1.4;color:white;}
+.metric-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:2rem 0}
+.metric{background:#fff;border:1px solid var(--border);border-radius:6px;padding:1.2rem;text-align:center;box-shadow: 0 4px 6px rgba(0,0,0,0.02);}
+.metric .value{font-family:var(--mono);font-size:1.6rem;font-weight:700;color:var(--fg);word-break:break-word;}
+.metric .label{font-size:.78rem;color:var(--gray-400);text-transform:uppercase;letter-spacing:.04em;margin-top:.4rem}
+.metric.critical .value{color:var(--red)}
+.metric.warn .value{color:#B8741A}
+h2{font-family:var(--serif);font-size:1.8rem;font-weight:700;margin-top:3rem;margin-bottom:1.2rem;padding-bottom:.45rem;border-bottom:1px solid var(--border)}
+p{margin-bottom:1.2rem;color:var(--gray-600)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin:2rem 0}
+@media(max-width:768px){.grid-2{grid-template-columns:1fr}}
+.info-box{background:var(--yellow-bg);border-left:5px solid #D4A843;padding:1.2rem 1.5rem;border-radius:0 6px 6px 0;margin:1.5rem 0}
+.quote{border-left:4px solid var(--accent);padding:1rem 1.5rem;margin:2rem 0;font-style:italic;color:var(--gray-600);font-size:1.1rem;background:#FDFCFA;line-height:1.6}
+table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.95rem;background:white}
+th{text-align:left;padding:.8rem 1rem;background:var(--code-bg);border-bottom:2px solid var(--border);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em;color:var(--gray-400)}
+td{padding:.8rem 1rem;border-bottom:1px solid var(--border)}
+.badge{display:inline-block;padding:.2rem .6rem;border-radius:4px;font-size:.8rem;font-weight:600}
+.badge-red{background:#FDEAEA;color:var(--red)}
+.badge-amber{background:#FFF3E0;color:#B8741A}
+.seal-extraordinary{border: 2px solid var(--red); padding: 10px; display: inline-block; transform: rotate(-2deg); font-weight: 900; color: var(--red); font-size: 0.8rem; margin-bottom: 20px;}
+footer{margin-top:4rem;padding-top:2rem;border-top:1px solid var(--border);font-size:.85rem;color:var(--gray-400);text-align:center}
 </style>
 </head>
 <body>
@@ -118,17 +123,7 @@ TARCO
 <p>The UK Higher Education Industry is the next foundation layer to fail. The model indicates that without an immediate re-baselining of domestic fees or a reversal of the 10-year rule, the UK will lose its "Tier 1" status as a global educational hub by 2029. The "Knowledge Economy" will be replaced by a "Knowledge Deficit".</p>
 
 <footer>
-  TarCo Forensic Intelligence Research · Computational Behavioural Analysis · Canonical Filing<br>
-  All claims verified against primary sources as of filing date · 2026-05-26T10:14+03:00 · @36840 · #T2SAIM<br>
-  <em>Veritas Per Se</em><br>
-  <span style="font-family:monospace;font-size:9px;color:#999">
-    TEMPORAL LOCK: 2026-05-26T10:14:33Z · HASH: #7ee8b19b8b26b0a5
-  </span>
-
-<div style="text-align:center;margin:40px 0 20px">
-  <a href="index.html" style="font-family:Helvetica,Arial,sans-serif;font-size:12px;text-decoration:none;color:#1a2a4a;font-weight:700;text-transform:uppercase;letter-spacing:1px">← Back to Main Index</a>
-</div>
-
+TarCo Forensic Intelligence · Mission Albion · HEI Deep Audit v3.1 · 13 May 2026 · Veritas Per Se
 </footer>
 
 </div>

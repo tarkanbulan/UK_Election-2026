@@ -4,36 +4,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TarCo Forensic — Ex Post King's Speech Audit (v3.1)</title>
-
 <style>
-:root {
-  --ink: #0f1a2e; --paper: #f7f4ec; --rule: #1a2a4a;
-  --gold: #c9a84c; --accent: #8b1a1a; --muted: #6b7280;
-}
-body {
-  background: var(--paper); color: var(--ink);
-  font-family: Georgia, 'Times New Roman', serif;
-  margin: 2em auto; max-width: 960px; padding: 0 1.5em;
-}
-.tarco-badge {
-  background: #141413; color: #c9a84c;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 13px; font-weight: 900; letter-spacing: 4px;
-  padding: 8px 16px; text-transform: uppercase;
-  border: 1.5px solid #c9a84c; text-align: center;
-  border-radius: 4px; display: inline-block;
-}
-.tarco-badge small { display: block; font-size: 6px; letter-spacing: 2px; color: #c9a84c88; }
-.stamp { display: inline-block; padding: 2px 10px; font: 11px Helvetica, sans-serif;
-  letter-spacing: 2px; text-transform: uppercase; margin-left: 1em; border: 2px solid; }
-.stamp-red { border-color: #b91c1c; color: #b91c1c; }
-.stamp-gold { border-color: #8a5a00; color: #8a5a00; }
-.footer { margin-top: 3em; border-top: 1px solid var(--gold); padding-top: 1em; font-size: 0.8em; color: var(--muted); }
-table { width: 100%; border-collapse: collapse; margin: 1em 0; }
-th { background: var(--rule); color: var(--gold); font: bold 11px Helvetica, sans-serif;
-  padding: 6px 10px; text-align: left; text-transform: uppercase; letter-spacing: 1px; }
-td { padding: 6px 10px; border-bottom: 1px solid #d4d0c8; }
-tr:nth-child(even) td { background: #ede9df; }
+  :root { --ink:#0f1a2e; --paper:#f7f4ec; --rule:#1a2a4a; --gold:#c9a84c; --accent:#8b1a1a; --muted:#6b7280; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:Georgia,serif; background:var(--paper); color:var(--ink); line-height:1.7; padding: 40px; }
+  .container { max-width:850px; margin:0 auto; background:white; padding:60px; border:1px solid #d9d3c2; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+  header { border-bottom:2px solid var(--rule); padding-bottom:32px; margin-bottom:40px; text-align: center; }
+  .eyebrow { text-transform:uppercase; letter-spacing:3px; font-size:10px; color:var(--muted); font-family:Helvetica,Arial,sans-serif; font-weight:700; margin-bottom:12px; }
+  h1 { font-size:32px; letter-spacing:-0.5px; line-height:1.1; margin-bottom:12px; color: var(--rule); }
+  .meta-box { background: #f2f4f8; padding: 20px; border: 1px solid #d9d3c2; margin-bottom: 40px; font-family: Helvetica, Arial, sans-serif; font-size: 13px; color: var(--muted); }
+  .meta-box span { display: block; margin-bottom: 5px; }
+  .meta-box strong { color: var(--rule); }
+  .prob-table { width: 100%; border-collapse: collapse; margin: 30px 0; }
+  .prob-table th, .prob-table td { border: 1px solid #d9d3c2; padding: 12px; text-align: left; }
+  .prob-table th { background: var(--rule); color: var(--gold); text-transform: uppercase; font-size: 11px; letter-spacing: 1px; }
+  .prob-table tr:nth-child(even) { background: #fafaf8; }
+  .prob-table .prob-value { font-family: 'Courier New', monospace; font-weight: bold; color: var(--accent); font-size: 16px; }
+  .section-title { font-family: Helvetica, Arial, sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: 14px; color: var(--accent); border-bottom: 1px solid var(--accent); padding-bottom: 5px; margin: 40px 0 20px; }
+  .stamp { display: inline-block; border: 2px solid var(--accent); color: var(--accent); padding: 5px 15px; font-family: Helvetica, Arial, sans-serif; font-weight: 800; text-transform: uppercase; transform: rotate(-3deg); margin-bottom: 20px; }
+  .seal { float: right; width: 100px; height: 100px; border: 4px double var(--gold); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: var(--gold); font-family: Helvetica; transform: rotate(-15deg); opacity: 0.7; }
+  .seal span { font-size: 10px; font-weight: bold; }
+  footer { margin-top:60px; padding-top:20px; border-top:1px solid #eee; font-size:10px; color:var(--muted); text-align:center; font-family: Helvetica; }
 </style>
 </head>
 <body>
@@ -139,18 +130,9 @@ tr:nth-child(even) td { background: #ede9df; }
   </div>
 
   <footer>
-  TarCo Forensic Intelligence Research · Computational Behavioural Analysis · Canonical Filing<br>
-  All claims verified against primary sources as of filing date · 2026-05-26T10:14+03:00 · @36840 · #T2SAIM<br>
-  <em>Veritas Per Se</em><br>
-  <span style="font-family:monospace;font-size:9px;color:#999">
-    TEMPORAL LOCK: 2026-05-26T10:14:33Z · HASH: #add783639a2ae2e4
-  </span>
-
-<div style="text-align:center;margin:40px 0 20px">
-  <a href="index.html" style="font-family:Helvetica,Arial,sans-serif;font-size:12px;text-decoration:none;color:#1a2a4a;font-weight:700;text-transform:uppercase;letter-spacing:1px">← Back to Main Index</a>
-</div>
-
-</footer>
+    TarCo Forensic Intelligence Research · London · 13 May 2026<br>
+    Veritas Per Se · Decision = Tarco
+  </footer>
 </div>
 </body>
 </html>
