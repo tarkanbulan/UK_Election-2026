@@ -34,6 +34,32 @@ th { background: var(--rule); color: var(--gold); font: bold 11px Helvetica, san
   padding: 6px 10px; text-align: left; text-transform: uppercase; letter-spacing: 1px; }
 td { padding: 6px 10px; border-bottom: 1px solid #d4d0c8; }
 tr:nth-child(even) td { background: #ede9df; }
+.eyebrow { font-family: Helvetica, sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); margin-bottom: 0.5em; }
+h1 { font-size: 2.5em; border-bottom: 2px solid var(--rule); padding-bottom: 0.2em; margin-top: 0; }
+h2 { font-size: 1.5em; margin-top: 0; }
+.subtitle { font-size: 1.2em; font-style: italic; color: var(--muted); margin-bottom: 2em; }
+.hero-image { width: 100%; height: auto; border: 1px solid var(--gold); }
+.hero-caption { font-size: 0.9em; font-style: italic; color: var(--muted); margin-bottom: 3em; border-left: 3px solid var(--gold); padding-left: 10px; }
+
+.brief-grid { display: flex; flex-direction: column; gap: 24px; }
+.brief-row { display: flex; gap: 24px; }
+.brief-row.center { justify-content: center; }
+.brief-card { background: #fff; border: 1px solid #d4d0c8; padding: 24px; flex: 1; box-shadow: 2px 2px 8px rgba(0,0,0,0.05); position: relative; }
+.meta { font-family: Helvetica, sans-serif; font-size: 10px; color: var(--muted); margin-bottom: 12px; }
+.btn { display: inline-block; padding: 8px 16px; border: 1px solid var(--ink); color: var(--ink); text-decoration: none; font-family: Helvetica, sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-top: 16px; transition: all 0.2s; background: transparent; cursor: pointer; }
+.btn:hover { background: var(--ink); color: #fff; }
+.seal-extraordinary { position: absolute; bottom: 20px; right: 20px; text-align: center; font-family: 'Times New Roman', serif; border: 2px solid var(--accent); color: var(--accent); border-radius: 50%; width: 80px; height: 80px; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0.8; transform: rotate(-15deg); }
+.seal-extraordinary span { display: block; line-height: 1.1; }
+.seal-extraordinary .top { font-size: 8px; text-transform: uppercase; }
+.seal-extraordinary .mid { font-size: 10px; font-weight: bold; }
+.seal-extraordinary .bot { font-size: 7px; letter-spacing: 1px; }
+
+.video-wrap { margin-top: 3em; text-align: center; }
+video { max-width: 100%; border: 1px solid var(--gold); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+
+@media (max-width: 768px) {
+  .brief-row { flex-direction: column; }
+}
 </style>
 </head>
 <body>
