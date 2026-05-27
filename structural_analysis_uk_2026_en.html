@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UK 2026 Elections Analysis | TarCo Forensic Intelligence</title>
+    <title>RESTRICTED | UK 2026 Elections Analysis</title>
     <style>
         :root {
             --bg-dark: #0a0e17;
@@ -34,6 +34,91 @@
             overflow-x: hidden;
         }
         
+        /* Security Overlay */
+        #security-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(10, 14, 23, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .security-box {
+            background: var(--bg-panel);
+            border: 1px solid var(--accent-cyan);
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 0 30px var(--glow-cyan);
+            max-width: 400px;
+            width: 90%;
+        }
+        
+        .security-box h2 {
+            color: #fff;
+            margin-top: 0;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1.5rem;
+            text-shadow: 0 0 10px rgba(255,255,255,0.2);
+        }
+        
+        .security-input {
+            width: 100%;
+            padding: 12px;
+            margin: 20px 0;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid var(--glass-border);
+            color: #fff;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            font-size: 1.1rem;
+            outline: none;
+        }
+        
+        .security-input:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 10px var(--glow-cyan);
+        }
+        
+        .security-btn {
+            background: transparent;
+            color: var(--accent-cyan);
+            border: 1px solid var(--accent-cyan);
+            padding: 10px 30px;
+            font-family: 'Courier New', Courier, monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 4px;
+        }
+        
+        .security-btn:hover {
+            background: var(--accent-cyan);
+            color: #000;
+            box-shadow: 0 0 15px var(--glow-cyan);
+        }
+        
+        #error-msg {
+            color: var(--accent-red);
+            font-size: 0.85rem;
+            margin-top: 15px;
+            height: 20px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        /* Main Content wrapper initially hidden via script if needed, but overlay handles it */
+        #main-content {
+            display: none;
+        }
+
         .cortex-container {
             max-width: 900px;
             margin: 40px auto;
@@ -134,7 +219,6 @@
             font-family: 'Courier New', Courier, monospace;
         }
         
-        /* Language Toggle */
         .lang-toggle {
             position: fixed;
             top: 20px;
@@ -162,23 +246,57 @@
     </style>
 </head>
 <body>
-    <div class="lang-toggle">
-        <a href="structural_analysis_uk_2026_tr.html" class="lang-btn">TR / Türkçe</a>
+    <!-- Security Overlay -->
+    <div id="security-overlay">
+        <div class="security-box">
+            <h2>EXO CORTEX ACCESS</h2>
+            <input type="password" id="pass-input" class="security-input" placeholder="ENTER DECRYPTION KEY" />
+            <button class="security-btn" onclick="checkAuth()">AUTHENTICATE</button>
+            <div id="error-msg"></div>
+        </div>
     </div>
 
-    <div class="cortex-container">
-        <header class="exo-header">
-            <h1>Predictive Forensics in Electoral Systems: A Structural Analysis of the 2026 UK Elections using the T2SAIM Architecture</h1>
-            <div class="meta-badges">
-                <span class="badge">AUTH: Prof. Dr. Ercan Balaban & Tarkan Bulan</span>
-                <span class="badge">CLASS: T2SAIM FORENSIC REVIEW</span>
-                <span class="badge">STATUS: EX-POST VERIFIED</span>
-                <span class="badge">SEC-LEVEL: EXO CORTEX</span>
-            </div>
-        </header>
+    <script>
+        function checkAuth() {
+            const val = document.getElementById('pass-input').value;
+            // The password required
+            if (val === 'Exocortex2026') {
+                document.getElementById('security-overlay').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+            } else {
+                document.getElementById('error-msg').innerText = 'ACCESS DENIED: INVALID KEY';
+                setTimeout(() => {
+                    document.getElementById('error-msg').innerText = '';
+                }, 2000);
+            }
+        }
+        
+        document.getElementById('pass-input').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                checkAuth();
+            }
+        });
+    </script>
 
-        <div class="glass-panel">
-            <p>Predictive Forensics in Electoral Systems: A Structural Analysis of the 2026 UK Elections using the T2SAIM Architecture</p>
+    <!-- Main Content -->
+    <div id="main-content">
+        <div class="lang-toggle">
+            <a href="structural_analysis_uk_2026_tr.html" class="lang-btn">TR / Türkçe</a>
+        </div>
+
+        <div class="cortex-container">
+            <header class="exo-header">
+                <h1>Predictive Forensics in Electoral Systems: A Structural Analysis of the 2026 UK Elections using the T2SAIM Architecture</h1>
+                <div class="meta-badges">
+                    <span class="badge">AUTH: Prof. Dr. Ercan Balaban & Tarkan Bulan</span>
+                    <span class="badge">CLASS: T2SAIM FORENSIC REVIEW</span>
+                    <span class="badge">STATUS: EX-POST VERIFIED</span>
+                    <span class="badge">SEC-LEVEL: EXO CORTEX RESTRICTED</span>
+                </div>
+            </header>
+
+            <div class="glass-panel">
+                <p>Predictive Forensics in Electoral Systems: A Structural Analysis of the 2026 UK Elections using the T2SAIM Architecture</p>
 <p>Prof. Dr. Ercan Balaban & Tarkan Bulan (B.Sc. Economics)</p>
 <p>Journal: T2SAIM Forensic Review (Elsevier Format) | Version: 2.4 - Ex-Ante/Ex-Post Psychodynamic Context</p>
 <p>Operational Context and Publication History:Authored in May 2026 and released as a forensic ledger after the UK election results were clarified. Preliminary NOC (No Overall Control) predictions were issued on LinkedIn at the corporate-strategic tier; supporting sociological data was field-tested via Facebook networks. The intended audience comprises international funds, geopolitical strategists, and data scientists exposed to the structural fallacies of traditional polling.</p>
@@ -290,19 +408,20 @@
 <p>Tarco Forensic Intelligence (2026). The King's Speech 2026: State Opening of Parliament — 11 May 2026 · Pre-Event Intelligence Briefing. Crisis Index 0.964; Severe Crisis Probability 98.3%; Model Confidence 98.4%. Eight-channel forensic datamining model with deterministic evidence shift of +0.702 from baseline 0.79. Scenario projection update on the Trump–UK–Crown diplomatic triangle (Golden Triangle).</p>
 <p>TarCo Forensic Intelligence Research · Computational Behavioural Analysis · Canonical Filing All claims verified against primary sources as of filing date · 2026-05-26T10:14+03:00 · @36840 · #T2SAIMVeritas Per SeTEMPORAL LOCK: 2026-05-26T10:14:33Z · HASH: #49be08ff67b2e231</p>
 
-        </div>
+            </div>
 
-        <div class="terminal-block">
-> T2SAIM_CORE_SYNC
-> VERITAS PER SE
-> TEMPORAL LOCK: 2026-05-27T10:14:33Z
-> HASH: #49be08ff67b2e231
-> STATUS: RUPTURE CONFIRMED
-        </div>
+            <div class="terminal-block">
+    > T2SAIM_CORE_SYNC
+    > VERITAS PER SE
+    > TEMPORAL LOCK: 2026-05-27T10:14:33Z
+    > HASH: #49be08ff67b2e231
+    > STATUS: RUPTURE CONFIRMED
+            </div>
 
-        <footer class="footer">
-            TarCo Forensic Intelligence Research · Computational Behavioural Analysis · Canonical Filing
-        </footer>
+            <footer class="footer">
+                TarCo Forensic Intelligence Research · Computational Behavioural Analysis · Canonical Filing
+            </footer>
+        </div>
     </div>
 </body>
 </html>
